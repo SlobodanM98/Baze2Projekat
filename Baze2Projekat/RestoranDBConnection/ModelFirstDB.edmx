@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelFirstDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelFirstDBStoreContainer">
+    <EntitySet Name="Restorani" EntityType="ModelFirstDB.Store.Restorani" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Gradovi" EntityType="ModelFirstDB.Store.Gradovi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi" EntityType="ModelFirstDB.Store.Proizvodi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stolovi" EntityType="ModelFirstDB.Store.Stolovi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposleni" EntityType="ModelFirstDB.Store.Zaposleni" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Musterije" EntityType="ModelFirstDB.Store.Musterije" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Spremas" EntityType="ModelFirstDB.Store.Spremas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposleni_Kuvar" EntityType="ModelFirstDB.Store.Zaposleni_Kuvar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposleni_Konobar" EntityType="ModelFirstDB.Store.Zaposleni_Konobar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposleni_Recepcionar" EntityType="ModelFirstDB.Store.Zaposleni_Recepcionar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi_Corba" EntityType="ModelFirstDB.Store.Proizvodi_Corba" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi_GlavnoJelo" EntityType="ModelFirstDB.Store.Proizvodi_GlavnoJelo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi_Salata" EntityType="ModelFirstDB.Store.Proizvodi_Salata" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proizvodi_Dezert" EntityType="ModelFirstDB.Store.Proizvodi_Dezert" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stolovi_ZaDvoje" EntityType="ModelFirstDB.Store.Stolovi_ZaDvoje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stolovi_ZaCetvoro" EntityType="ModelFirstDB.Store.Stolovi_ZaCetvoro" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stolovi_ZaSestoro" EntityType="ModelFirstDB.Store.Stolovi_ZaSestoro" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RestoranProizvod" EntityType="ModelFirstDB.Store.RestoranProizvod" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RestoranZaposleni" EntityType="ModelFirstDB.Store.RestoranZaposleni" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_RestoranProizvod_Restoran" Association="ModelFirstDB.Store.FK_RestoranProizvod_Restoran">
+      <End Role="Restoran" EntitySet="Restorani" />
+      <End Role="RestoranProizvod" EntitySet="RestoranProizvod" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestoranProizvod_Proizvod" Association="ModelFirstDB.Store.FK_RestoranProizvod_Proizvod">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="RestoranProizvod" EntitySet="RestoranProizvod" />
+    </AssociationSet>
+    <AssociationSet Name="RestoranSto" Association="ModelFirstDB.Store.RestoranSto">
+      <End Role="Restoran" EntitySet="Restorani" />
+      <End Role="Sto" EntitySet="Stolovi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestoranZaposleni_Restoran" Association="ModelFirstDB.Store.FK_RestoranZaposleni_Restoran">
+      <End Role="Restoran" EntitySet="Restorani" />
+      <End Role="RestoranZaposleni" EntitySet="RestoranZaposleni" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RestoranZaposleni_Zaposleni" Association="ModelFirstDB.Store.FK_RestoranZaposleni_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposleni" />
+      <End Role="RestoranZaposleni" EntitySet="RestoranZaposleni" />
+    </AssociationSet>
+    <AssociationSet Name="StoMusterija" Association="ModelFirstDB.Store.StoMusterija">
+      <End Role="Sto" EntitySet="Stolovi" />
+      <End Role="Musterija" EntitySet="Musterije" />
+    </AssociationSet>
+    <AssociationSet Name="ProizvodSprema" Association="ModelFirstDB.Store.ProizvodSprema">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="Sprema" EntitySet="Spremas" />
+    </AssociationSet>
+    <AssociationSet Name="KuvarSprema" Association="ModelFirstDB.Store.KuvarSprema">
+      <End Role="Kuvar" EntitySet="Zaposleni_Kuvar" />
+      <End Role="Sprema" EntitySet="Spremas" />
+    </AssociationSet>
+    <AssociationSet Name="RestoranGrad" Association="ModelFirstDB.Store.RestoranGrad">
+      <End Role="Restoran" EntitySet="Restorani" />
+      <End Role="Grad" EntitySet="Gradovi" />
+    </AssociationSet>
+    <AssociationSet Name="MusterijaSprema" Association="ModelFirstDB.Store.MusterijaSprema">
+      <End Role="Musterija" EntitySet="Musterije" />
+      <End Role="Sprema" EntitySet="Spremas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kuvar_inherits_Zaposleni" Association="ModelFirstDB.Store.FK_Kuvar_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposleni" />
+      <End Role="Kuvar" EntitySet="Zaposleni_Kuvar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Konobar_inherits_Zaposleni" Association="ModelFirstDB.Store.FK_Konobar_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposleni" />
+      <End Role="Konobar" EntitySet="Zaposleni_Konobar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recepcionar_inherits_Zaposleni" Association="ModelFirstDB.Store.FK_Recepcionar_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposleni" />
+      <End Role="Recepcionar" EntitySet="Zaposleni_Recepcionar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Corba_inherits_Proizvod" Association="ModelFirstDB.Store.FK_Corba_inherits_Proizvod">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="Corba" EntitySet="Proizvodi_Corba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GlavnoJelo_inherits_Proizvod" Association="ModelFirstDB.Store.FK_GlavnoJelo_inherits_Proizvod">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="GlavnoJelo" EntitySet="Proizvodi_GlavnoJelo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Salata_inherits_Proizvod" Association="ModelFirstDB.Store.FK_Salata_inherits_Proizvod">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="Salata" EntitySet="Proizvodi_Salata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dezert_inherits_Proizvod" Association="ModelFirstDB.Store.FK_Dezert_inherits_Proizvod">
+      <End Role="Proizvod" EntitySet="Proizvodi" />
+      <End Role="Dezert" EntitySet="Proizvodi_Dezert" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZaDvoje_inherits_Sto" Association="ModelFirstDB.Store.FK_ZaDvoje_inherits_Sto">
+      <End Role="Sto" EntitySet="Stolovi" />
+      <End Role="ZaDvoje" EntitySet="Stolovi_ZaDvoje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZaCetvoro_inherits_Sto" Association="ModelFirstDB.Store.FK_ZaCetvoro_inherits_Sto">
+      <End Role="Sto" EntitySet="Stolovi" />
+      <End Role="ZaCetvoro" EntitySet="Stolovi_ZaCetvoro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZaSestoro_inherits_Sto" Association="ModelFirstDB.Store.FK_ZaSestoro_inherits_Sto">
+      <End Role="Sto" EntitySet="Stolovi" />
+      <End Role="ZaSestoro" EntitySet="Stolovi_ZaSestoro" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Restorani">
+    <Key>
+      <PropertyRef Name="IDRestorana" />
+    </Key>
+    <Property Name="IDRestorana" Type="int" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GradPostanskiBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gradovi">
+    <Key>
+      <PropertyRef Name="PostanskiBroj" />
+    </Key>
+    <Property Name="PostanskiBroj" Type="int" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proizvodi">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Tip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cena" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stolovi">
+    <Key>
+      <PropertyRef Name="BrojStola" />
+      <PropertyRef Name="RestoranIDRestorana" />
+    </Key>
+    <Property Name="BrojStola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrojMesta" Type="int" Nullable="false" />
+    <Property Name="Tip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RestoranIDRestorana" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposleni">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tip" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Musterije">
+    <Key>
+      <PropertyRef Name="RedniBroj" />
+    </Key>
+    <Property Name="RedniBroj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StoBrojStola" Type="int" Nullable="true" />
+    <Property Name="StoRestoranIDRestorana" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Spremas">
+    <Key>
+      <PropertyRef Name="ProizvodNaziv" />
+      <PropertyRef Name="KuvarJMBG" />
+    </Key>
+    <Property Name="ProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="KuvarJMBG" Type="int" Nullable="false" />
+    <Property Name="MusterijaRedniBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposleni_Kuvar">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposleni_Konobar">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposleni_Recepcionar">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proizvodi_Corba">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Proizvodi_GlavnoJelo">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Proizvodi_Salata">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Proizvodi_Dezert">
+    <Key>
+      <PropertyRef Name="Naziv" />
+    </Key>
+    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Stolovi_ZaDvoje">
+    <Key>
+      <PropertyRef Name="BrojStola" />
+      <PropertyRef Name="RestoranIDRestorana" />
+    </Key>
+    <Property Name="BrojStola" Type="int" Nullable="false" />
+    <Property Name="RestoranIDRestorana" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stolovi_ZaCetvoro">
+    <Key>
+      <PropertyRef Name="BrojStola" />
+      <PropertyRef Name="RestoranIDRestorana" />
+    </Key>
+    <Property Name="BrojStola" Type="int" Nullable="false" />
+    <Property Name="RestoranIDRestorana" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stolovi_ZaSestoro">
+    <Key>
+      <PropertyRef Name="BrojStola" />
+      <PropertyRef Name="RestoranIDRestorana" />
+    </Key>
+    <Property Name="BrojStola" Type="int" Nullable="false" />
+    <Property Name="RestoranIDRestorana" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RestoranProizvod">
+    <Key>
+      <PropertyRef Name="RestoranProizvod_Proizvod_IDRestorana" />
+      <PropertyRef Name="RestoranProizvod_Restoran_Naziv" />
+    </Key>
+    <Property Name="RestoranProizvod_Proizvod_IDRestorana" Type="int" Nullable="false" />
+    <Property Name="RestoranProizvod_Restoran_Naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RestoranZaposleni">
+    <Key>
+      <PropertyRef Name="RestoranZaposleni_Zaposleni_IDRestorana" />
+      <PropertyRef Name="RestoranZaposleni_Restoran_JMBG" />
+    </Key>
+    <Property Name="RestoranZaposleni_Zaposleni_IDRestorana" Type="int" Nullable="false" />
+    <Property Name="RestoranZaposleni_Restoran_JMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="RestoranSto">
+    <End Role="Restoran" Type="ModelFirstDB.Store.Restorani" Multiplicity="1" />
+    <End Role="Sto" Type="ModelFirstDB.Store.Stolovi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="IDRestorana" />
+      </Principal>
+      <Dependent Role="Sto">
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StoMusterija">
+    <End Role="Sto" Type="ModelFirstDB.Store.Stolovi" Multiplicity="0..1" />
+    <End Role="Musterija" Type="ModelFirstDB.Store.Musterije" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sto">
+        <PropertyRef Name="BrojStola" />
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Principal>
+      <Dependent Role="Musterija">
+        <PropertyRef Name="StoBrojStola" />
+        <PropertyRef Name="StoRestoranIDRestorana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProizvodSprema">
+    <End Role="Proizvod" Type="ModelFirstDB.Store.Proizvodi" Multiplicity="1" />
+    <End Role="Sprema" Type="ModelFirstDB.Store.Spremas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Sprema">
+        <PropertyRef Name="ProizvodNaziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KuvarSprema">
+    <End Role="Kuvar" Type="ModelFirstDB.Store.Zaposleni_Kuvar" Multiplicity="1" />
+    <End Role="Sprema" Type="ModelFirstDB.Store.Spremas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kuvar">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Sprema">
+        <PropertyRef Name="KuvarJMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RestoranGrad">
+    <End Role="Restoran" Type="ModelFirstDB.Store.Restorani" Multiplicity="*" />
+    <End Role="Grad" Type="ModelFirstDB.Store.Gradovi" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Grad">
+        <PropertyRef Name="PostanskiBroj" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="GradPostanskiBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MusterijaSprema">
+    <End Role="Musterija" Type="ModelFirstDB.Store.Musterije" Multiplicity="1" />
+    <End Role="Sprema" Type="ModelFirstDB.Store.Spremas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musterija">
+        <PropertyRef Name="RedniBroj" />
+      </Principal>
+      <Dependent Role="Sprema">
+        <PropertyRef Name="MusterijaRedniBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestoranProizvod_Restoran">
+    <End Role="Restoran" Type="ModelFirstDB.Store.Restorani" Multiplicity="1" />
+    <End Role="RestoranProizvod" Type="ModelFirstDB.Store.RestoranProizvod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="IDRestorana" />
+      </Principal>
+      <Dependent Role="RestoranProizvod">
+        <PropertyRef Name="RestoranProizvod_Proizvod_IDRestorana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestoranProizvod_Proizvod">
+    <End Role="RestoranProizvod" Type="ModelFirstDB.Store.RestoranProizvod" Multiplicity="*" />
+    <End Role="Proizvod" Type="ModelFirstDB.Store.Proizvodi" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="RestoranProizvod">
+        <PropertyRef Name="RestoranProizvod_Restoran_Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestoranZaposleni_Restoran">
+    <End Role="Restoran" Type="ModelFirstDB.Store.Restorani" Multiplicity="1" />
+    <End Role="RestoranZaposleni" Type="ModelFirstDB.Store.RestoranZaposleni" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="IDRestorana" />
+      </Principal>
+      <Dependent Role="RestoranZaposleni">
+        <PropertyRef Name="RestoranZaposleni_Zaposleni_IDRestorana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RestoranZaposleni_Zaposleni">
+    <End Role="RestoranZaposleni" Type="ModelFirstDB.Store.RestoranZaposleni" Multiplicity="*" />
+    <End Role="Zaposleni" Type="ModelFirstDB.Store.Zaposleni" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="RestoranZaposleni">
+        <PropertyRef Name="RestoranZaposleni_Restoran_JMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kuvar_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelFirstDB.Store.Zaposleni" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Kuvar" Type="ModelFirstDB.Store.Zaposleni_Kuvar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Kuvar">
+        <PropertyRef Name="JMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Konobar_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelFirstDB.Store.Zaposleni" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Konobar" Type="ModelFirstDB.Store.Zaposleni_Konobar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Konobar">
+        <PropertyRef Name="JMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recepcionar_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelFirstDB.Store.Zaposleni" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Recepcionar" Type="ModelFirstDB.Store.Zaposleni_Recepcionar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Recepcionar">
+        <PropertyRef Name="JMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Corba_inherits_Proizvod">
+    <End Role="Proizvod" Type="ModelFirstDB.Store.Proizvodi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Corba" Type="ModelFirstDB.Store.Proizvodi_Corba" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Corba">
+        <PropertyRef Name="Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GlavnoJelo_inherits_Proizvod">
+    <End Role="Proizvod" Type="ModelFirstDB.Store.Proizvodi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GlavnoJelo" Type="ModelFirstDB.Store.Proizvodi_GlavnoJelo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="GlavnoJelo">
+        <PropertyRef Name="Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Salata_inherits_Proizvod">
+    <End Role="Proizvod" Type="ModelFirstDB.Store.Proizvodi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Salata" Type="ModelFirstDB.Store.Proizvodi_Salata" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Salata">
+        <PropertyRef Name="Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dezert_inherits_Proizvod">
+    <End Role="Proizvod" Type="ModelFirstDB.Store.Proizvodi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dezert" Type="ModelFirstDB.Store.Proizvodi_Dezert" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="Naziv" />
+      </Principal>
+      <Dependent Role="Dezert">
+        <PropertyRef Name="Naziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZaDvoje_inherits_Sto">
+    <End Role="Sto" Type="ModelFirstDB.Store.Stolovi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZaDvoje" Type="ModelFirstDB.Store.Stolovi_ZaDvoje" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sto">
+        <PropertyRef Name="BrojStola" />
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Principal>
+      <Dependent Role="ZaDvoje">
+        <PropertyRef Name="BrojStola" />
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZaCetvoro_inherits_Sto">
+    <End Role="Sto" Type="ModelFirstDB.Store.Stolovi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZaCetvoro" Type="ModelFirstDB.Store.Stolovi_ZaCetvoro" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sto">
+        <PropertyRef Name="BrojStola" />
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Principal>
+      <Dependent Role="ZaCetvoro">
+        <PropertyRef Name="BrojStola" />
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZaSestoro_inherits_Sto">
+    <End Role="Sto" Type="ModelFirstDB.Store.Stolovi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZaSestoro" Type="ModelFirstDB.Store.Stolovi_ZaSestoro" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sto">
+        <PropertyRef Name="BrojStola" />
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Principal>
+      <Dependent Role="ZaSestoro">
+        <PropertyRef Name="BrojStola" />
+        <PropertyRef Name="RestoranIDRestorana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelFirstDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelFirstDBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Restorani" EntityType="ModelFirstDB.Restoran" />
+          <EntitySet Name="Gradovi" EntityType="ModelFirstDB.Grad" />
+          <EntitySet Name="Proizvodi" EntityType="ModelFirstDB.Proizvod" />
+          <AssociationSet Name="RestoranProizvod" Association="ModelFirstDB.RestoranProizvod">
+            <End Role="Restoran" EntitySet="Restorani" />
+            <End Role="Proizvod" EntitySet="Proizvodi" />
+          </AssociationSet>
+          <EntitySet Name="Stolovi" EntityType="ModelFirstDB.Sto" />
+          <AssociationSet Name="RestoranSto" Association="ModelFirstDB.RestoranSto">
+            <End Role="Restoran" EntitySet="Restorani" />
+            <End Role="Sto" EntitySet="Stolovi" />
+          </AssociationSet>
+          <EntitySet Name="Zaposleni" EntityType="ModelFirstDB.Zaposleni" />
+          <AssociationSet Name="RestoranZaposleni" Association="ModelFirstDB.RestoranZaposleni">
+            <End Role="Restoran" EntitySet="Restorani" />
+            <End Role="Zaposleni" EntitySet="Zaposleni" />
+          </AssociationSet>
+          <EntitySet Name="Musterije" EntityType="ModelFirstDB.Musterija" />
+          <AssociationSet Name="StoMusterija" Association="ModelFirstDB.StoMusterija">
+            <End Role="Sto" EntitySet="Stolovi" />
+            <End Role="Musterija" EntitySet="Musterije" />
+          </AssociationSet>
+          <EntitySet Name="Spremas" EntityType="ModelFirstDB.Sprema" />
+          <AssociationSet Name="ProizvodSprema" Association="ModelFirstDB.ProizvodSprema">
+            <End Role="Proizvod" EntitySet="Proizvodi" />
+            <End Role="Sprema" EntitySet="Spremas" />
+          </AssociationSet>
+          <AssociationSet Name="KuvarSprema" Association="ModelFirstDB.KuvarSprema">
+            <End Role="Kuvar" EntitySet="Zaposleni" />
+            <End Role="Sprema" EntitySet="Spremas" />
+          </AssociationSet>
+          <AssociationSet Name="RestoranGrad" Association="ModelFirstDB.RestoranGrad">
+            <End Role="Restoran" EntitySet="Restorani" />
+            <End Role="Grad" EntitySet="Gradovi" />
+          </AssociationSet>
+          <AssociationSet Name="MusterijaSprema" Association="ModelFirstDB.MusterijaSprema">
+            <End Role="Musterija" EntitySet="Musterije" />
+            <End Role="Sprema" EntitySet="Spremas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Restoran">
+          <Key>
+            <PropertyRef Name="IDRestorana" />
+          </Key>
+          <Property Name="IDRestorana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <NavigationProperty Name="Grad" Relationship="ModelFirstDB.RestoranGrad" FromRole="Restoran" ToRole="Grad" />
+          <Property Name="GradPostanskiBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grad">
+          <Key>
+            <PropertyRef Name="PostanskiBroj" />
+          </Key>
+          <Property Name="PostanskiBroj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proizvod">
+          <Key>
+            <PropertyRef Name="Naziv" />
+          </Key>
+          <Property Name="Naziv" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" cg:SetterAccess="Public" MaxLength="50" />
+          <Property Name="Tip" Type="String" Nullable="false" />
+          <Property Name="Cena" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RestoranProizvod">
+          <End Type="ModelFirstDB.Restoran" Role="Restoran" Multiplicity="*" />
+          <End Type="ModelFirstDB.Proizvod" Role="Proizvod" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Sto">
+          <Key>
+            <PropertyRef Name="BrojStola" />
+            <PropertyRef Name="RestoranIDRestorana" />
+          </Key>
+          <Property Name="BrojStola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojMesta" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" Nullable="false" />
+          <NavigationProperty Name="Restoran" Relationship="ModelFirstDB.RestoranSto" FromRole="Sto" ToRole="Restoran" />
+          <Property Name="RestoranIDRestorana" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RestoranSto">
+          <End Type="ModelFirstDB.Restoran" Role="Restoran" Multiplicity="1" />
+          <End Type="ModelFirstDB.Sto" Role="Sto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restoran">
+              <PropertyRef Name="IDRestorana" />
+            </Principal>
+            <Dependent Role="Sto">
+              <PropertyRef Name="RestoranIDRestorana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Zaposleni">
+          <Key>
+            <PropertyRef Name="JMBG" />
+          </Key>
+          <Property Name="JMBG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Ime" Type="String" Nullable="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" />
+          <Property Name="Tip" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="RestoranZaposleni">
+          <End Type="ModelFirstDB.Restoran" Role="Restoran" Multiplicity="*" />
+          <End Type="ModelFirstDB.Zaposleni" Role="Zaposleni" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Musterija">
+          <Key>
+            <PropertyRef Name="RedniBroj" />
+          </Key>
+          <Property Name="RedniBroj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" Nullable="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sto" Relationship="ModelFirstDB.StoMusterija" FromRole="Musterija" ToRole="Sto" />
+          <Property Name="StoBrojStola" Type="Int32" Nullable="true" />
+          <Property Name="StoRestoranIDRestorana" Type="Int32" Nullable="true" />
+        </EntityType>
+        <Association Name="StoMusterija">
+          <End Type="ModelFirstDB.Sto" Role="Sto" Multiplicity="0..1" />
+          <End Type="ModelFirstDB.Musterija" Role="Musterija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sto">
+              <PropertyRef Name="BrojStola" />
+              <PropertyRef Name="RestoranIDRestorana" />
+            </Principal>
+            <Dependent Role="Musterija">
+              <PropertyRef Name="StoBrojStola" />
+              <PropertyRef Name="StoRestoranIDRestorana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Konobar" BaseType="ModelFirstDB.Zaposleni" />
+        <EntityType Name="Recepcionar" BaseType="ModelFirstDB.Zaposleni" />
+        <EntityType Name="Kuvar" BaseType="ModelFirstDB.Zaposleni" />
+        <EntityType Name="Sprema" >
+          <Key>
+            <PropertyRef Name="ProizvodNaziv" />
+            <PropertyRef Name="KuvarJMBG" />
+          </Key>
+          <NavigationProperty Name="Proizvod" Relationship="ModelFirstDB.ProizvodSprema" FromRole="Sprema" ToRole="Proizvod" />
+          <Property Name="ProizvodNaziv" Type="String" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Kuvar" Relationship="ModelFirstDB.KuvarSprema" FromRole="Sprema" ToRole="Kuvar" />
+          <Property Name="KuvarJMBG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Musterija" Relationship="ModelFirstDB.MusterijaSprema" FromRole="Sprema" ToRole="Musterija" />
+          <Property Name="MusterijaRedniBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ProizvodSprema">
+          <End Type="ModelFirstDB.Proizvod" Role="Proizvod" Multiplicity="1" />
+          <End Type="ModelFirstDB.Sprema" Role="Sprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvod">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Sprema">
+              <PropertyRef Name="ProizvodNaziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KuvarSprema">
+          <End Type="ModelFirstDB.Kuvar" Role="Kuvar" Multiplicity="1" />
+          <End Type="ModelFirstDB.Sprema" Role="Sprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kuvar">
+              <PropertyRef Name="JMBG" />
+            </Principal>
+            <Dependent Role="Sprema">
+              <PropertyRef Name="KuvarJMBG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Corba" BaseType="ModelFirstDB.Proizvod" />
+        <EntityType Name="GlavnoJelo" BaseType="ModelFirstDB.Proizvod" />
+        <EntityType Name="Salata" BaseType="ModelFirstDB.Proizvod" />
+        <EntityType Name="Dezert" BaseType="ModelFirstDB.Proizvod" />
+        <EntityType Name="ZaDvoje" BaseType="ModelFirstDB.Sto" />
+        <EntityType Name="ZaCetvoro" BaseType="ModelFirstDB.Sto" />
+        <EntityType Name="ZaSestoro" BaseType="ModelFirstDB.Sto" />
+        <Association Name="RestoranGrad">
+          <End Type="ModelFirstDB.Restoran" Role="Restoran" Multiplicity="*" />
+          <End Type="ModelFirstDB.Grad" Role="Grad" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Grad">
+              <PropertyRef Name="PostanskiBroj" />
+            </Principal>
+            <Dependent Role="Restoran">
+              <PropertyRef Name="GradPostanskiBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MusterijaSprema">
+          <End Type="ModelFirstDB.Musterija" Role="Musterija" Multiplicity="1" />
+          <End Type="ModelFirstDB.Sprema" Role="Sprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musterija">
+              <PropertyRef Name="RedniBroj" />
+            </Principal>
+            <Dependent Role="Sprema">
+              <PropertyRef Name="MusterijaRedniBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelFirstDBStoreContainer" CdmEntityContainer="ModelFirstDBContainer">
+    <EntitySetMapping Name="Restorani">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Restoran)">
+        <MappingFragment StoreEntitySet="Restorani">
+          <ScalarProperty Name="IDRestorana" ColumnName="IDRestorana" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="GradPostanskiBroj" ColumnName="GradPostanskiBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gradovi">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Grad)">
+        <MappingFragment StoreEntitySet="Gradovi">
+          <ScalarProperty Name="PostanskiBroj" ColumnName="PostanskiBroj" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proizvodi">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Proizvod)">
+        <MappingFragment StoreEntitySet="Proizvodi">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Corba)">
+        <MappingFragment StoreEntitySet="Proizvodi_Corba">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.GlavnoJelo)">
+        <MappingFragment StoreEntitySet="Proizvodi_GlavnoJelo">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Salata)">
+        <MappingFragment StoreEntitySet="Proizvodi_Salata">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Dezert)">
+        <MappingFragment StoreEntitySet="Proizvodi_Dezert">
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stolovi">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Sto)">
+        <MappingFragment StoreEntitySet="Stolovi">
+          <ScalarProperty Name="BrojStola" ColumnName="BrojStola" />
+          <ScalarProperty Name="RestoranIDRestorana" ColumnName="RestoranIDRestorana" />
+          <ScalarProperty Name="BrojMesta" ColumnName="BrojMesta" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.ZaDvoje)">
+        <MappingFragment StoreEntitySet="Stolovi_ZaDvoje">
+          <ScalarProperty Name="BrojStola" ColumnName="BrojStola" />
+          <ScalarProperty Name="RestoranIDRestorana" ColumnName="RestoranIDRestorana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.ZaCetvoro)">
+        <MappingFragment StoreEntitySet="Stolovi_ZaCetvoro">
+          <ScalarProperty Name="BrojStola" ColumnName="BrojStola" />
+          <ScalarProperty Name="RestoranIDRestorana" ColumnName="RestoranIDRestorana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.ZaSestoro)">
+        <MappingFragment StoreEntitySet="Stolovi_ZaSestoro">
+          <ScalarProperty Name="BrojStola" ColumnName="BrojStola" />
+          <ScalarProperty Name="RestoranIDRestorana" ColumnName="RestoranIDRestorana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zaposleni">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Zaposleni)">
+        <MappingFragment StoreEntitySet="Zaposleni">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Kuvar)">
+        <MappingFragment StoreEntitySet="Zaposleni_Kuvar">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Konobar)">
+        <MappingFragment StoreEntitySet="Zaposleni_Konobar">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Recepcionar)">
+        <MappingFragment StoreEntitySet="Zaposleni_Recepcionar">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musterije">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Musterija)">
+        <MappingFragment StoreEntitySet="Musterije">
+          <ScalarProperty Name="RedniBroj" ColumnName="RedniBroj" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="StoBrojStola" ColumnName="StoBrojStola" />
+          <ScalarProperty Name="StoRestoranIDRestorana" ColumnName="StoRestoranIDRestorana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Spremas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Sprema)">
+        <MappingFragment StoreEntitySet="Spremas">
+          <ScalarProperty Name="ProizvodNaziv" ColumnName="ProizvodNaziv" />
+          <ScalarProperty Name="KuvarJMBG" ColumnName="KuvarJMBG" />
+          <ScalarProperty Name="MusterijaRedniBroj" ColumnName="MusterijaRedniBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RestoranProizvod" TypeName="ModelFirstDB.RestoranProizvod" StoreEntitySet="RestoranProizvod">
+      <EndProperty Name="Restoran">
+        <ScalarProperty Name="IDRestorana" ColumnName="RestoranProizvod_Proizvod_IDRestorana" />
+      </EndProperty>
+      <EndProperty Name="Proizvod">
+        <ScalarProperty Name="Naziv" ColumnName="RestoranProizvod_Restoran_Naziv" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RestoranZaposleni" TypeName="ModelFirstDB.RestoranZaposleni" StoreEntitySet="RestoranZaposleni">
+      <EndProperty Name="Restoran">
+        <ScalarProperty Name="IDRestorana" ColumnName="RestoranZaposleni_Zaposleni_IDRestorana" />
+      </EndProperty>
+      <EndProperty Name="Zaposleni">
+        <ScalarProperty Name="JMBG" ColumnName="RestoranZaposleni_Restoran_JMBG" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

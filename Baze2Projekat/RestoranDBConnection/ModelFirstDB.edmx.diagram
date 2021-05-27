@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9832f7a12012499ba852c474011e25d0" Name="Diagram1" ZoomLevel="65" >
+        <EntityTypeShape EntityType="ModelFirstDB.Restoran" Width="1.5" PointX="19.125" PointY="3.875" />
+        <EntityTypeShape EntityType="ModelFirstDB.Grad" Width="1.5" PointX="19.125" PointY="0.625" />
+        <EntityTypeShape EntityType="ModelFirstDB.Proizvod" Width="1.5" PointX="23.875" PointY="3.875" />
+        <AssociationConnector Association="ModelFirstDB.RestoranProizvod" />
+        <EntityTypeShape EntityType="ModelFirstDB.Sto" Width="1.5" PointX="15.5" PointY="3.875" />
+        <AssociationConnector Association="ModelFirstDB.RestoranSto" />
+        <EntityTypeShape EntityType="ModelFirstDB.Zaposleni" Width="1.5" PointX="19.125" PointY="7" />
+        <AssociationConnector Association="ModelFirstDB.RestoranZaposleni" />
+        <EntityTypeShape EntityType="ModelFirstDB.Musterija" Width="1.5" PointX="15.5" PointY="11.875" />
+        <AssociationConnector Association="ModelFirstDB.StoMusterija" />
+        <EntityTypeShape EntityType="ModelFirstDB.Konobar" Width="1.5" PointX="17.25" PointY="10.125" />
+        <InheritanceConnector EntityType="ModelFirstDB.Konobar" />
+        <EntityTypeShape EntityType="ModelFirstDB.Recepcionar" Width="1.5" PointX="19.125" PointY="10.125" />
+        <InheritanceConnector EntityType="ModelFirstDB.Recepcionar" />
+        <EntityTypeShape EntityType="ModelFirstDB.Kuvar" Width="1.5" PointX="21" PointY="10.125" />
+        <InheritanceConnector EntityType="ModelFirstDB.Kuvar" />
+        <EntityTypeShape EntityType="ModelFirstDB.Sprema" Width="1.5" PointX="23.875" PointY="10.125" />
+        <AssociationConnector Association="ModelFirstDB.ProizvodSprema" />
+        <AssociationConnector Association="ModelFirstDB.KuvarSprema" />
+        <EntityTypeShape EntityType="ModelFirstDB.Corba" Width="1.5" PointX="26.625" PointY="2.375" />
+        <InheritanceConnector EntityType="ModelFirstDB.Corba" ManuallyRouted="true" >
+          <ConnectorPoint PointX="25.375" PointY="4.69761246132724" />
+          <ConnectorPoint PointX="25.931088798850212" PointY="4.69761246132724" />
+          <ConnectorPoint PointX="25.931088798850212" PointY="2.8843896484375016" />
+          <ConnectorPoint PointX="26.625" PointY="2.8843896484375016" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ModelFirstDB.GlavnoJelo" Width="1.5" PointX="26.625" PointY="3.625" />
+        <InheritanceConnector EntityType="ModelFirstDB.GlavnoJelo" ManuallyRouted="true" >
+          <ConnectorPoint PointX="25.375" PointY="4.7027036594172085" />
+          <ConnectorPoint PointX="25.95512725897791" PointY="4.7027036594172085" />
+          <ConnectorPoint PointX="25.95512725897791" PointY="4.1343896484375016" />
+          <ConnectorPoint PointX="26.625" PointY="4.1343896484375016" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ModelFirstDB.Salata" Width="1.5" PointX="26.625" PointY="4.875" />
+        <InheritanceConnector EntityType="ModelFirstDB.Salata" ManuallyRouted="true" >
+          <ConnectorPoint PointX="25.375" PointY="4.69113518837419" />
+          <ConnectorPoint PointX="25.943909312140974" PointY="4.69113518837419" />
+          <ConnectorPoint PointX="25.943909312140974" PointY="5.3843896484375016" />
+          <ConnectorPoint PointX="26.625" PointY="5.3843896484375016" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ModelFirstDB.Dezert" Width="1.5" PointX="26.625" PointY="6.125" />
+        <InheritanceConnector EntityType="ModelFirstDB.Dezert" ManuallyRouted="true" >
+          <ConnectorPoint PointX="25.375" PointY="4.7098770572316244" />
+          <ConnectorPoint PointX="25.95512725897791" PointY="4.7098770572316244" />
+          <ConnectorPoint PointX="25.95512725897791" PointY="6.6343896484375016" />
+          <ConnectorPoint PointX="26.625" PointY="6.6343896484375016" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ModelFirstDB.ZaDvoje" Width="1.5" PointX="12.5" PointY="3.375" />
+        <InheritanceConnector EntityType="ModelFirstDB.ZaDvoje" ManuallyRouted="true" >
+          <ConnectorPoint PointX="15.5" PointY="4.8767281856552351" />
+          <ConnectorPoint PointX="15.189272936464469" PointY="4.8767281856552351" />
+          <ConnectorPoint PointX="15.189272936464469" PointY="3.8843896484375016" />
+          <ConnectorPoint PointX="14" PointY="3.8843896484375016" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ModelFirstDB.ZaCetvoro" Width="1.5" PointX="12.5" PointY="4.625" />
+        <InheritanceConnector EntityType="ModelFirstDB.ZaCetvoro" />
+        <EntityTypeShape EntityType="ModelFirstDB.ZaSestoro" Width="1.5" PointX="12.5" PointY="5.875" />
+        <InheritanceConnector EntityType="ModelFirstDB.ZaSestoro" ManuallyRouted="true" >
+          <ConnectorPoint PointX="15.5" PointY="4.88486298579241" />
+          <ConnectorPoint PointX="15.187499923908963" PointY="4.88486298579241" />
+          <ConnectorPoint PointX="15.187499923908963" PointY="6.3843896484375016" />
+          <ConnectorPoint PointX="14" PointY="6.3843896484375016" />
+        </InheritanceConnector>
+        <AssociationConnector Association="ModelFirstDB.RestoranGrad" />
+        <AssociationConnector Association="ModelFirstDB.MusterijaSprema" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
