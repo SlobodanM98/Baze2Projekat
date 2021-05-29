@@ -151,7 +151,7 @@ namespace Restoran.ViewModel
 					}
 					else
 					{
-						MessageBox.Show("Polje Postanski broj mora biti pozitivan broj!", "Azuriranje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						MessageBox.Show("Polje Postanski broj mora biti pozitivan broj!", "Dodavanje novog grada", MessageBoxButton.OK, MessageBoxImage.Error);
 					}
 				}
 				catch
@@ -191,16 +191,23 @@ namespace Restoran.ViewModel
 				try
 				{
 					int postanskiBroj = Int32.Parse(deletePostanskiBroj);
-					bool rezultat = Service.Izbrisi(postanskiBroj);
-
-					if (!rezultat)
+					if(postanskiBroj > 0)
 					{
-						MessageBox.Show("Unet je nepostojeci postanski broj!", "Brisanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						bool rezultat = Service.Izbrisi(postanskiBroj);
+
+						if (!rezultat)
+						{
+							MessageBox.Show("Unet je nepostojeci postanski broj!", "Brisanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+						else
+						{
+							DobaviSve();
+							DeletePostanskiBroj = "";
+						}
 					}
 					else
 					{
-						DobaviSve();
-						DeletePostanskiBroj = "";
+						MessageBox.Show("Polje Postanski broj mora biti pozitivan broj!", "Brisanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
 					}
 				}
 				catch

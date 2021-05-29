@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Restoran.View.RestoranView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel ="clr-namespace:Restoran.ViewModel"
+        xmlns:views="clr-namespace:Restoran.View"
+        mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.DataContext>
+		<viewModel:RestoranViewModel/>
+	</UserControl.DataContext>
+	<Canvas>
+		<StackPanel Width="800" Canvas.Top="200">
+			<DataGrid ItemsSource="{Binding sviRestorani}" IsReadOnly="True" AutoGenerateColumns="False">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="IDRestoran" Width="266" Binding="{Binding IDRestorana}"></DataGridTextColumn>
+					<DataGridTextColumn Header="Naziv" Width="266" Binding="{Binding Naziv}"></DataGridTextColumn>
+					<DataGridTextColumn Header="Postanski broj" Width="*" Binding="{Binding GradPostanskiBroj}"></DataGridTextColumn>
+				</DataGrid.Columns>
+			</DataGrid>
+		</StackPanel>
+		<Grid>
+			<Label Content="Dodavanje novog restorana" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="206" FontSize="16"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox x:Name="addPostanskiBrojTB" HorizontalAlignment="Left" Height="26" Margin="134,47,0,0" Text="{Binding AddIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox x:Name="addNazivTB" HorizontalAlignment="Left" Height="26" Margin="134,78,0,0" Text="{Binding AddNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="66,149,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="Brisanje restorana" HorizontalAlignment="Left" Height="32" Margin="226,10,0,0" VerticalAlignment="Top" Width="136" FontSize="16"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="226,47,0,0" VerticalAlignment="Top" Width="77"/>
+			<TextBox x:Name="deletePostanskiBrojTB" HorizontalAlignment="Left" Height="26" Margin="308,47,0,0" Text="{Binding DeleteIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Center" Height="30" Margin="0,149,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="Azuriranje restorana" HorizontalAlignment="Left" Height="32" Margin="429,10,0,0" VerticalAlignment="Top" Width="154" FontSize="16"/>
+			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="429,78,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox x:Name="updateNaziv" HorizontalAlignment="Left" Height="26" Margin="524,78,0,0" Text="{Binding UpdateNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="472,149,0,0" VerticalAlignment="Top" Width="96"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox x:Name="updatePostanskiBroj" HorizontalAlignment="Left" Height="26" Margin="524,47,0,0" Text="{Binding UpdateIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="10,108,0,0" VerticalAlignment="Top" Width="86"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,108,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddPostanskiBroj}" ItemsSource="{Binding sviBrojeviGradova}"/>
+		</Grid>
+	</Canvas>
+</UserControl>

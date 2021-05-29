@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace RestoranDB.Services
 {
-	public class GradService : IGradService
+	public class RestoranService : IRestoranService
 	{
-		public bool Azuriraj(int postanskiBroj, string naziv)
+		public bool Azuriraj(int IDRestorana, string naziv)
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					Grad zaAzuriranje = dataBase.Gradovi.Find(postanskiBroj);
+					Restoran zaAzuriranje = dataBase.Restorani.Find(IDRestorana);
 
 					if (zaAzuriranje == null)
 					{
@@ -38,15 +38,15 @@ namespace RestoranDB.Services
 			return true;
 		}
 
-		public List<Grad> DobaviSve()
+		public List<Restoran> DobaviSve()
 		{
-			List<Grad> izlaz = new List<Grad>();
+			List<Restoran> izlaz = new List<Restoran>();
 
 			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					izlaz = dataBase.Gradovi.ToList();
+					izlaz = dataBase.Restorani.ToList();
 				}
 				catch
 				{
@@ -57,17 +57,18 @@ namespace RestoranDB.Services
 			return izlaz;
 		}
 
-		public bool Dodaj(int postanskiBroj, string naziv)
+		public bool Dodaj(int IDRestorana, string naziv, int postanskiBroj)
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					Grad grad = new Grad();
-					grad.PostanskiBroj = postanskiBroj;
-					grad.Naziv = naziv;
+					Restoran restoran = new Restoran();
+					restoran.IDRestorana = IDRestorana;
+					restoran.Naziv = naziv;
+					restoran.GradPostanskiBroj = postanskiBroj;
 
-					dataBase.Gradovi.Add(grad);
+					dataBase.Restorani.Add(restoran);
 					dataBase.SaveChanges();
 				}
 				catch
@@ -79,13 +80,13 @@ namespace RestoranDB.Services
 			return true;
 		}
 
-		public bool Izbrisi(int postanskiBroj)
+		public bool Izbrisi(int IDRestorana)
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					Grad zaBrisanje = dataBase.Gradovi.Find(postanskiBroj);
+					Restoran zaBrisanje = dataBase.Restorani.Find(IDRestorana);
 
 					if (zaBrisanje == null)
 					{
@@ -93,7 +94,7 @@ namespace RestoranDB.Services
 					}
 					else
 					{
-						dataBase.Gradovi.Remove(zaBrisanje);
+						dataBase.Restorani.Remove(zaBrisanje);
 						dataBase.SaveChanges();
 					}
 				}

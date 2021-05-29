@@ -21,6 +21,9 @@
 		<DataTemplate DataType="{x:Type viewModel:ZaposleniViewModel}">
 			<views:ZaposleniView/>
 		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModel:RestoranViewModel}">
+			<views:RestoranView/>
+		</DataTemplate>
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
@@ -29,12 +32,14 @@
 		</Grid.RowDefinitions>
 		<DockPanel Grid.Row="0" Margin="2">
 			<Menu DockPanel.Dock="Top" Height="20">
-				<MenuItem Header="Grad" Width="250" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Grad" Width="150" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Grad"/>
-				<MenuItem Header="Proizvod" Width="250" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Proizvod" Width="150" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Proizvod"/>
-				<MenuItem Header="Zaposleni" Width="280" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Zaposleni" Width="150" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Zaposleni"/>
+				<MenuItem Header="Restoran" Width="150" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Restoran"/>
 			</Menu>
 		</DockPanel>
 		<Grid Grid.Row="1" Height="Auto">
