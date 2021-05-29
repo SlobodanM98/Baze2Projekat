@@ -112,7 +112,9 @@ namespace Restoran.ViewModel
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
 			AzurirajCommand = new MyICommand(Azuriraj);
+
 			Service = new GradService();
+
 			if (sviGradovi == null)
 			{
 				DobaviSve();
@@ -132,17 +134,24 @@ namespace Restoran.ViewModel
 				try
 				{
 					int postanskiBroj = Int32.Parse(addPostanskiBroj);
-					bool rezultat = Service.Dodaj(postanskiBroj, addNaziv);
-
-					if (!rezultat)
+					if(postanskiBroj > 0)
 					{
-						MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						bool rezultat = Service.Dodaj(postanskiBroj, addNaziv);
+
+						if (!rezultat)
+						{
+							MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+						else
+						{
+							DobaviSve();
+							AddPostanskiBroj = "";
+							AddNaziv = "";
+						}
 					}
 					else
 					{
-						DobaviSve();
-						AddPostanskiBroj = "";
-						AddNaziv = "";
+						MessageBox.Show("Polje Postanski broj mora biti pozitivan broj!", "Azuriranje grada", MessageBoxButton.OK, MessageBoxImage.Error);
 					}
 				}
 				catch
@@ -212,17 +221,25 @@ namespace Restoran.ViewModel
 				try
 				{
 					int postanskiBroj = Int32.Parse(updatePostanskiBroj);
-					bool rezultat = Service.Azuriraj(postanskiBroj, updateNaziv);
-
-					if (!rezultat)
+					
+					if(postanskiBroj > 0)
 					{
-						MessageBox.Show("Unet je nepostojeci postanski broj!", "Azuriranje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						bool rezultat = Service.Azuriraj(postanskiBroj, updateNaziv);
+
+						if (!rezultat)
+						{
+							MessageBox.Show("Unet je nepostojeci postanski broj!", "Azuriranje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+						else
+						{
+							DobaviSve();
+							UpdatePostanskiBroj = "";
+							UpdateNaziv = "";
+						}
 					}
 					else
 					{
-						DobaviSve();
-						UpdatePostanskiBroj = "";
-						UpdateNaziv = "";
+						MessageBox.Show("Polje Postanski broj mora biti pozitivan broj!", "Azuriranje grada", MessageBoxButton.OK, MessageBoxImage.Error);
 					}
 				}
 				catch

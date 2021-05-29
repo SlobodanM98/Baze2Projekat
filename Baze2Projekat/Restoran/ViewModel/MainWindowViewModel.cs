@@ -7,6 +7,7 @@ namespace Restoran.ViewModel
 	public class MainWindowViewModel : BindableBase
 	{
 		private GradViewModel gradViewModel = new GradViewModel();
+        private ProizvodViewModel proizvodViewModel = new ProizvodViewModel();
 
 		private BindableBase trenutniViewModel;
 
@@ -29,16 +30,23 @@ namespace Restoran.ViewModel
             KarticeCommand = new MyICommand<string>(Kartice);
         }
 
-        public void Kartice(string s)
+        public void Kartice(string naziv)
         {
-            switch (s)
+            switch (naziv)
             {
-                case "NetworkData":
+                case "Grad":
                     if (TrenutniViewModel == gradViewModel)
                     {
                         break;
                     }
                     TrenutniViewModel = gradViewModel;
+                    break;
+                case "Proizvod":
+                    if (TrenutniViewModel == proizvodViewModel)
+                    {
+                        break;
+                    }
+                    TrenutniViewModel = proizvodViewModel;
                     break;
             }
         }

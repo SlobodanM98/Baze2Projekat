@@ -15,6 +15,9 @@
 		<DataTemplate DataType="{x:Type viewModel:GradViewModel}">
 			<views:GradView/>
 		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModel:ProizvodViewModel}">
+			<views:ProizvodView/>
+		</DataTemplate>
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
@@ -24,9 +27,9 @@
 		<DockPanel Grid.Row="0" Margin="2">
 			<Menu DockPanel.Dock="Top" Height="20">
 				<MenuItem Header="Grad" Width="250" FontSize="14" Command="{Binding KarticeCommand}"
-                          CommandParameter="NetworkData"/>
-				<MenuItem Header="Network View" Width="250" FontSize="14" Command="{Binding KarticeCommand}"
-                          CommandParameter="NetworkView"/>
+                          CommandParameter="Grad"/>
+				<MenuItem Header="Proizvod" Width="250" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Proizvod"/>
 				<MenuItem Header="Network Chart" Width="280" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="NetworkChart"/>
 			</Menu>
