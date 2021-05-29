@@ -146,7 +146,10 @@ namespace Restoran.ViewModel
 
 			Service = new ProizvodService();
 
-			DobaviSve();
+			if(sviProizvodi == null)
+			{
+				DobaviSve();
+			}
 
 			addNaziv = "";
 			addTip = "";
@@ -259,7 +262,7 @@ namespace Restoran.ViewModel
 						if(cena < 0)
 						{
 							ispravnaCena = false;
-							MessageBox.Show("Polje Cena mora biti pozitivan broj!", "Dodavanje novog proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
+							MessageBox.Show("Polje Cena mora biti pozitivan broj!", "Azuriranje proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
 					}
 					catch

@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Restoran.View.ZaposleniView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restoran.View"
+        xmlns:viewModel ="clr-namespace:Restoran.ViewModel"
+        xmlns:views="clr-namespace:Restoran.View"
+        mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.DataContext>
+		<viewModel:ZaposleniViewModel/>
+	</UserControl.DataContext>
+	<Canvas>
+		<StackPanel Width="800" Canvas.Top="210">
+			<DataGrid ItemsSource="{Binding sviZaposleni}" IsReadOnly="True" AutoGenerateColumns="False">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="JMBG" Width="200" Binding="{Binding JMBG}"></DataGridTextColumn>
+					<DataGridTextColumn Header="Tip" Width="200" Binding="{Binding Tip}"></DataGridTextColumn>
+					<DataGridTextColumn Header="Ime" Width="200" Binding="{Binding Ime}"></DataGridTextColumn>
+					<DataGridTextColumn Header="Prezime" Width="*" Binding="{Binding Prezime}"></DataGridTextColumn>
+				</DataGrid.Columns>
+			</DataGrid>
+		</StackPanel>
+		<Grid>
+			<Label Content="Dodavanje novog zaposlenog" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="225" FontSize="16"/>
+			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="10,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="153,47,0,0" Text="{Binding AddJMBG}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Tip" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="86"/>
+			<Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="75,171,0,0" VerticalAlignment="Top" Width="95"/>
+			<Label Content="Brisanje zaposlenog" HorizontalAlignment="Left" Height="32" Margin="240,10,0,0" VerticalAlignment="Top" Width="159" FontSize="16"/>
+			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="240,47,0,0" VerticalAlignment="Top" Width="54"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="304,47,0,0" Text="{Binding DeleteJMBG}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="272,171,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="Azuriranje zaposlenog" HorizontalAlignment="Left" Height="32" Margin="429,10,0,0" VerticalAlignment="Top" Width="167" FontSize="16"/>
+			<Label Content="Tip" HorizontalAlignment="Left" Height="26" Margin="433,78,0,0" VerticalAlignment="Top" Width="68"/>
+			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="465,171,0,0" VerticalAlignment="Top" Width="95"/>
+			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="68"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="514,47,0,0" Text="{Binding UpdateJMBG}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="10,109,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="153,109,0,0" Text="{Binding AddIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="153,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddTip}">
+				<ComboBoxItem Name="Konobar">Konobar</ComboBoxItem>
+				<ComboBoxItem Name="Recepcionar">Recepcionar</ComboBoxItem>
+				<ComboBoxItem Name="Kuvar">Kuvar</ComboBoxItem>
+			</ComboBox>
+			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="433,109,0,0" VerticalAlignment="Top" Width="68"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="515,109,0,0" Text="{Binding UpdateIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="515,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateTip}">
+				<ComboBoxItem Name="Konobar1">Konobar</ComboBoxItem>
+				<ComboBoxItem Name="Recepcionar1">Recepcionar</ComboBoxItem>
+				<ComboBoxItem Name="Kuvar1">Kuvar</ComboBoxItem>
+			</ComboBox>
+			<Label Content="Prezime" HorizontalAlignment="Left" Height="26" Margin="10,140,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="153,140,0,0" Text="{Binding AddPrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Prezime" HorizontalAlignment="Left" Height="26" Margin="431,140,0,0" VerticalAlignment="Top" Width="72"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="515,140,0,0" Text="{Binding UpdatePrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+		</Grid>
+	</Canvas>
+</UserControl>
