@@ -4,9 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restoran"
+        xmlns:viewModel ="clr-namespace:Restoran.ViewModel"
+        xmlns:views="clr-namespace:Restoran.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+	<Window.DataContext>
+		<viewModel:MainWindowViewModel/>
+	</Window.DataContext>
+	<Window.Resources>
+		<DataTemplate DataType="{x:Type viewModel:GradViewModel}">
+			<views:GradView/>
+		</DataTemplate>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<DockPanel Grid.Row="0" Margin="2">
+			<Menu DockPanel.Dock="Top" Height="20">
+				<MenuItem Header="Grad" Width="250" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="NetworkData"/>
+				<MenuItem Header="Network View" Width="250" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="NetworkView"/>
+				<MenuItem Header="Network Chart" Width="280" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="NetworkChart"/>
+			</Menu>
+		</DockPanel>
+		<Grid Grid.Row="1" Height="Auto">
+			<ContentControl Content="{Binding TrenutniViewModel}"/>
+		</Grid>
+	</Grid>
 </Window>

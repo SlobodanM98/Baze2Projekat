@@ -62,6 +62,7 @@
     <Compile Include="Grad.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IGradService.cs" />
     <Compile Include="Konobar.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
@@ -99,6 +100,7 @@
     <Compile Include="Salata.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\GradService.cs" />
     <Compile Include="Sprema.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
@@ -145,5 +147,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
