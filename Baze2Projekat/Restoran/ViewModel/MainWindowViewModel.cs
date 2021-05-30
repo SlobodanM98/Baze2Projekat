@@ -11,6 +11,7 @@ namespace Restoran.ViewModel
         private ZaposleniViewModel zaposleniViewModel = new ZaposleniViewModel();
         private RestoranViewModel restoranViewModel = new RestoranViewModel();
         private StoViewModel stoViewModel = new StoViewModel();
+        private MusterijaViewModel musterijaViewModel = new MusterijaViewModel();
 
 		private BindableBase trenutniViewModel;
 
@@ -71,6 +72,13 @@ namespace Restoran.ViewModel
                         break;
                     }
                     TrenutniViewModel = stoViewModel;
+                    break;
+                case "Musterija":
+                    if (TrenutniViewModel == musterijaViewModel)
+                    {
+                        break;
+                    }
+                    TrenutniViewModel = musterijaViewModel;
                     break;
             }
         }

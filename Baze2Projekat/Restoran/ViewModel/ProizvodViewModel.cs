@@ -170,9 +170,8 @@ namespace Restoran.ViewModel
 					if(cena > 0)
 					{
 						addTip = addTip.Split(' ')[1];
-						bool rezultat = Service.Dodaj(addNaziv, addTip, cena);
 
-						if (!rezultat)
+						if (!Service.Dodaj(addNaziv, addTip, cena))
 						{
 							MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -225,9 +224,7 @@ namespace Restoran.ViewModel
 			{
 				try
 				{
-					bool rezultat = Service.Izbrisi(deleteNaziv);
-
-					if (!rezultat)
+					if (!Service.Izbrisi(deleteNaziv))
 					{
 						MessageBox.Show("Unet je nepostojeci naziv!", "Brisanje proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
 					}
@@ -278,9 +275,7 @@ namespace Restoran.ViewModel
 						updateTip = updateTip.Split(' ')[1];
 					}
 
-					bool izlaz = Service.Azuriraj(updateNaziv, updateTip, cena);
-
-					if (!izlaz)
+					if (!Service.Azuriraj(updateNaziv, updateTip, cena))
 					{
 						MessageBox.Show("Unet je nepostojeci naziv!", "Azuriranje proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
 					}

@@ -207,9 +207,8 @@ namespace Restoran.ViewModel
 					if(jmbg > 0)
 					{
 						addTip = addTip.Split(' ')[1];
-						bool izlaz = Service.Dodaj(jmbg, addTip, addIme, addPrezime);
 
-						if (!izlaz)
+						if (!Service.Dodaj(jmbg, addTip, addIme, addPrezime))
 						{
 							MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -268,9 +267,7 @@ namespace Restoran.ViewModel
 
 					if (jmbg > 0)
 					{
-						bool izlaz = Service.Izbrisi(jmbg);
-
-						if (!izlaz)
+						if (!Service.Izbrisi(jmbg))
 						{
 							MessageBox.Show("Unet je nepostojeci JMBG!", "Brisanje zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -319,9 +316,7 @@ namespace Restoran.ViewModel
 							updateTip = updateTip.Split(' ')[1];
 						}
 
-						bool izlaz = Service.Azuriraj(jmbg, updateTip, updateIme, updatePrezime);
-
-						if (!izlaz)
+						if (!Service.Azuriraj(jmbg, updateTip, updateIme, updatePrezime))
 						{
 							MessageBox.Show("Unet je nepostojeci JMBG!", "Azuriranje zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
 						}

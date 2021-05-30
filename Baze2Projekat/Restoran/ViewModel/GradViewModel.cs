@@ -136,9 +136,7 @@ namespace Restoran.ViewModel
 					int postanskiBroj = Int32.Parse(addPostanskiBroj);
 					if(postanskiBroj > 0)
 					{
-						bool rezultat = Service.Dodaj(postanskiBroj, addNaziv);
-
-						if (!rezultat)
+						if (!Service.Dodaj(postanskiBroj, addNaziv))
 						{
 							MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog grada", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -193,9 +191,7 @@ namespace Restoran.ViewModel
 					int postanskiBroj = Int32.Parse(deletePostanskiBroj);
 					if(postanskiBroj > 0)
 					{
-						bool rezultat = Service.Izbrisi(postanskiBroj);
-
-						if (!rezultat)
+						if (!Service.Izbrisi(postanskiBroj))
 						{
 							MessageBox.Show("Unet je nepostojeci postanski broj!", "Brisanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -231,9 +227,7 @@ namespace Restoran.ViewModel
 					
 					if(postanskiBroj > 0)
 					{
-						bool rezultat = Service.Azuriraj(postanskiBroj, updateNaziv);
-
-						if (!rezultat)
+						if (!Service.Azuriraj(postanskiBroj, updateNaziv))
 						{
 							MessageBox.Show("Unet je nepostojeci postanski broj!", "Azuriranje grada", MessageBoxButton.OK, MessageBoxImage.Error);
 						}

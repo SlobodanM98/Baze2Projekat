@@ -63,6 +63,7 @@
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGradService.cs" />
+    <Compile Include="Interfaces\IMusterijaService.cs" />
     <Compile Include="Interfaces\IProizvodService.cs" />
     <Compile Include="Interfaces\IRestoranService.cs" />
     <Compile Include="Interfaces\IStoService.cs" />
@@ -105,6 +106,7 @@
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\GradService.cs" />
+    <Compile Include="Services\MusterijaService.cs" />
     <Compile Include="Services\ProizvodService.cs" />
     <Compile Include="Services\RestoranService.cs" />
     <Compile Include="Services\StoService.cs" />

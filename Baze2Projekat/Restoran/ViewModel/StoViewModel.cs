@@ -207,9 +207,7 @@ namespace Restoran.ViewModel
 								break;
 						}
 
-						bool rezultat = Service.Dodaj(brojStola, brojMesta, addTip, IDRestoran);
-
-						if (!rezultat)
+						if (!Service.Dodaj(brojStola, brojMesta, addTip, IDRestoran))
 						{
 							MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog stola", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -285,9 +283,7 @@ namespace Restoran.ViewModel
 					int IDRestoran = Int32.Parse(deleteIDRestoran);
 					if (BrojStola > 0)
 					{
-						bool rezultat = Service.Izbrisi(BrojStola, IDRestoran);
-
-						if (!rezultat)
+						if (!Service.Izbrisi(BrojStola, IDRestoran))
 						{
 							MessageBox.Show("Unet je nepostojeci Broj stola!", "Brisanje stola", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -344,9 +340,7 @@ namespace Restoran.ViewModel
 								break;
 						}
 
-						bool rezultat = Service.Azuriraj(brojStola, brojMesta, updateTip, IDRestoran);
-
-						if (!rezultat)
+						if (!Service.Azuriraj(brojStola, brojMesta, updateTip, IDRestoran))
 						{
 							MessageBox.Show("Unet je nepostojeci Broj stola!", "Azuriranje stola", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
