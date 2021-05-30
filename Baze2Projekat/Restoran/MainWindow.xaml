@@ -36,6 +36,9 @@
 		<DataTemplate DataType="{x:Type viewModel:RadiViewModel}">
 			<views:RadiView/>
 		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModel:NudiViewModel}">
+			<views:NudiView/>
+		</DataTemplate>
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
@@ -60,6 +63,8 @@
                           CommandParameter="Sprema"/>
 				<MenuItem Header="Radi" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Radi"/>
+				<MenuItem Header="Nudi" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Nudi"/>
 			</Menu>
 		</DockPanel>
 		<Grid Grid.Row="1" Height="Auto">

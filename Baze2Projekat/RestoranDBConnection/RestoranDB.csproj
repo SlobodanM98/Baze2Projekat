@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Interfaces\IGradService.cs" />
     <Compile Include="Interfaces\IMusterijaService.cs" />
+    <Compile Include="Interfaces\INudiService.cs" />
     <Compile Include="Interfaces\IProizvodService.cs" />
     <Compile Include="Interfaces\IRadiService.cs" />
     <Compile Include="Interfaces\IRestoranService.cs" />
@@ -118,6 +119,7 @@
     </Compile>
     <Compile Include="Services\GradService.cs" />
     <Compile Include="Services\MusterijaService.cs" />
+    <Compile Include="Services\NudiService.cs" />
     <Compile Include="Services\ProizvodService.cs" />
     <Compile Include="Services\RadiService.cs" />
     <Compile Include="Services\RestoranService.cs" />
