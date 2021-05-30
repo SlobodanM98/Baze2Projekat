@@ -15,6 +15,7 @@ namespace Restoran.ViewModel
 		public MyICommand AzurirajCommand { get; set; }
 		public MusterijaService Service;
 		public StoService ServiceSto;
+		public RestoranService ServiceRestoran;
 		public ObservableCollection<Musterija> sveMusterije { get; set; }
 		public ObservableCollection<int> sviBrojeviStolova { get; set; }
 		public ObservableCollection<int> sviBrojeviRestorana { get; set; }
@@ -92,6 +93,7 @@ namespace Restoran.ViewModel
 				if (value != addIDRestoran)
 				{
 					addIDRestoran = value;
+					DobaviSveStolove(addIDRestoran);
 					OnPropertyChanged("AddIDRestoran");
 				}
 			}
@@ -188,6 +190,7 @@ namespace Restoran.ViewModel
 				if (value != updateIDRestoran)
 				{
 					updateIDRestoran = value;
+					DobaviSveStolove(updateIDRestoran);
 					OnPropertyChanged("UpdateIDRestoran");
 				}
 			}
@@ -202,8 +205,9 @@ namespace Restoran.ViewModel
 
 			Service = new MusterijaService();
 			ServiceSto = new StoService();
+			ServiceRestoran = new RestoranService();
 
-			DobaviSveStolove();
+			DobaviSveRestorane();
 			DobaviSve();
 
 			addIme = "";
@@ -266,31 +270,19 @@ namespace Restoran.ViewModel
 			}
 		}
 
-		public void DobaviSveStolove()
+		public void DobaviSveStolove(string IDRestoran)
 		{
 			try
 			{
 				List<Sto> listaStolova = ServiceSto.DobaviSve();
 				sviBrojeviStolova = new ObservableCollection<int>();
-				sviBrojeviRestorana = new ObservableCollection<int>();
 
 				foreach (Sto sto in listaStolova)
 				{
-					sviBrojeviStolova.Add(sto.BrojStola);
-
-					bool imaVec = false;
-					foreach(int i in sviBrojeviRestorana)
+					int id = Int32.Parse(IDRestoran);
+					if(sto.RestoranIDRestorana == id)
 					{
-						if(i == sto.RestoranIDRestorana)
-						{
-							imaVec = true;
-							break;
-						}
-					}
-
-					if (!imaVec)
-					{
-						sviBrojeviRestorana.Add(sto.RestoranIDRestorana);
+						sviBrojeviStolova.Add(sto.BrojStola);
 					}
 				}
 				OnPropertyChanged("sviBrojeviStolova");
@@ -298,6 +290,26 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih stolova", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void DobaviSveRestorane()
+		{
+			try
+			{
+				List<RestoranDB.Restoran> listaRestorana = ServiceRestoran.DobaviSve();
+				sviBrojeviStolova = new ObservableCollection<int>();
+				sviBrojeviRestorana = new ObservableCollection<int>();
+
+				foreach (RestoranDB.Restoran restoran in listaRestorana)
+				{
+					sviBrojeviRestorana.Add(restoran.IDRestorana);
+				}
+				OnPropertyChanged("sviBrojeviRestorana");
+			}
+			catch
+			{
+				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih restorana", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
