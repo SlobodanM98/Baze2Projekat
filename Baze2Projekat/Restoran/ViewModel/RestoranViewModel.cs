@@ -170,12 +170,12 @@ namespace Restoran.ViewModel
 					}
 					else
 					{
-						MessageBox.Show("Polja IDRestoran i Postanski broj moraju biti pozitivni brojevi!", "Dodavanje novog restorana", MessageBoxButton.OK, MessageBoxImage.Error);
+						MessageBox.Show("Polje IDRestorana mora biti pozitivan broj!", "Dodavanje novog restorana", MessageBoxButton.OK, MessageBoxImage.Error);
 					}
 				}
 				catch
 				{
-					MessageBox.Show("Polja IDRestoran i Postanski broj moraju biti brojevi!", "Dodavanje novog restorana", MessageBoxButton.OK, MessageBoxImage.Error);
+					MessageBox.Show("Polje IDRestorana mora biti broj!", "Dodavanje novog restorana", MessageBoxButton.OK, MessageBoxImage.Error);
 				}
 			}
 			else

@@ -10,6 +10,7 @@ namespace Restoran.ViewModel
         private ProizvodViewModel proizvodViewModel = new ProizvodViewModel();
         private ZaposleniViewModel zaposleniViewModel = new ZaposleniViewModel();
         private RestoranViewModel restoranViewModel = new RestoranViewModel();
+        private StoViewModel stoViewModel = new StoViewModel();
 
 		private BindableBase trenutniViewModel;
 
@@ -63,6 +64,13 @@ namespace Restoran.ViewModel
                         break;
                     }
                     TrenutniViewModel = restoranViewModel;
+                    break;
+                case "Sto":
+                    if (TrenutniViewModel == stoViewModel)
+                    {
+                        break;
+                    }
+                    TrenutniViewModel = stoViewModel;
                     break;
             }
         }

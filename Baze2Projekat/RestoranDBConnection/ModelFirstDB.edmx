@@ -134,7 +134,7 @@
       <PropertyRef Name="BrojStola" />
       <PropertyRef Name="RestoranIDRestorana" />
     </Key>
-    <Property Name="BrojStola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrojStola" Type="int" Nullable="false" />
     <Property Name="BrojMesta" Type="int" Nullable="false" />
     <Property Name="Tip" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RestoranIDRestorana" Type="int" Nullable="false" />
@@ -595,7 +595,7 @@
             <PropertyRef Name="BrojStola" />
             <PropertyRef Name="RestoranIDRestorana" />
           </Key>
-          <Property Name="BrojStola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojStola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="BrojMesta" Type="Int32" Nullable="false" />
           <Property Name="Tip" Type="String" Nullable="false" />
           <NavigationProperty Name="Restoran" Relationship="ModelFirstDB.RestoranSto" FromRole="Sto" ToRole="Restoran" />

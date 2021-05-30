@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/27/2021 21:33:44
--- Generated from EDMX file: C:\Users\slobo\Desktop\Baze 2\Projekat\New folder\Baze2Projekat\RestoranDBConnection\ModelFirstDB.edmx
+-- Date Created: 05/30/2021 11:50:33
+-- Generated from EDMX file: C:\Users\slobo\Desktop\Baze 2\Projekat\Baze2Projekat\Baze2Projekat\RestoranDBConnection\ModelFirstDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -169,7 +169,7 @@ GO
 
 -- Creating table 'Stolovi'
 CREATE TABLE [dbo].[Stolovi] (
-    [BrojStola] int IDENTITY(1,1) NOT NULL,
+    [BrojStola] int  NOT NULL,
     [BrojMesta] int  NOT NULL,
     [Tip] nvarchar(max)  NOT NULL,
     [RestoranIDRestorana] int  NOT NULL
