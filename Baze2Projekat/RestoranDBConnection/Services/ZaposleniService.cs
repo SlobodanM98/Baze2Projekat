@@ -162,6 +162,16 @@ namespace RestoranDB.Services
 					}
 					else
 					{
+						List<Radi> radovi = dataBase.Radis.ToList();
+
+						foreach(Radi radi in radovi)
+						{
+							if(radi.ZaposleniJMBG == jmbg)
+							{
+								dataBase.Radis.Remove(radi);
+							}
+						}
+
 						dataBase.Zaposleni.Remove(zaBrisanje);
 						dataBase.SaveChanges();
 					}

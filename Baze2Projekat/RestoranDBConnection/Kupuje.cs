@@ -15,8 +15,9 @@ namespace RestoranDB
     public partial class Kupuje
     {
         public int MusterijaRedniBroj { get; set; }
-        public string SpremaProizvodNaziv { get; set; }
         public int SpremaKuvarJMBG { get; set; }
+        public int SpremaNudiRestoranIDRestorana { get; set; }
+        public string SpremaNudiProizvodNaziv { get; set; }
     
         public virtual Musterija Musterija { get; set; }
         public virtual Sprema Sprema { get; set; }

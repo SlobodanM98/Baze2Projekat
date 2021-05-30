@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace RestoranDB.Services
 {
-	public class SpremaService : ISpremaService
+	public class RadiService : IRadiService
 	{
-		public List<Sprema> DobaviSve()
+		public List<Radi> DobaviSve()
 		{
-			List<Sprema> izlaz = new List<Sprema>();
+			List<Radi> izlaz = new List<Radi>();
 
-			using(var dataBase = new ModelFirstDBContainer())
+			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					izlaz = dataBase.Spremas.ToList();
+					izlaz = dataBase.Radis.ToList();
 				}
 				catch
 				{
@@ -28,17 +28,17 @@ namespace RestoranDB.Services
 			return izlaz;
 		}
 
-		public bool Dodaj(int JMBG, string naziv)
+		public bool Dodaj(int JMBG, int IDRestoran)
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					Sprema sprema = new Sprema();
-					sprema.KuvarJMBG = JMBG;
-					//sprema.ProizvodNaziv = naziv;
+					Radi radi = new Radi();
+					radi.ZaposleniJMBG = JMBG;
+					radi.RestoranIDRestorana = IDRestoran;
 
-					dataBase.Spremas.Add(sprema);
+					dataBase.Radis.Add(radi);
 					dataBase.SaveChanges();
 				}
 				catch
@@ -50,21 +50,21 @@ namespace RestoranDB.Services
 			return true;
 		}
 
-		public bool Izbrisi(int JMBG, string naziv)
+		public bool Izbrisi(int JMBG, int IDRestoran)
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					Sprema zaBrisanje = dataBase.Spremas.Find(naziv, JMBG);
+					Radi zaBrisanje = dataBase.Radis.Find(IDRestoran, JMBG);
 
-					if(zaBrisanje == null)
+					if (zaBrisanje == null)
 					{
 						return false;
 					}
 					else
 					{
-						dataBase.Spremas.Remove(zaBrisanje);
+						dataBase.Radis.Remove(zaBrisanje);
 						dataBase.SaveChanges();
 					}
 				}

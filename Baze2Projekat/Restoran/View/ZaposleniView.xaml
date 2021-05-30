@@ -12,7 +12,7 @@
 		<viewModel:ZaposleniViewModel/>
 	</UserControl.DataContext>
 	<Canvas>
-		<StackPanel Width="800" Canvas.Top="210">
+		<StackPanel Width="800" Canvas.Top="250">
 			<DataGrid ItemsSource="{Binding sviZaposleni}" IsReadOnly="True" AutoGenerateColumns="False">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="JMBG" Width="200" Binding="{Binding JMBG}"></DataGridTextColumn>
@@ -27,14 +27,14 @@
 			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="10,47,0,0" VerticalAlignment="Top" Width="86"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="153,47,0,0" Text="{Binding AddJMBG}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Tip" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="86"/>
-			<Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="75,171,0,0" VerticalAlignment="Top" Width="95"/>
+			<Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="75,212,0,0" VerticalAlignment="Top" Width="95"/>
 			<Label Content="Brisanje zaposlenog" HorizontalAlignment="Left" Height="32" Margin="240,10,0,0" VerticalAlignment="Top" Width="159" FontSize="16"/>
 			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="240,47,0,0" VerticalAlignment="Top" Width="54"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="304,47,0,0" Text="{Binding DeleteJMBG}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="272,171,0,0" VerticalAlignment="Top" Width="94"/>
+			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="274,212,0,0" VerticalAlignment="Top" Width="94"/>
 			<Label Content="Azuriranje zaposlenog" HorizontalAlignment="Left" Height="32" Margin="429,10,0,0" VerticalAlignment="Top" Width="167" FontSize="16"/>
 			<Label Content="Tip" HorizontalAlignment="Left" Height="26" Margin="433,78,0,0" VerticalAlignment="Top" Width="68"/>
-			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="465,171,0,0" VerticalAlignment="Top" Width="95"/>
+			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="467,212,0,0" VerticalAlignment="Top" Width="95"/>
 			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="68"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="514,47,0,0" Text="{Binding UpdateJMBG}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="10,109,0,0" VerticalAlignment="Top" Width="86"/>
@@ -55,6 +55,8 @@
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="153,140,0,0" Text="{Binding AddPrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Prezime" HorizontalAlignment="Left" Height="26" Margin="431,140,0,0" VerticalAlignment="Top" Width="72"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="515,140,0,0" Text="{Binding UpdatePrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,171,0,0" VerticalAlignment="Top" Width="86"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="153,171,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviRestorani}"/>
 		</Grid>
 	</Canvas>
 </UserControl>

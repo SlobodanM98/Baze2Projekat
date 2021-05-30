@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/30/2021 17:53:52
+-- Date Created: 05/30/2021 21:40:45
 -- Generated from EDMX file: C:\Users\slobo\Desktop\Baze 2\Projekat\Baze2Projekat\Baze2Projekat\RestoranDBConnection\ModelFirstDB.edmx
 -- --------------------------------------------------
 
@@ -203,8 +203,9 @@ GO
 
 -- Creating table 'Spremas'
 CREATE TABLE [dbo].[Spremas] (
-    [ProizvodNaziv] nvarchar(50)  NOT NULL,
-    [KuvarJMBG] int  NOT NULL
+    [KuvarJMBG] int  NOT NULL,
+    [NudiRestoranIDRestorana] int  NOT NULL,
+    [NudiProizvodNaziv] nvarchar(50)  NOT NULL
 );
 GO
 
@@ -225,8 +226,9 @@ GO
 -- Creating table 'Kupovine'
 CREATE TABLE [dbo].[Kupovine] (
     [MusterijaRedniBroj] int  NOT NULL,
-    [SpremaProizvodNaziv] nvarchar(50)  NOT NULL,
-    [SpremaKuvarJMBG] int  NOT NULL
+    [SpremaKuvarJMBG] int  NOT NULL,
+    [SpremaNudiRestoranIDRestorana] int  NOT NULL,
+    [SpremaNudiProizvodNaziv] nvarchar(50)  NOT NULL
 );
 GO
 
@@ -333,10 +335,10 @@ ADD CONSTRAINT [PK_Musterije]
     PRIMARY KEY CLUSTERED ([RedniBroj] ASC);
 GO
 
--- Creating primary key on [ProizvodNaziv], [KuvarJMBG] in table 'Spremas'
+-- Creating primary key on [KuvarJMBG], [NudiRestoranIDRestorana], [NudiProizvodNaziv] in table 'Spremas'
 ALTER TABLE [dbo].[Spremas]
 ADD CONSTRAINT [PK_Spremas]
-    PRIMARY KEY CLUSTERED ([ProizvodNaziv], [KuvarJMBG] ASC);
+    PRIMARY KEY CLUSTERED ([KuvarJMBG], [NudiRestoranIDRestorana], [NudiProizvodNaziv] ASC);
 GO
 
 -- Creating primary key on [RestoranIDRestorana], [ProizvodNaziv] in table 'Nudis'
@@ -351,10 +353,10 @@ ADD CONSTRAINT [PK_Radis]
     PRIMARY KEY CLUSTERED ([RestoranIDRestorana], [ZaposleniJMBG] ASC);
 GO
 
--- Creating primary key on [MusterijaRedniBroj], [SpremaProizvodNaziv], [SpremaKuvarJMBG] in table 'Kupovine'
+-- Creating primary key on [MusterijaRedniBroj], [SpremaKuvarJMBG], [SpremaNudiRestoranIDRestorana], [SpremaNudiProizvodNaziv] in table 'Kupovine'
 ALTER TABLE [dbo].[Kupovine]
 ADD CONSTRAINT [PK_Kupovine]
-    PRIMARY KEY CLUSTERED ([MusterijaRedniBroj], [SpremaProizvodNaziv], [SpremaKuvarJMBG] ASC);
+    PRIMARY KEY CLUSTERED ([MusterijaRedniBroj], [SpremaKuvarJMBG], [SpremaNudiRestoranIDRestorana], [SpremaNudiProizvodNaziv] ASC);
 GO
 
 -- Creating primary key on [JMBG] in table 'Zaposleni_Kuvar'
@@ -451,15 +453,6 @@ ON [dbo].[Musterije]
     ([StoBrojStola], [StoRestoranIDRestorana]);
 GO
 
--- Creating foreign key on [ProizvodNaziv] in table 'Spremas'
-ALTER TABLE [dbo].[Spremas]
-ADD CONSTRAINT [FK_ProizvodSprema]
-    FOREIGN KEY ([ProizvodNaziv])
-    REFERENCES [dbo].[Proizvodi]
-        ([Naziv])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
 -- Creating foreign key on [KuvarJMBG] in table 'Spremas'
 ALTER TABLE [dbo].[Spremas]
 ADD CONSTRAINT [FK_KuvarSprema]
@@ -467,12 +460,6 @@ ADD CONSTRAINT [FK_KuvarSprema]
     REFERENCES [dbo].[Zaposleni_Kuvar]
         ([JMBG])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_KuvarSprema'
-CREATE INDEX [IX_FK_KuvarSprema]
-ON [dbo].[Spremas]
-    ([KuvarJMBG]);
 GO
 
 -- Creating foreign key on [GradPostanskiBroj] in table 'Restorani'
@@ -547,19 +534,34 @@ ADD CONSTRAINT [FK_MusterijaKupuje]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [SpremaProizvodNaziv], [SpremaKuvarJMBG] in table 'Kupovine'
+-- Creating foreign key on [NudiRestoranIDRestorana], [NudiProizvodNaziv] in table 'Spremas'
+ALTER TABLE [dbo].[Spremas]
+ADD CONSTRAINT [FK_NudiSprema]
+    FOREIGN KEY ([NudiRestoranIDRestorana], [NudiProizvodNaziv])
+    REFERENCES [dbo].[Nudis]
+        ([RestoranIDRestorana], [ProizvodNaziv])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_NudiSprema'
+CREATE INDEX [IX_FK_NudiSprema]
+ON [dbo].[Spremas]
+    ([NudiRestoranIDRestorana], [NudiProizvodNaziv]);
+GO
+
+-- Creating foreign key on [SpremaKuvarJMBG], [SpremaNudiRestoranIDRestorana], [SpremaNudiProizvodNaziv] in table 'Kupovine'
 ALTER TABLE [dbo].[Kupovine]
 ADD CONSTRAINT [FK_KupujeSprema]
-    FOREIGN KEY ([SpremaProizvodNaziv], [SpremaKuvarJMBG])
+    FOREIGN KEY ([SpremaKuvarJMBG], [SpremaNudiRestoranIDRestorana], [SpremaNudiProizvodNaziv])
     REFERENCES [dbo].[Spremas]
-        ([ProizvodNaziv], [KuvarJMBG])
+        ([KuvarJMBG], [NudiRestoranIDRestorana], [NudiProizvodNaziv])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_KupujeSprema'
 CREATE INDEX [IX_FK_KupujeSprema]
 ON [dbo].[Kupovine]
-    ([SpremaProizvodNaziv], [SpremaKuvarJMBG]);
+    ([SpremaKuvarJMBG], [SpremaNudiRestoranIDRestorana], [SpremaNudiProizvodNaziv]);
 GO
 
 -- Creating foreign key on [JMBG] in table 'Zaposleni_Kuvar'

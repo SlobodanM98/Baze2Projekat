@@ -14,13 +14,17 @@ namespace Restoran.ViewModel
 		public MyICommand IzbrisiCommand { get; set; }
 		public MyICommand AzurirajCommand { get; set; }
 		public ZaposleniService Service;
+		public RestoranService ServiceRestoran;
+		public RadiService ServiceRadi;
 		public ObservableCollection<Zaposleni> sviZaposleni { get; set; }
+		public ObservableCollection<int> sviRestorani { get; set; }
 
 		#region private
 		private string addJMBG;
 		private string addTip;
 		private string addIme;
 		private string addPrezime;
+		private string addIDRestoran;
 		private string deleteJMBG;
 		private string updateJMBG;
 		private string updateTip;
@@ -88,6 +92,22 @@ namespace Restoran.ViewModel
 				{
 					addPrezime = value;
 					OnPropertyChanged("AddPrezime");
+				}
+			}
+		}
+
+		public string AddIDRestoran
+		{
+			get
+			{
+				return addIDRestoran;
+			}
+			set
+			{
+				if (value != addIDRestoran)
+				{
+					addIDRestoran = value;
+					OnPropertyChanged("AddIDRestoran");
 				}
 			}
 		}
@@ -179,16 +199,17 @@ namespace Restoran.ViewModel
 			AzurirajCommand = new MyICommand(Azuriraj);
 
 			Service = new ZaposleniService();
+			ServiceRestoran = new RestoranService();
+			ServiceRadi = new RadiService();
 
-			if(sviZaposleni == null)
-			{
-				DobaviSve();
-			}
+			DobaviSveRestorane();
+			DobaviSve();
 
 			addJMBG = "";
 			addTip = "";
 			addIme = "";
 			addPrezime = "";
+			addIDRestoran = "";
 			deleteJMBG = "";
 			updateJMBG = "";
 			updateTip = "";
@@ -198,11 +219,12 @@ namespace Restoran.ViewModel
 
 		public void Dodaj()
 		{
-			if(addJMBG != "" && addTip != "" && addIme != "" && addPrezime != "")
+			if(addJMBG != "" && addTip != "" && addIme != "" && addPrezime != "" && addIDRestoran != "")
 			{
 				try
 				{
 					int jmbg = Int32.Parse(addJMBG);
+					int IDRestoran = Int32.Parse(addIDRestoran);
 
 					if(jmbg > 0)
 					{
@@ -214,12 +236,20 @@ namespace Restoran.ViewModel
 						}
 						else
 						{
-							DobaviSve();
+							if (!ServiceRadi.Dodaj(jmbg, IDRestoran))
+							{
+								MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
+							}
+							else
+							{
+								DobaviSve();
 
-							AddJMBG = "";
-							AddTip = "";
-							AddIme = "";
-							AddPrezime = "";
+								AddJMBG = "";
+								AddTip = "";
+								AddIme = "";
+								AddPrezime = "";
+								AddIDRestoran = "";
+							}
 						}
 					}
 					else
@@ -234,7 +264,7 @@ namespace Restoran.ViewModel
 			}
 			else
 			{
-				MessageBox.Show("Polja JMBG, Tip, Ime i Prezime ne smeju biti prazna!", "Dodavanje novog zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Polja JMBG, Tip, Ime, Prezime i IDRestoran ne smeju biti prazna!", "Dodavanje novog zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -254,6 +284,25 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih zaposlenih", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void DobaviSveRestorane()
+		{
+			try
+			{
+				List<RestoranDB.Restoran> listaRestorana = ServiceRestoran.DobaviSve();
+				sviRestorani = new ObservableCollection<int>();
+
+				foreach (RestoranDB.Restoran restoran in listaRestorana)
+				{
+					sviRestorani.Add(restoran.IDRestorana);
+				}
+				OnPropertyChanged("sviRestorani");
+			}
+			catch
+			{
+				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih restorana", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

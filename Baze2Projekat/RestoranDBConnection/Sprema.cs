@@ -14,10 +14,11 @@ namespace RestoranDB
     
     public partial class Sprema
     {
-        public string ProizvodNaziv { get; set; }
         public int KuvarJMBG { get; set; }
+        public int NudiRestoranIDRestorana { get; set; }
+        public string NudiProizvodNaziv { get; set; }
     
-        public virtual Proizvod Proizvod { get; set; }
         public virtual Kuvar Kuvar { get; set; }
+        public virtual Nudi Nudi { get; set; }
     }
 }

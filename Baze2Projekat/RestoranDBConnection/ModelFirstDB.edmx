@@ -34,10 +34,6 @@
       <End Role="Sto" EntitySet="Stolovi" />
       <End Role="Musterija" EntitySet="Musterije" />
     </AssociationSet>
-    <AssociationSet Name="ProizvodSprema" Association="ModelFirstDB.Store.ProizvodSprema">
-      <End Role="Proizvod" EntitySet="Proizvodi" />
-      <End Role="Sprema" EntitySet="Spremas" />
-    </AssociationSet>
     <AssociationSet Name="KuvarSprema" Association="ModelFirstDB.Store.KuvarSprema">
       <End Role="Kuvar" EntitySet="Zaposleni_Kuvar" />
       <End Role="Sprema" EntitySet="Spremas" />
@@ -65,6 +61,10 @@
     <AssociationSet Name="MusterijaKupuje" Association="ModelFirstDB.Store.MusterijaKupuje">
       <End Role="Musterija" EntitySet="Musterije" />
       <End Role="Kupuje" EntitySet="Kupovine" />
+    </AssociationSet>
+    <AssociationSet Name="NudiSprema" Association="ModelFirstDB.Store.NudiSprema">
+      <End Role="Nudi" EntitySet="Nudis" />
+      <End Role="Sprema" EntitySet="Spremas" />
     </AssociationSet>
     <AssociationSet Name="KupujeSprema" Association="ModelFirstDB.Store.KupujeSprema">
       <End Role="Kupuje" EntitySet="Kupovine" />
@@ -165,11 +165,13 @@
   </EntityType>
   <EntityType Name="Spremas">
     <Key>
-      <PropertyRef Name="ProizvodNaziv" />
       <PropertyRef Name="KuvarJMBG" />
+      <PropertyRef Name="NudiRestoranIDRestorana" />
+      <PropertyRef Name="NudiProizvodNaziv" />
     </Key>
-    <Property Name="ProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="KuvarJMBG" Type="int" Nullable="false" />
+    <Property Name="NudiRestoranIDRestorana" Type="int" Nullable="false" />
+    <Property Name="NudiProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="Nudis">
     <Key>
@@ -190,12 +192,14 @@
   <EntityType Name="Kupovine">
     <Key>
       <PropertyRef Name="MusterijaRedniBroj" />
-      <PropertyRef Name="SpremaProizvodNaziv" />
       <PropertyRef Name="SpremaKuvarJMBG" />
+      <PropertyRef Name="SpremaNudiRestoranIDRestorana" />
+      <PropertyRef Name="SpremaNudiProizvodNaziv" />
     </Key>
     <Property Name="MusterijaRedniBroj" Type="int" Nullable="false" />
-    <Property Name="SpremaProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="SpremaKuvarJMBG" Type="int" Nullable="false" />
+    <Property Name="SpremaNudiRestoranIDRestorana" Type="int" Nullable="false" />
+    <Property Name="SpremaNudiProizvodNaziv" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="Zaposleni_Kuvar">
     <Key>
@@ -289,18 +293,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ProizvodSprema">
-    <End Role="Proizvod" Type="ModelFirstDB.Store.Proizvodi" Multiplicity="1" />
-    <End Role="Sprema" Type="ModelFirstDB.Store.Spremas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Proizvod">
-        <PropertyRef Name="Naziv" />
-      </Principal>
-      <Dependent Role="Sprema">
-        <PropertyRef Name="ProizvodNaziv" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="KuvarSprema">
     <End Role="Kuvar" Type="ModelFirstDB.Store.Zaposleni_Kuvar" Multiplicity="1" />
     <End Role="Sprema" Type="ModelFirstDB.Store.Spremas" Multiplicity="*" />
@@ -385,17 +377,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="NudiSprema">
+    <End Role="Nudi" Type="ModelFirstDB.Store.Nudis" Multiplicity="1" />
+    <End Role="Sprema" Type="ModelFirstDB.Store.Spremas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nudi">
+        <PropertyRef Name="RestoranIDRestorana" />
+        <PropertyRef Name="ProizvodNaziv" />
+      </Principal>
+      <Dependent Role="Sprema">
+        <PropertyRef Name="NudiRestoranIDRestorana" />
+        <PropertyRef Name="NudiProizvodNaziv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="KupujeSprema">
     <End Role="Kupuje" Type="ModelFirstDB.Store.Kupovine" Multiplicity="*" />
     <End Role="Sprema" Type="ModelFirstDB.Store.Spremas" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Sprema">
-        <PropertyRef Name="ProizvodNaziv" />
         <PropertyRef Name="KuvarJMBG" />
+        <PropertyRef Name="NudiRestoranIDRestorana" />
+        <PropertyRef Name="NudiProizvodNaziv" />
       </Principal>
       <Dependent Role="Kupuje">
-        <PropertyRef Name="SpremaProizvodNaziv" />
         <PropertyRef Name="SpremaKuvarJMBG" />
+        <PropertyRef Name="SpremaNudiRestoranIDRestorana" />
+        <PropertyRef Name="SpremaNudiProizvodNaziv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -565,10 +573,6 @@
             <End Role="Musterija" EntitySet="Musterije" />
           </AssociationSet>
           <EntitySet Name="Spremas" EntityType="ModelFirstDB.Sprema" />
-          <AssociationSet Name="ProizvodSprema" Association="ModelFirstDB.ProizvodSprema">
-            <End Role="Proizvod" EntitySet="Proizvodi" />
-            <End Role="Sprema" EntitySet="Spremas" />
-          </AssociationSet>
           <AssociationSet Name="KuvarSprema" Association="ModelFirstDB.KuvarSprema">
             <End Role="Kuvar" EntitySet="Zaposleni" />
             <End Role="Sprema" EntitySet="Spremas" />
@@ -599,6 +603,10 @@
           <AssociationSet Name="MusterijaKupuje" Association="ModelFirstDB.MusterijaKupuje">
             <End Role="Musterija" EntitySet="Musterije" />
             <End Role="Kupuje" EntitySet="Kupovine" />
+          </AssociationSet>
+          <AssociationSet Name="NudiSprema" Association="ModelFirstDB.NudiSprema">
+            <End Role="Nudi" EntitySet="Nudis" />
+            <End Role="Sprema" EntitySet="Spremas" />
           </AssociationSet>
           <AssociationSet Name="KupujeSprema" Association="ModelFirstDB.KupujeSprema">
             <End Role="Kupuje" EntitySet="Kupovine" />
@@ -691,26 +699,16 @@
         <EntityType Name="Kuvar" BaseType="ModelFirstDB.Zaposleni" />
         <EntityType Name="Sprema" >
           <Key>
-            <PropertyRef Name="ProizvodNaziv" />
             <PropertyRef Name="KuvarJMBG" />
+            <PropertyRef Name="NudiRestoranIDRestorana" />
+            <PropertyRef Name="NudiProizvodNaziv" />
           </Key>
-          <NavigationProperty Name="Proizvod" Relationship="ModelFirstDB.ProizvodSprema" FromRole="Sprema" ToRole="Proizvod" />
-          <Property Name="ProizvodNaziv" Type="String" Nullable="false" MaxLength="50" />
           <NavigationProperty Name="Kuvar" Relationship="ModelFirstDB.KuvarSprema" FromRole="Sprema" ToRole="Kuvar" />
           <Property Name="KuvarJMBG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Nudi" Relationship="ModelFirstDB.NudiSprema" FromRole="Sprema" ToRole="Nudi" />
+          <Property Name="NudiRestoranIDRestorana" Type="Int32" Nullable="false" />
+          <Property Name="NudiProizvodNaziv" Type="String" Nullable="false" MaxLength="50" />
         </EntityType>
-        <Association Name="ProizvodSprema">
-          <End Type="ModelFirstDB.Proizvod" Role="Proizvod" Multiplicity="1" />
-          <End Type="ModelFirstDB.Sprema" Role="Sprema" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proizvod">
-              <PropertyRef Name="Naziv" />
-            </Principal>
-            <Dependent Role="Sprema">
-              <PropertyRef Name="ProizvodNaziv" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="KuvarSprema">
           <End Type="ModelFirstDB.Kuvar" Role="Kuvar" Multiplicity="1" />
           <End Type="ModelFirstDB.Sprema" Role="Sprema" Multiplicity="*" />
@@ -813,14 +811,16 @@
         <EntityType Name="Kupuje" >
           <Key>
             <PropertyRef Name="MusterijaRedniBroj" />
-            <PropertyRef Name="SpremaProizvodNaziv" />
             <PropertyRef Name="SpremaKuvarJMBG" />
+            <PropertyRef Name="SpremaNudiRestoranIDRestorana" />
+            <PropertyRef Name="SpremaNudiProizvodNaziv" />
           </Key>
           <NavigationProperty Name="Musterija" Relationship="ModelFirstDB.MusterijaKupuje" FromRole="Kupuje" ToRole="Musterija" />
           <Property Name="MusterijaRedniBroj" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Sprema" Relationship="ModelFirstDB.KupujeSprema" FromRole="Kupuje" ToRole="Sprema" />
-          <Property Name="SpremaProizvodNaziv" Type="String" Nullable="false" MaxLength="50" />
           <Property Name="SpremaKuvarJMBG" Type="Int32" Nullable="false" />
+          <Property Name="SpremaNudiRestoranIDRestorana" Type="Int32" Nullable="false" />
+          <Property Name="SpremaNudiProizvodNaziv" Type="String" Nullable="false" MaxLength="50" />
         </EntityType>
         <Association Name="MusterijaKupuje">
           <End Type="ModelFirstDB.Musterija" Role="Musterija" Multiplicity="1" />
@@ -834,17 +834,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="NudiSprema">
+          <End Type="ModelFirstDB.Nudi" Role="Nudi" Multiplicity="1" />
+          <End Type="ModelFirstDB.Sprema" Role="Sprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nudi">
+              <PropertyRef Name="RestoranIDRestorana" />
+              <PropertyRef Name="ProizvodNaziv" />
+            </Principal>
+            <Dependent Role="Sprema">
+              <PropertyRef Name="NudiRestoranIDRestorana" />
+              <PropertyRef Name="NudiProizvodNaziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="KupujeSprema">
           <End Type="ModelFirstDB.Kupuje" Role="Kupuje" Multiplicity="*" />
           <End Type="ModelFirstDB.Sprema" Role="Sprema" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Sprema">
-              <PropertyRef Name="ProizvodNaziv" />
               <PropertyRef Name="KuvarJMBG" />
+              <PropertyRef Name="NudiRestoranIDRestorana" />
+              <PropertyRef Name="NudiProizvodNaziv" />
             </Principal>
             <Dependent Role="Kupuje">
-              <PropertyRef Name="SpremaProizvodNaziv" />
               <PropertyRef Name="SpremaKuvarJMBG" />
+              <PropertyRef Name="SpremaNudiRestoranIDRestorana" />
+              <PropertyRef Name="SpremaNudiProizvodNaziv" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -967,8 +983,9 @@
     <EntitySetMapping Name="Spremas">
       <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Sprema)">
         <MappingFragment StoreEntitySet="Spremas">
-          <ScalarProperty Name="ProizvodNaziv" ColumnName="ProizvodNaziv" />
           <ScalarProperty Name="KuvarJMBG" ColumnName="KuvarJMBG" />
+          <ScalarProperty Name="NudiRestoranIDRestorana" ColumnName="NudiRestoranIDRestorana" />
+          <ScalarProperty Name="NudiProizvodNaziv" ColumnName="NudiProizvodNaziv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -992,8 +1009,9 @@
       <EntityTypeMapping TypeName="IsTypeOf(ModelFirstDB.Kupuje)">
         <MappingFragment StoreEntitySet="Kupovine">
           <ScalarProperty Name="MusterijaRedniBroj" ColumnName="MusterijaRedniBroj" />
-          <ScalarProperty Name="SpremaProizvodNaziv" ColumnName="SpremaProizvodNaziv" />
           <ScalarProperty Name="SpremaKuvarJMBG" ColumnName="SpremaKuvarJMBG" />
+          <ScalarProperty Name="SpremaNudiRestoranIDRestorana" ColumnName="SpremaNudiRestoranIDRestorana" />
+          <ScalarProperty Name="SpremaNudiProizvodNaziv" ColumnName="SpremaNudiProizvodNaziv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
