@@ -38,7 +38,7 @@
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="86"/>
 			<TextBox x:Name="updatePostanskiBroj" HorizontalAlignment="Left" Height="26" Margin="524,47,0,0" Text="{Binding UpdateIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="10,108,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,108,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddPostanskiBroj}" ItemsSource="{Binding sviBrojeviGradova}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,108,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddPostanskiBroj}" ItemsSource="{Binding sviBrojeviGradova}" SelectedValue="{Binding AddPostanskiBroj}"/>
 		</Grid>
 	</Canvas>
 </UserControl>

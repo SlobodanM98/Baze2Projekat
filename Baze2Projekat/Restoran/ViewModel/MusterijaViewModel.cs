@@ -93,7 +93,10 @@ namespace Restoran.ViewModel
 				if (value != addIDRestoran)
 				{
 					addIDRestoran = value;
-					DobaviSveStolove(addIDRestoran);
+					if(addIDRestoran != "" && addIDRestoran != null)
+					{
+						DobaviSveStolove(addIDRestoran);
+					}
 					OnPropertyChanged("AddIDRestoran");
 				}
 			}
@@ -190,7 +193,10 @@ namespace Restoran.ViewModel
 				if (value != updateIDRestoran)
 				{
 					updateIDRestoran = value;
-					DobaviSveStolove(updateIDRestoran);
+					if (updateIDRestoran != "" && updateIDRestoran != null)
+					{
+						DobaviSveStolove(updateIDRestoran);
+					}
 					OnPropertyChanged("UpdateIDRestoran");
 				}
 			}

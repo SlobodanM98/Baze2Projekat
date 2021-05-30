@@ -14,8 +14,9 @@
 		<StackPanel Width="800" Canvas.Top="200">
 			<DataGrid ItemsSource="{Binding svaSpremanja}" IsReadOnly="True" AutoGenerateColumns="False">
 				<DataGrid.Columns>
-					<DataGridTextColumn Header="JMBG" Width="400" Binding="{Binding KuvarJMBG}"></DataGridTextColumn>
-					<DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding ProizvodNaziv}"></DataGridTextColumn>
+					<DataGridTextColumn Header="JMBG" Width="266" Binding="{Binding KuvarJMBG}"></DataGridTextColumn>
+					<DataGridTextColumn Header="Naziv" Width="266" Binding="{Binding NudiProizvodNaziv}"></DataGridTextColumn>
+					<DataGridTextColumn Header="IDRestoran" Width="*" Binding="{Binding NudiRestoranIDRestorana}"></DataGridTextColumn>
 				</DataGrid.Columns>
 			</DataGrid>
 		</StackPanel>
@@ -25,13 +26,17 @@
 			<Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="66,149,0,0" VerticalAlignment="Top" Width="94"/>
 			<Label Content="Brisanje spremanja" HorizontalAlignment="Left" Height="32" Margin="226,10,0,0" VerticalAlignment="Top" Width="145" FontSize="16"/>
 			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="278,149,0,0" VerticalAlignment="Top" Width="94"/>
-			<Label Content="Naziv proizvoda" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="103"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddNaziv}" ItemsSource="{Binding sviProizvodi}"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,47,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddJMBG}" ItemsSource="{Binding sviKuvari}"/>
+			<Label Content="Naziv proizvoda" HorizontalAlignment="Left" Height="26" Margin="10,111,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,111,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddNaziv}" ItemsSource="{Binding sviProizvodi}" SelectedValue="{Binding AddNaziv}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,47,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddJMBG}" ItemsSource="{Binding sviKuvari}" SelectedValue="{Binding AddJMBG}"/>
 			<Label Content="JMBG kuvara" HorizontalAlignment="Left" Height="26" Margin="227,49,0,0" VerticalAlignment="Top" Width="86"/>
-			<Label Content="Naziv proizvoda" HorizontalAlignment="Left" Height="26" Margin="226,80,0,0" VerticalAlignment="Top" Width="103"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteNaziv}" ItemsSource="{Binding sviProizvodi}"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,49,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteJMBG}" ItemsSource="{Binding sviKuvari}"/>
+			<Label Content="Naziv proizvoda" HorizontalAlignment="Left" Height="26" Margin="226,111,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,111,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteNaziv}" ItemsSource="{Binding sviProizvodi}" SelectedValue="{Binding DeleteNaziv}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,49,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteJMBG}" ItemsSource="{Binding sviKuvari}" SelectedValue="{Binding DeleteJMBG}"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,80,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding AddIDRestoran}"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="226,80,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding DeleteIDRestoran}"/>
 		</Grid>
 	</Canvas>
 </UserControl>

@@ -8,8 +8,8 @@ namespace RestoranDB.Interfaces
 {
 	public interface ISpremaService
 	{
-		bool Dodaj(int JMBG, string naziv);
+		bool Dodaj(int JMBG, string naziv, int IDRestoran);
 		List<Sprema> DobaviSve();
-		bool Izbrisi(int JMBG, string naziv);
+		bool Izbrisi(int JMBG, string naziv, int IDRestoran);
 	}
 }

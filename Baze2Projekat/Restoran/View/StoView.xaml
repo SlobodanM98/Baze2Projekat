@@ -36,7 +36,7 @@
 			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="472,143,0,0" VerticalAlignment="Top" Width="95"/>
 			<Label Content="Broj stola" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="86"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,47,0,0" Text="{Binding UpdateBrojStola}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddTip}">
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddTip}" SelectedValue="{Binding AddTip}">
 				<ComboBoxItem Name="ZaDvoje">ZaDvoje</ComboBoxItem>
 				<ComboBoxItem Name="ZaCetvoro">ZaCetvoro</ComboBoxItem>
 				<ComboBoxItem Name="ZaSestoro">ZaSestoro</ComboBoxItem>
@@ -47,11 +47,11 @@
 				<ComboBoxItem Name="ZaSestoro1">ZaSestoro</ComboBoxItem>
 			</ComboBox>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,109,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,109,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviIDRestorana}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,109,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviIDRestorana}" SelectedValue="{Binding AddIDRestoran}"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="240,78,0,0" VerticalAlignment="Top" Width="71"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="317,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteIDRestoran}" ItemsSource="{Binding sviIDRestorana}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="317,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteIDRestoran}" ItemsSource="{Binding sviIDRestorana}" SelectedValue="{Binding DeleteIDRestoran}"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="433,109,0,0" VerticalAlignment="Top" Width="72"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,109,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateIDRestoran}" ItemsSource="{Binding sviIDRestorana}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,109,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateIDRestoran}" ItemsSource="{Binding sviIDRestorana}" SelectedValue="{Binding UpdateIDRestoran}"/>
 		</Grid>
 	</Canvas>
 </UserControl>

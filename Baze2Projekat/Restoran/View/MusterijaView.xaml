@@ -42,13 +42,13 @@
 			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="433,78,0,0" VerticalAlignment="Top" Width="86"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,78,0,0" Text="{Binding UpdateIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Broj stola" HorizontalAlignment="Left" Height="26" Margin="10,140,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,140,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddBrojStola}" ItemsSource="{Binding sviBrojeviStolova}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,140,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddBrojStola}" ItemsSource="{Binding sviBrojeviStolova}" SelectedValue="{Binding AddBrojStola}"/>
 			<Label Content="Broj stola" HorizontalAlignment="Left" Height="26" Margin="434,172,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,171,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateBrojStola}" ItemsSource="{Binding sviBrojeviStolova}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,171,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateBrojStola}" ItemsSource="{Binding sviBrojeviStolova}" SelectedValue="{Binding UpdateBrojStola}"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,109,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,109,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviBrojeviRestorana}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,109,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviBrojeviRestorana}" SelectedValue="{Binding AddIDRestoran}"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="434,140,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,140,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateIDRestoran}" ItemsSource="{Binding sviBrojeviRestorana}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,140,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateIDRestoran}" ItemsSource="{Binding sviBrojeviRestorana}" SelectedValue="{Binding UpdateIDRestoran}"/>
 		</Grid>
 	</Canvas>
 </UserControl>

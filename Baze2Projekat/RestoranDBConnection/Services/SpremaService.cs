@@ -28,7 +28,7 @@ namespace RestoranDB.Services
 			return izlaz;
 		}
 
-		public bool Dodaj(int JMBG, string naziv)
+		public bool Dodaj(int JMBG, string naziv, int IDRestoran)
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
@@ -36,7 +36,8 @@ namespace RestoranDB.Services
 				{
 					Sprema sprema = new Sprema();
 					sprema.KuvarJMBG = JMBG;
-					//sprema.ProizvodNaziv = naziv;
+					sprema.NudiProizvodNaziv = naziv;
+					sprema.NudiRestoranIDRestorana = IDRestoran;
 
 					dataBase.Spremas.Add(sprema);
 					dataBase.SaveChanges();
@@ -50,13 +51,13 @@ namespace RestoranDB.Services
 			return true;
 		}
 
-		public bool Izbrisi(int JMBG, string naziv)
+		public bool Izbrisi(int JMBG, string naziv, int IDRestoran)
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
 				try
 				{
-					Sprema zaBrisanje = dataBase.Spremas.Find(naziv, JMBG);
+					Sprema zaBrisanje = dataBase.Spremas.Find(JMBG, IDRestoran, naziv);
 
 					if(zaBrisanje == null)
 					{

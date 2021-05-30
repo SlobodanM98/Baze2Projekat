@@ -14,16 +14,20 @@ namespace Restoran.ViewModel
 		public MyICommand IzbrisiCommand { get; set; }
 		public SpremaService Service;
 		public ZaposleniService ServiceZaposleni;
-		public ProizvodService ServiceProizvod;
+		public NudiService ServiceNudi;
+		public RadiService ServiceRadi;
 		public ObservableCollection<Sprema> svaSpremanja { get; set; }
 		public ObservableCollection<int> sviKuvari { get; set; }
 		public ObservableCollection<string> sviProizvodi { get; set; }
+		public ObservableCollection<int> sviRestorani { get; set; }
 
 		#region private
 		private string addJMBG;
 		private string addNaziv;
+		private string addIDRestoran;
 		private string deleteJMBG;
 		private string deleteNaziv;
+		private string deleteIDRestoran;
 		#endregion
 
 		#region public
@@ -38,6 +42,10 @@ namespace Restoran.ViewModel
 				if (value != addJMBG)
 				{
 					addJMBG = value;
+					if(addJMBG != "" && addJMBG != null)
+					{
+						DobaviSveRestorane(addJMBG);
+					}
 					OnPropertyChanged("AddJMBG");
 				}
 			}
@@ -59,6 +67,26 @@ namespace Restoran.ViewModel
 			}
 		}
 
+		public string AddIDRestoran
+		{
+			get
+			{
+				return addIDRestoran;
+			}
+			set
+			{
+				if (value != addIDRestoran)
+				{
+					addIDRestoran = value;
+					if (addIDRestoran != "" && addIDRestoran != null)
+					{
+						DobaviSveProizvode(addIDRestoran);
+					}
+					OnPropertyChanged("AddIDRestoran");
+				}
+			}
+		}
+
 		public string DeleteJMBG
 		{
 			get
@@ -70,6 +98,10 @@ namespace Restoran.ViewModel
 				if (value != deleteJMBG)
 				{
 					deleteJMBG = value;
+					if(deleteJMBG != "" && deleteJMBG != null)
+					{
+						DobaviSveRestorane(deleteJMBG);
+					}
 					OnPropertyChanged("DeleteJMBG");
 				}
 			}
@@ -90,6 +122,26 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string DeleteIDRestoran
+		{
+			get
+			{
+				return deleteIDRestoran;
+			}
+			set
+			{
+				if (value != deleteIDRestoran)
+				{
+					deleteIDRestoran = value;
+					if(deleteIDRestoran != "" && deleteIDRestoran != null)
+					{
+						DobaviSveProizvode(deleteIDRestoran);
+					}
+					OnPropertyChanged("DeleteIDRestoran");
+				}
+			}
+		}
 		#endregion
 
 		public SpremaViewModel()
@@ -99,10 +151,10 @@ namespace Restoran.ViewModel
 
 			Service = new SpremaService();
 			ServiceZaposleni = new ZaposleniService();
-			ServiceProizvod = new ProizvodService();
+			ServiceNudi = new NudiService();
+			ServiceRadi = new RadiService();
 
 			DobaviSveKuvare();
-			DobaviSveProizvode();
 			DobaviSve();
 
 			addJMBG = "";
@@ -113,11 +165,12 @@ namespace Restoran.ViewModel
 
 		public void Dodaj()
 		{
-			if(addJMBG != "" && addNaziv != "")
+			if(addJMBG != "" && addNaziv != "" && addIDRestoran != "")
 			{
 				int jmbg = Int32.Parse(addJMBG);
+				int IDRestoran = Int32.Parse(addIDRestoran);
 
-				if (!Service.Dodaj(jmbg, addNaziv))
+				if (!Service.Dodaj(jmbg, addNaziv, IDRestoran))
 				{
 					MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
 				}
@@ -126,11 +179,12 @@ namespace Restoran.ViewModel
 					DobaviSve();
 					AddJMBG = "";
 					AddNaziv = "";
+					AddIDRestoran = "";
 				}
 			}
 			else
 			{
-				MessageBox.Show("Polja JMBG i Naziv ne smeju biti prazna!", "Dodavanje novog spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Polja JMBG, Naziv i IDRestoran ne smeju biti prazna!", "Dodavanje novog spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -175,16 +229,43 @@ namespace Restoran.ViewModel
 			}
 		}
 
-		public void DobaviSveProizvode()
+		public void DobaviSveRestorane(string JMBG)
 		{
 			try
 			{
-				List<Proizvod> listaProizvoda = ServiceProizvod.DobaviSve();
+				List<Radi> listaRadi = ServiceRadi.DobaviSve();
+				sviRestorani = new ObservableCollection<int>();
+
+				foreach (Radi radi in listaRadi)
+				{
+					int jmbg = Int32.Parse(JMBG);
+					if(radi.ZaposleniJMBG == jmbg)
+					{
+						sviRestorani.Add(radi.RestoranIDRestorana);
+					}
+				}
+				OnPropertyChanged("sviRestorani");
+			}
+			catch
+			{
+				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih restorana", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void DobaviSveProizvode(string IDRestoran)
+		{
+			try
+			{
+				List<Nudi> listaNudi = ServiceNudi.DobaviSve();
 				sviProizvodi = new ObservableCollection<string>();
 
-				foreach (Proizvod proizvod in listaProizvoda)
+				foreach (Nudi nudi in listaNudi)
 				{
-					sviProizvodi.Add(proizvod.Naziv);
+					int id = Int32.Parse(IDRestoran);
+					if(nudi.RestoranIDRestorana == id)
+					{
+						sviProizvodi.Add(nudi.ProizvodNaziv);
+					}
 				}
 				OnPropertyChanged("sviProizvodi");
 			}
@@ -196,38 +277,26 @@ namespace Restoran.ViewModel
 
 		public void Izbrisi()
 		{
-			if (deleteJMBG != "" && deleteNaziv != "")
+			if (deleteJMBG != "" && deleteNaziv != "" && deleteIDRestoran != "")
 			{
-				try
-				{
-					int jmbg = Int32.Parse(deleteJMBG);
+				int jmbg = Int32.Parse(deleteJMBG);
+				int IDRestoran = Int32.Parse(deleteIDRestoran);
 
-					if (jmbg > 0)
-					{
-						if (!Service.Izbrisi(jmbg, deleteNaziv))
-						{
-							MessageBox.Show("Uneti je nepostojeci JMBG i/ili Naziv!", "Brisanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
-						}
-						else
-						{
-							DobaviSve();
-							DeleteJMBG = "";
-							DeleteNaziv = "";
-						}
-					}
-					else
-					{
-						MessageBox.Show("Polje JMBG mora biti pozitivan broj!", "Brisanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
-					}
-				}
-				catch
+				if (!Service.Izbrisi(jmbg, deleteNaziv, IDRestoran))
 				{
-					MessageBox.Show("Polje JMBG mora biti broj!", "Brisanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
+					MessageBox.Show("Uneti je nepostojeci JMBG i/ili Naziv!", "Brisanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				else
+				{
+					DobaviSve();
+					DeleteJMBG = "";
+					DeleteNaziv = "";
+					DeleteIDRestoran = "";
 				}
 			}
 			else
 			{
-				MessageBox.Show("Polja JMBG i Naziv ne smeju biti prazna!", "Brisanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Polja JMBG, Naziv i IDRestoran ne smeju biti prazna!", "Brisanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 	}

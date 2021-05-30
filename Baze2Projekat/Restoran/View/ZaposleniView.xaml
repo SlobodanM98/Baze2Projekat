@@ -39,14 +39,14 @@
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="514,47,0,0" Text="{Binding UpdateJMBG}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="10,109,0,0" VerticalAlignment="Top" Width="86"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="153,109,0,0" Text="{Binding AddIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="153,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddTip}">
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="153,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddTip}" SelectedValue="{Binding AddTip}">
 				<ComboBoxItem Name="Konobar">Konobar</ComboBoxItem>
 				<ComboBoxItem Name="Recepcionar">Recepcionar</ComboBoxItem>
 				<ComboBoxItem Name="Kuvar">Kuvar</ComboBoxItem>
 			</ComboBox>
 			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="433,109,0,0" VerticalAlignment="Top" Width="68"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="515,109,0,0" Text="{Binding UpdateIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="515,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateTip}">
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="515,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateTip}" SelectedValue="{Binding UpdateTip}">
 				<ComboBoxItem Name="Konobar1">Konobar</ComboBoxItem>
 				<ComboBoxItem Name="Recepcionar1">Recepcionar</ComboBoxItem>
 				<ComboBoxItem Name="Kuvar1">Kuvar</ComboBoxItem>
@@ -56,7 +56,7 @@
 			<Label Content="Prezime" HorizontalAlignment="Left" Height="26" Margin="431,140,0,0" VerticalAlignment="Top" Width="72"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="515,140,0,0" Text="{Binding UpdatePrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,171,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="153,171,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviRestorani}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="153,171,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding AddIDRestoran}"/>
 		</Grid>
 	</Canvas>
 </UserControl>
