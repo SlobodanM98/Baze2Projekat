@@ -32,5 +32,8 @@ namespace RestoranDB
         public virtual DbSet<Zaposleni> Zaposleni { get; set; }
         public virtual DbSet<Musterija> Musterije { get; set; }
         public virtual DbSet<Sprema> Spremas { get; set; }
+        public virtual DbSet<Nudi> Nudis { get; set; }
+        public virtual DbSet<Radi> Radis { get; set; }
+        public virtual DbSet<Kupuje> Kupovine { get; set; }
     }
 }

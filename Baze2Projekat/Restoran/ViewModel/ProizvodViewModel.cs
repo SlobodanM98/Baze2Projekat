@@ -169,9 +169,15 @@ namespace Restoran.ViewModel
 					int cena = Int32.Parse(addCena);
 					if(cena > 0)
 					{
-						addTip = addTip.Split(' ')[1];
+						string[] tekst = addTip.Split(' ');
+						string tip = tekst[1];
 
-						if (!Service.Dodaj(addNaziv, addTip, cena))
+						for (int i = 2; i < tekst.Length; i++)
+						{
+							tip += " " + tekst[i];
+						}
+
+						if (!Service.Dodaj(addNaziv, tip, cena))
 						{
 							MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -270,12 +276,15 @@ namespace Restoran.ViewModel
 
 				if (ispravnaCena)
 				{
-					if (updateTip != "" && updateTip.Split(' ').Length > 1)
+					string[] tekst = updateTip.Split(' ');
+					string tip = tekst[1];
+
+					for (int i = 2; i < tekst.Length; i++)
 					{
-						updateTip = updateTip.Split(' ')[1];
+						tip += " " + tekst[i];
 					}
 
-					if (!Service.Azuriraj(updateNaziv, updateTip, cena))
+					if (!Service.Azuriraj(updateNaziv, tip, cena))
 					{
 						MessageBox.Show("Unet je nepostojeci naziv!", "Azuriranje proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
 					}

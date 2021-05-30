@@ -12,12 +12,12 @@ namespace RestoranDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Sprema
+    public partial class Radi
     {
-        public string ProizvodNaziv { get; set; }
-        public int KuvarJMBG { get; set; }
+        public int RestoranIDRestorana { get; set; }
+        public int ZaposleniJMBG { get; set; }
     
-        public virtual Proizvod Proizvod { get; set; }
-        public virtual Kuvar Kuvar { get; set; }
+        public virtual Restoran Restoran { get; set; }
+        public virtual Zaposleni Zaposleni { get; set; }
     }
 }

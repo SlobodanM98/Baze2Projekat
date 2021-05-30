@@ -66,9 +66,13 @@
     <Compile Include="Interfaces\IMusterijaService.cs" />
     <Compile Include="Interfaces\IProizvodService.cs" />
     <Compile Include="Interfaces\IRestoranService.cs" />
+    <Compile Include="Interfaces\ISpremaService.cs" />
     <Compile Include="Interfaces\IStoService.cs" />
     <Compile Include="Interfaces\IZaposleniService.cs" />
     <Compile Include="Konobar.cs">
+      <DependentUpon>ModelFirstDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kupuje.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Kuvar.cs">
@@ -92,10 +96,16 @@
     <Compile Include="Musterija.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Nudi.cs">
+      <DependentUpon>ModelFirstDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Proizvod.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Radi.cs">
+      <DependentUpon>ModelFirstDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Recepcionar.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
@@ -109,6 +119,7 @@
     <Compile Include="Services\MusterijaService.cs" />
     <Compile Include="Services\ProizvodService.cs" />
     <Compile Include="Services\RestoranService.cs" />
+    <Compile Include="Services\SpremaService.cs" />
     <Compile Include="Services\StoService.cs" />
     <Compile Include="Services\ZaposleniService.cs" />
     <Compile Include="Sprema.cs">

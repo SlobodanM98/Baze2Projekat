@@ -192,9 +192,9 @@ namespace Restoran.ViewModel
 					if (IDRestoran > 0 && brojStola > 0)
 					{
 						int brojMesta = 0;
-						addTip = addTip.Split(' ')[1];
+						string tip = addTip.Split(' ')[1];
 
-						switch (addTip)
+						switch (tip)
 						{
 							case "ZaDvoje":
 								brojMesta = 2;
@@ -207,7 +207,7 @@ namespace Restoran.ViewModel
 								break;
 						}
 
-						if (!Service.Dodaj(brojStola, brojMesta, addTip, IDRestoran))
+						if (!Service.Dodaj(brojStola, brojMesta, tip, IDRestoran))
 						{
 							MessageBox.Show("Greska pri dodavanju!", "Dodavanje novog stola", MessageBoxButton.OK, MessageBoxImage.Error);
 						}
@@ -322,12 +322,9 @@ namespace Restoran.ViewModel
 					{
 						int brojMesta = 0;
 
-						if (updateTip != "" && updateTip.Split(' ').Length > 1)
-						{
-							updateTip = updateTip.Split(' ')[1];
-						}
+						string tip = updateTip.Split(' ')[1];
 
-						switch (updateTip)
+						switch (tip)
 						{
 							case "ZaDvoje":
 								brojMesta = 2;
@@ -340,7 +337,7 @@ namespace Restoran.ViewModel
 								break;
 						}
 
-						if (!Service.Azuriraj(brojStola, brojMesta, updateTip, IDRestoran))
+						if (!Service.Azuriraj(brojStola, brojMesta, tip, IDRestoran))
 						{
 							MessageBox.Show("Unet je nepostojeci Broj stola!", "Azuriranje stola", MessageBoxButton.OK, MessageBoxImage.Error);
 						}

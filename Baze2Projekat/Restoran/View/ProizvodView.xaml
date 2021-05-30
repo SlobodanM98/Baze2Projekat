@@ -40,7 +40,7 @@
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="139,109,0,0" Text="{Binding AddCena}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddTip}">
 				<ComboBoxItem Name="Corba">Corba</ComboBoxItem>
-				<ComboBoxItem Name="GlavnoJelo">GlavnoJelo</ComboBoxItem>
+				<ComboBoxItem Name="GlavnoJelo">Glavno Jelo</ComboBoxItem>
 				<ComboBoxItem Name="Salata">Salata</ComboBoxItem>
 				<ComboBoxItem Name="Dezert">Dezert</ComboBoxItem>
 			</ComboBox>
@@ -48,7 +48,7 @@
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,109,0,0" Text="{Binding UpdateCena}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateTip}">
 				<ComboBoxItem x:Name="Corba1" Content="Corba"/>
-				<ComboBoxItem x:Name="GlavnoJelo1" Content="GlavnoJelo"/>
+				<ComboBoxItem x:Name="GlavnoJelo1" Content="Glavno Jelo"/>
 				<ComboBoxItem x:Name="Salata1" Content="Salata"/>
 				<ComboBoxItem x:Name="Dezert1" Content="Dezert"/>
 			</ComboBox>

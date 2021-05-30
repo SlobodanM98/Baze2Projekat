@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/30/2021 11:50:33
+-- Date Created: 05/30/2021 17:53:52
 -- Generated from EDMX file: C:\Users\slobo\Desktop\Baze 2\Projekat\Baze2Projekat\Baze2Projekat\RestoranDBConnection\ModelFirstDB.edmx
 -- --------------------------------------------------
 
@@ -17,20 +17,8 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_RestoranProizvod_Restoran]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RestoranProizvod] DROP CONSTRAINT [FK_RestoranProizvod_Restoran];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RestoranProizvod_Proizvod]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RestoranProizvod] DROP CONSTRAINT [FK_RestoranProizvod_Proizvod];
-GO
 IF OBJECT_ID(N'[dbo].[FK_RestoranSto]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Stolovi] DROP CONSTRAINT [FK_RestoranSto];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RestoranZaposleni_Restoran]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RestoranZaposleni] DROP CONSTRAINT [FK_RestoranZaposleni_Restoran];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RestoranZaposleni_Zaposleni]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RestoranZaposleni] DROP CONSTRAINT [FK_RestoranZaposleni_Zaposleni];
 GO
 IF OBJECT_ID(N'[dbo].[FK_StoMusterija]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Musterije] DROP CONSTRAINT [FK_StoMusterija];
@@ -44,8 +32,23 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_RestoranGrad]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Restorani] DROP CONSTRAINT [FK_RestoranGrad];
 GO
-IF OBJECT_ID(N'[dbo].[FK_MusterijaSprema]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Spremas] DROP CONSTRAINT [FK_MusterijaSprema];
+IF OBJECT_ID(N'[dbo].[FK_RestoranNudi]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Nudis] DROP CONSTRAINT [FK_RestoranNudi];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NudiProizvod]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Nudis] DROP CONSTRAINT [FK_NudiProizvod];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RestoranRadi]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Radis] DROP CONSTRAINT [FK_RestoranRadi];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RadiZaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Radis] DROP CONSTRAINT [FK_RadiZaposleni];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MusterijaKupuje]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_MusterijaKupuje];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KupujeSprema]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kupovine] DROP CONSTRAINT [FK_KupujeSprema];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Kuvar_inherits_Zaposleni]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Zaposleni_Kuvar] DROP CONSTRAINT [FK_Kuvar_inherits_Zaposleni];
@@ -103,6 +106,15 @@ GO
 IF OBJECT_ID(N'[dbo].[Spremas]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Spremas];
 GO
+IF OBJECT_ID(N'[dbo].[Nudis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Nudis];
+GO
+IF OBJECT_ID(N'[dbo].[Radis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Radis];
+GO
+IF OBJECT_ID(N'[dbo].[Kupovine]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Kupovine];
+GO
 IF OBJECT_ID(N'[dbo].[Zaposleni_Kuvar]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Zaposleni_Kuvar];
 GO
@@ -132,12 +144,6 @@ IF OBJECT_ID(N'[dbo].[Stolovi_ZaCetvoro]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Stolovi_ZaSestoro]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Stolovi_ZaSestoro];
-GO
-IF OBJECT_ID(N'[dbo].[RestoranProizvod]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[RestoranProizvod];
-GO
-IF OBJECT_ID(N'[dbo].[RestoranZaposleni]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[RestoranZaposleni];
 GO
 
 -- --------------------------------------------------
@@ -198,8 +204,29 @@ GO
 -- Creating table 'Spremas'
 CREATE TABLE [dbo].[Spremas] (
     [ProizvodNaziv] nvarchar(50)  NOT NULL,
-    [KuvarJMBG] int  NOT NULL,
-    [MusterijaRedniBroj] int  NOT NULL
+    [KuvarJMBG] int  NOT NULL
+);
+GO
+
+-- Creating table 'Nudis'
+CREATE TABLE [dbo].[Nudis] (
+    [RestoranIDRestorana] int  NOT NULL,
+    [ProizvodNaziv] nvarchar(50)  NOT NULL
+);
+GO
+
+-- Creating table 'Radis'
+CREATE TABLE [dbo].[Radis] (
+    [RestoranIDRestorana] int  NOT NULL,
+    [ZaposleniJMBG] int  NOT NULL
+);
+GO
+
+-- Creating table 'Kupovine'
+CREATE TABLE [dbo].[Kupovine] (
+    [MusterijaRedniBroj] int  NOT NULL,
+    [SpremaProizvodNaziv] nvarchar(50)  NOT NULL,
+    [SpremaKuvarJMBG] int  NOT NULL
 );
 GO
 
@@ -266,20 +293,6 @@ CREATE TABLE [dbo].[Stolovi_ZaSestoro] (
 );
 GO
 
--- Creating table 'RestoranProizvod'
-CREATE TABLE [dbo].[RestoranProizvod] (
-    [RestoranProizvod_Proizvod_IDRestorana] int  NOT NULL,
-    [RestoranProizvod_Restoran_Naziv] nvarchar(50)  NOT NULL
-);
-GO
-
--- Creating table 'RestoranZaposleni'
-CREATE TABLE [dbo].[RestoranZaposleni] (
-    [RestoranZaposleni_Zaposleni_IDRestorana] int  NOT NULL,
-    [RestoranZaposleni_Restoran_JMBG] int  NOT NULL
-);
-GO
-
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -324,6 +337,24 @@ GO
 ALTER TABLE [dbo].[Spremas]
 ADD CONSTRAINT [PK_Spremas]
     PRIMARY KEY CLUSTERED ([ProizvodNaziv], [KuvarJMBG] ASC);
+GO
+
+-- Creating primary key on [RestoranIDRestorana], [ProizvodNaziv] in table 'Nudis'
+ALTER TABLE [dbo].[Nudis]
+ADD CONSTRAINT [PK_Nudis]
+    PRIMARY KEY CLUSTERED ([RestoranIDRestorana], [ProizvodNaziv] ASC);
+GO
+
+-- Creating primary key on [RestoranIDRestorana], [ZaposleniJMBG] in table 'Radis'
+ALTER TABLE [dbo].[Radis]
+ADD CONSTRAINT [PK_Radis]
+    PRIMARY KEY CLUSTERED ([RestoranIDRestorana], [ZaposleniJMBG] ASC);
+GO
+
+-- Creating primary key on [MusterijaRedniBroj], [SpremaProizvodNaziv], [SpremaKuvarJMBG] in table 'Kupovine'
+ALTER TABLE [dbo].[Kupovine]
+ADD CONSTRAINT [PK_Kupovine]
+    PRIMARY KEY CLUSTERED ([MusterijaRedniBroj], [SpremaProizvodNaziv], [SpremaKuvarJMBG] ASC);
 GO
 
 -- Creating primary key on [JMBG] in table 'Zaposleni_Kuvar'
@@ -386,45 +417,9 @@ ADD CONSTRAINT [PK_Stolovi_ZaSestoro]
     PRIMARY KEY CLUSTERED ([BrojStola], [RestoranIDRestorana] ASC);
 GO
 
--- Creating primary key on [RestoranProizvod_Proizvod_IDRestorana], [RestoranProizvod_Restoran_Naziv] in table 'RestoranProizvod'
-ALTER TABLE [dbo].[RestoranProizvod]
-ADD CONSTRAINT [PK_RestoranProizvod]
-    PRIMARY KEY CLUSTERED ([RestoranProizvod_Proizvod_IDRestorana], [RestoranProizvod_Restoran_Naziv] ASC);
-GO
-
--- Creating primary key on [RestoranZaposleni_Zaposleni_IDRestorana], [RestoranZaposleni_Restoran_JMBG] in table 'RestoranZaposleni'
-ALTER TABLE [dbo].[RestoranZaposleni]
-ADD CONSTRAINT [PK_RestoranZaposleni]
-    PRIMARY KEY CLUSTERED ([RestoranZaposleni_Zaposleni_IDRestorana], [RestoranZaposleni_Restoran_JMBG] ASC);
-GO
-
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [RestoranProizvod_Proizvod_IDRestorana] in table 'RestoranProizvod'
-ALTER TABLE [dbo].[RestoranProizvod]
-ADD CONSTRAINT [FK_RestoranProizvod_Restoran]
-    FOREIGN KEY ([RestoranProizvod_Proizvod_IDRestorana])
-    REFERENCES [dbo].[Restorani]
-        ([IDRestorana])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [RestoranProizvod_Restoran_Naziv] in table 'RestoranProizvod'
-ALTER TABLE [dbo].[RestoranProizvod]
-ADD CONSTRAINT [FK_RestoranProizvod_Proizvod]
-    FOREIGN KEY ([RestoranProizvod_Restoran_Naziv])
-    REFERENCES [dbo].[Proizvodi]
-        ([Naziv])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RestoranProizvod_Proizvod'
-CREATE INDEX [IX_FK_RestoranProizvod_Proizvod]
-ON [dbo].[RestoranProizvod]
-    ([RestoranProizvod_Restoran_Naziv]);
-GO
 
 -- Creating foreign key on [RestoranIDRestorana] in table 'Stolovi'
 ALTER TABLE [dbo].[Stolovi]
@@ -439,30 +434,6 @@ GO
 CREATE INDEX [IX_FK_RestoranSto]
 ON [dbo].[Stolovi]
     ([RestoranIDRestorana]);
-GO
-
--- Creating foreign key on [RestoranZaposleni_Zaposleni_IDRestorana] in table 'RestoranZaposleni'
-ALTER TABLE [dbo].[RestoranZaposleni]
-ADD CONSTRAINT [FK_RestoranZaposleni_Restoran]
-    FOREIGN KEY ([RestoranZaposleni_Zaposleni_IDRestorana])
-    REFERENCES [dbo].[Restorani]
-        ([IDRestorana])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [RestoranZaposleni_Restoran_JMBG] in table 'RestoranZaposleni'
-ALTER TABLE [dbo].[RestoranZaposleni]
-ADD CONSTRAINT [FK_RestoranZaposleni_Zaposleni]
-    FOREIGN KEY ([RestoranZaposleni_Restoran_JMBG])
-    REFERENCES [dbo].[Zaposleni]
-        ([JMBG])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RestoranZaposleni_Zaposleni'
-CREATE INDEX [IX_FK_RestoranZaposleni_Zaposleni]
-ON [dbo].[RestoranZaposleni]
-    ([RestoranZaposleni_Restoran_JMBG]);
 GO
 
 -- Creating foreign key on [StoBrojStola], [StoRestoranIDRestorana] in table 'Musterije'
@@ -519,19 +490,76 @@ ON [dbo].[Restorani]
     ([GradPostanskiBroj]);
 GO
 
--- Creating foreign key on [MusterijaRedniBroj] in table 'Spremas'
-ALTER TABLE [dbo].[Spremas]
-ADD CONSTRAINT [FK_MusterijaSprema]
+-- Creating foreign key on [RestoranIDRestorana] in table 'Nudis'
+ALTER TABLE [dbo].[Nudis]
+ADD CONSTRAINT [FK_RestoranNudi]
+    FOREIGN KEY ([RestoranIDRestorana])
+    REFERENCES [dbo].[Restorani]
+        ([IDRestorana])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [ProizvodNaziv] in table 'Nudis'
+ALTER TABLE [dbo].[Nudis]
+ADD CONSTRAINT [FK_NudiProizvod]
+    FOREIGN KEY ([ProizvodNaziv])
+    REFERENCES [dbo].[Proizvodi]
+        ([Naziv])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_NudiProizvod'
+CREATE INDEX [IX_FK_NudiProizvod]
+ON [dbo].[Nudis]
+    ([ProizvodNaziv]);
+GO
+
+-- Creating foreign key on [RestoranIDRestorana] in table 'Radis'
+ALTER TABLE [dbo].[Radis]
+ADD CONSTRAINT [FK_RestoranRadi]
+    FOREIGN KEY ([RestoranIDRestorana])
+    REFERENCES [dbo].[Restorani]
+        ([IDRestorana])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [ZaposleniJMBG] in table 'Radis'
+ALTER TABLE [dbo].[Radis]
+ADD CONSTRAINT [FK_RadiZaposleni]
+    FOREIGN KEY ([ZaposleniJMBG])
+    REFERENCES [dbo].[Zaposleni]
+        ([JMBG])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RadiZaposleni'
+CREATE INDEX [IX_FK_RadiZaposleni]
+ON [dbo].[Radis]
+    ([ZaposleniJMBG]);
+GO
+
+-- Creating foreign key on [MusterijaRedniBroj] in table 'Kupovine'
+ALTER TABLE [dbo].[Kupovine]
+ADD CONSTRAINT [FK_MusterijaKupuje]
     FOREIGN KEY ([MusterijaRedniBroj])
     REFERENCES [dbo].[Musterije]
         ([RedniBroj])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_MusterijaSprema'
-CREATE INDEX [IX_FK_MusterijaSprema]
-ON [dbo].[Spremas]
-    ([MusterijaRedniBroj]);
+-- Creating foreign key on [SpremaProizvodNaziv], [SpremaKuvarJMBG] in table 'Kupovine'
+ALTER TABLE [dbo].[Kupovine]
+ADD CONSTRAINT [FK_KupujeSprema]
+    FOREIGN KEY ([SpremaProizvodNaziv], [SpremaKuvarJMBG])
+    REFERENCES [dbo].[Spremas]
+        ([ProizvodNaziv], [KuvarJMBG])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_KupujeSprema'
+CREATE INDEX [IX_FK_KupujeSprema]
+ON [dbo].[Kupovine]
+    ([SpremaProizvodNaziv], [SpremaKuvarJMBG]);
 GO
 
 -- Creating foreign key on [JMBG] in table 'Zaposleni_Kuvar'
