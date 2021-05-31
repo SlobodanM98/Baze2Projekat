@@ -9,6 +9,23 @@ namespace RestoranDB.Services
 {
 	public class NudiService : INudiService
 	{
+		public Nudi Dobavi(int IDRestoran, string naziv)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Nudis.Find(IDRestoran, naziv);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Nudi> DobaviSve()
 		{
 			List<Nudi> izlaz = new List<Nudi>();

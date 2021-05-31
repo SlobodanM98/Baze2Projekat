@@ -12,6 +12,8 @@ namespace Restoran.ViewModel
 	{
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public SpremaService Service;
 		public ZaposleniService ServiceZaposleni;
 		public NudiService ServiceNudi;
@@ -28,6 +30,9 @@ namespace Restoran.ViewModel
 		private string deleteJMBG;
 		private string deleteNaziv;
 		private string deleteIDRestoran;
+		private string getJMBG;
+		private string getNaziv;
+		private string getIDRestoran;
 		#endregion
 
 		#region public
@@ -142,12 +147,70 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetJMBG
+		{
+			get
+			{
+				return getJMBG;
+			}
+			set
+			{
+				if (value != getJMBG)
+				{
+					getJMBG = value;
+					if (getJMBG != "" && getJMBG != null)
+					{
+						DobaviSveRestorane(getJMBG);
+					}
+					OnPropertyChanged("GetJMBG");
+				}
+			}
+		}
+
+		public string GetNaziv
+		{
+			get
+			{
+				return getNaziv;
+			}
+			set
+			{
+				if (value != getNaziv)
+				{
+					getNaziv = value;
+					OnPropertyChanged("GetNaziv");
+				}
+			}
+		}
+
+		public string GetIDRestoran
+		{
+			get
+			{
+				return getIDRestoran;
+			}
+			set
+			{
+				if (value != getIDRestoran)
+				{
+					getIDRestoran = value;
+					if (getIDRestoran != "" && getIDRestoran != null)
+					{
+						DobaviSveProizvode(getIDRestoran);
+					}
+					OnPropertyChanged("GetIDRestoran");
+				}
+			}
+		}
 		#endregion
 
 		public SpremaViewModel()
 		{
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new SpremaService();
 			ServiceZaposleni = new ZaposleniService();
@@ -159,8 +222,13 @@ namespace Restoran.ViewModel
 
 			addJMBG = "";
 			addNaziv = "";
+			addIDRestoran = "";
 			deleteJMBG = "";
 			deleteNaziv = "";
+			deleteIDRestoran = "";
+			getJMBG = "";
+			getNaziv = "";
+			getIDRestoran = "";
 		}
 
 		public void Dodaj()
@@ -207,6 +275,41 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getJMBG != "" && getNaziv != "" && getIDRestoran != "")
+			{
+				int jmbg = Int32.Parse(getJMBG);
+				int IDRestoran = Int32.Parse(getIDRestoran);
+
+				Sprema sprema = Service.Dobavi(jmbg, getNaziv, IDRestoran);
+
+				if (sprema == null)
+				{
+					MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				else
+				{
+					svaSpremanja = new ObservableCollection<Sprema>();
+					svaSpremanja.Add(sprema);
+					OnPropertyChanged("svaSpremanja");
+					
+					GetJMBG = "";
+					GetNaziv = "";
+					GetIDRestoran = "";
+
+					sviRestorani = new ObservableCollection<int>();
+					sviProizvodi = new ObservableCollection<string>();
+					OnPropertyChanged("sviRestorani");
+					OnPropertyChanged("sviProizvodi");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polja JMBG, Naziv i IDRestoran ne smeju biti prazna!", "Dobavljanje spremanja", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -298,6 +401,8 @@ namespace Restoran.ViewModel
 
 					sviRestorani = new ObservableCollection<int>();
 					sviProizvodi = new ObservableCollection<string>();
+					OnPropertyChanged("sviRestorani");
+					OnPropertyChanged("sviProizvodi");
 				}
 			}
 			else

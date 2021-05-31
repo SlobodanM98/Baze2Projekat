@@ -8,35 +8,40 @@
         xmlns:views="clr-namespace:Restoran.View"
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
-	<UserControl.DataContext>
-		<viewModel:GradViewModel/>
-	</UserControl.DataContext>
-	<Canvas>
-		<StackPanel Width="800" Canvas.Top="150">
-			<DataGrid ItemsSource="{Binding sviGradovi}" IsReadOnly="True" AutoGenerateColumns="False">
-				<DataGrid.Columns>
-					<DataGridTextColumn Header="Postanski broj" Width="400" Binding="{Binding PostanskiBroj}"></DataGridTextColumn>
-					<DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Naziv}"></DataGridTextColumn>
-				</DataGrid.Columns>
-			</DataGrid>
-		</StackPanel>
-		<Grid>
-			<Label Content="Dodavanje novog grada" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="179" FontSize="16"/>
-			<Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="10,47,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox x:Name="addPostanskiBrojTB" HorizontalAlignment="Left" Height="26" Margin="107,47,0,0" Text="{Binding AddPostanskiBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox x:Name="addNazivTB" HorizontalAlignment="Left" Height="26" Margin="107,78,0,0" Text="{Binding AddNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="52,109,0,0" VerticalAlignment="Top" Width="95"/>
-			<Label Content="Brisanje grada" HorizontalAlignment="Left" Height="32" Margin="226,10,0,0" VerticalAlignment="Top" Width="113" FontSize="16"/>
-			<Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="226,47,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox x:Name="deletePostanskiBrojTB" HorizontalAlignment="Left" Height="26" Margin="317,47,0,0" Text="{Binding DeletePostanskiBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="263,109,0,0" VerticalAlignment="Top" Width="95"/>
-			<Label Content="Azuriranje grada" HorizontalAlignment="Left" Height="32" Margin="429,10,0,0" VerticalAlignment="Top" Width="136" FontSize="16"/>
-			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="429,78,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox x:Name="updateNaziv" HorizontalAlignment="Left" Height="26" Margin="524,78,0,0" Text="{Binding UpdateNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="470,109,0,0" VerticalAlignment="Top" Width="95"/>
-			<Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox x:Name="updatePostanskiBroj" HorizontalAlignment="Left" Height="26" Margin="524,47,0,0" Text="{Binding UpdatePostanskiBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-		</Grid>
-	</Canvas>
+    <UserControl.DataContext>
+        <viewModel:GradViewModel/>
+    </UserControl.DataContext>
+    <Canvas>
+        <StackPanel Width="800" Canvas.Top="150">
+            <DataGrid ItemsSource="{Binding sviGradovi}" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Postanski broj" Width="400" Binding="{Binding PostanskiBroj}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Naziv}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <Grid>
+            <Label Content="Dodavanje novog grada" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="179" FontSize="16"/>
+            <Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="10,47,0,0" VerticalAlignment="Top" Width="86"/>
+            <TextBox x:Name="addPostanskiBrojTB" HorizontalAlignment="Left" Height="26" Margin="107,47,0,0" Text="{Binding AddPostanskiBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+            <Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="86"/>
+            <TextBox x:Name="addNazivTB" HorizontalAlignment="Left" Height="26" Margin="107,78,0,0" Text="{Binding AddNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+            <Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="52,109,0,0" VerticalAlignment="Top" Width="95"/>
+            <Label Content="Brisanje grada" HorizontalAlignment="Left" Height="32" Margin="212,10,0,0" VerticalAlignment="Top" Width="113" FontSize="16"/>
+            <Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="212,47,0,0" VerticalAlignment="Top" Width="86"/>
+            <TextBox x:Name="deletePostanskiBrojTB" HorizontalAlignment="Left" Height="26" Margin="303,47,0,0" Text="{Binding DeletePostanskiBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+            <Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="249,109,0,0" VerticalAlignment="Top" Width="95"/>
+            <Label Content="Azuriranje grada" HorizontalAlignment="Left" Height="32" Margin="408,10,0,0" VerticalAlignment="Top" Width="136" FontSize="16"/>
+            <Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="408,78,0,0" VerticalAlignment="Top" Width="86"/>
+            <TextBox x:Name="updateNaziv" HorizontalAlignment="Left" Height="26" Margin="503,78,0,0" Text="{Binding UpdateNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+            <Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="449,109,0,0" VerticalAlignment="Top" Width="95"/>
+            <Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="412,47,0,0" VerticalAlignment="Top" Width="86"/>
+            <TextBox x:Name="updatePostanskiBroj" HorizontalAlignment="Left" Height="26" Margin="503,47,0,0" Text="{Binding UpdatePostanskiBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+            <Label Content="Dobavljanje grada" HorizontalAlignment="Left" Height="32" Margin="595,10,0,0" VerticalAlignment="Top" Width="179" FontSize="16"/>
+            <Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="595,47,0,0" VerticalAlignment="Top" Width="86"/>
+            <TextBox x:Name="addPostanskiBrojTB_Copy" HorizontalAlignment="Left" Height="26" Margin="708,47,0,0" Text="{Binding GetPostanskiBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+            <Button Content="Dobavi" Command="{Binding DobaviCommand}" HorizontalAlignment="Left" Height="30" Margin="595,109,0,0" VerticalAlignment="Top" Width="95"/>
+            <Button Content="Dobavi sve" Command="{Binding DobaviSveCommand}" HorizontalAlignment="Left" Height="30" Margin="695,109,0,0" VerticalAlignment="Top" Width="95"/>
+        </Grid>
+    </Canvas>
 </UserControl>

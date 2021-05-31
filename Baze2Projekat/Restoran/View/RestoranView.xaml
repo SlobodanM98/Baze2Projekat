@@ -30,15 +30,20 @@
 			<Label Content="Brisanje restorana" HorizontalAlignment="Left" Height="32" Margin="226,10,0,0" VerticalAlignment="Top" Width="136" FontSize="16"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="226,47,0,0" VerticalAlignment="Top" Width="77"/>
 			<TextBox x:Name="deletePostanskiBrojTB" HorizontalAlignment="Left" Height="26" Margin="308,47,0,0" Text="{Binding DeleteIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Center" Height="30" Margin="0,149,0,0" VerticalAlignment="Top" Width="94"/>
-			<Label Content="Azuriranje restorana" HorizontalAlignment="Left" Height="32" Margin="429,10,0,0" VerticalAlignment="Top" Width="154" FontSize="16"/>
-			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="429,78,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox x:Name="updateNaziv" HorizontalAlignment="Left" Height="26" Margin="524,78,0,0" Text="{Binding UpdateNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="472,149,0,0" VerticalAlignment="Top" Width="96"/>
-			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox x:Name="updatePostanskiBroj" HorizontalAlignment="Left" Height="26" Margin="524,47,0,0" Text="{Binding UpdateIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="255,149,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="Azuriranje restorana" HorizontalAlignment="Left" Height="32" Margin="401,10,0,0" VerticalAlignment="Top" Width="154" FontSize="16"/>
+			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="401,78,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox x:Name="updateNaziv" HorizontalAlignment="Left" Height="26" Margin="496,78,0,0" Text="{Binding UpdateNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="444,149,0,0" VerticalAlignment="Top" Width="96"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="405,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox x:Name="updatePostanskiBroj" HorizontalAlignment="Left" Height="26" Margin="496,47,0,0" Text="{Binding UpdateIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Postanski broj" HorizontalAlignment="Left" Height="26" Margin="10,108,0,0" VerticalAlignment="Top" Width="86"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,108,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddPostanskiBroj}" ItemsSource="{Binding sviBrojeviGradova}" SelectedValue="{Binding AddPostanskiBroj}"/>
+			<Label Content="Dobavljanje restorana" HorizontalAlignment="Left" Height="32" Margin="591,10,0,0" VerticalAlignment="Top" Width="164" FontSize="16"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="591,47,0,0" VerticalAlignment="Top" Width="77"/>
+			<TextBox x:Name="deletePostanskiBrojTB_Copy" HorizontalAlignment="Left" Height="26" Margin="673,47,0,0" Text="{Binding GetIDRestoran}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Dobavi" Command="{Binding DobaviCommand}" HorizontalAlignment="Left" Height="30" Margin="591,149,0,0" VerticalAlignment="Top" Width="94"/>
+			<Button Content="Dobavi sve" Command="{Binding DobaviSveCommand}" HorizontalAlignment="Left" Height="30" Margin="690,149,0,0" VerticalAlignment="Top" Width="94"/>
 		</Grid>
 	</Canvas>
 </UserControl>

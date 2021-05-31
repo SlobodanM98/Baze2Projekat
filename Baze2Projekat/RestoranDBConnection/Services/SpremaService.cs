@@ -9,6 +9,23 @@ namespace RestoranDB.Services
 {
 	public class SpremaService : ISpremaService
 	{
+		public Sprema Dobavi(int JMBG, string naziv, int IDRestoran)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Spremas.Find(JMBG, IDRestoran, naziv);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Sprema> DobaviSve()
 		{
 			List<Sprema> izlaz = new List<Sprema>();

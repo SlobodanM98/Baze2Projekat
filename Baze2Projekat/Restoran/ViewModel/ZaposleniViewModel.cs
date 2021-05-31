@@ -13,6 +13,8 @@ namespace Restoran.ViewModel
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
 		public MyICommand AzurirajCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public ZaposleniService Service;
 		public RestoranService ServiceRestoran;
 		public RadiService ServiceRadi;
@@ -30,6 +32,7 @@ namespace Restoran.ViewModel
 		private string updateTip;
 		private string updateIme;
 		private string updatePrezime;
+		private string getJMBG;
 		#endregion
 
 		#region public
@@ -190,6 +193,22 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetJMBG
+		{
+			get
+			{
+				return getJMBG;
+			}
+			set
+			{
+				if (value != getJMBG)
+				{
+					getJMBG = value;
+					OnPropertyChanged("GetJMBG");
+				}
+			}
+		}
 		#endregion
 
 		public ZaposleniViewModel()
@@ -197,6 +216,8 @@ namespace Restoran.ViewModel
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
 			AzurirajCommand = new MyICommand(Azuriraj);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new ZaposleniService();
 			ServiceRestoran = new RestoranService();
@@ -215,6 +236,7 @@ namespace Restoran.ViewModel
 			updateTip = "";
 			updateIme = "";
 			updatePrezime = "";
+			getJMBG = "";
 		}
 
 		public void Dodaj()
@@ -284,6 +306,47 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih zaposlenih", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getJMBG != "")
+			{
+				try
+				{
+					int jmbg = Int32.Parse(getJMBG);
+
+					if (jmbg > 0)
+					{
+						Zaposleni zaposleni = Service.Dobavi(jmbg);
+
+						if (zaposleni == null)
+						{
+							MessageBox.Show("Greska pri dobavljanju zaposlenog!", "Dobavljanje zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+						else
+						{
+							sviZaposleni = new ObservableCollection<Zaposleni>();
+							sviZaposleni.Add(zaposleni);
+							OnPropertyChanged("sviZaposleni");
+
+							GetJMBG = "";
+						}
+					}
+					else
+					{
+						MessageBox.Show("Polje JMBG mora biti pozitivan broj!", "Dobavljanje zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
+					}
+				}
+				catch
+				{
+					MessageBox.Show("Polje JMBG mora biti broj!", "Dobavljanje zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polje JMBG ne sme biti prazno!", "Dobavljanje zaposlenog", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

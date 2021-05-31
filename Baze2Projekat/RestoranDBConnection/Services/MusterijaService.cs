@@ -51,6 +51,23 @@ namespace RestoranDB.Services
 			return true;
 		}
 
+		public Musterija Dobavi(int redniBroj)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Musterije.Find(redniBroj);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Musterija> DobaviSve()
 		{
 			List<Musterija> izlaz = new List<Musterija>();

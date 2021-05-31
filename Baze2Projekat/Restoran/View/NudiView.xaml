@@ -32,6 +32,13 @@
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="226,80,0,0" VerticalAlignment="Top" Width="103"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding DeleteIDRestoran}"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,49,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteNaziv}" ItemsSource="{Binding sviProizvodi}" SelectedValue="{Binding DeleteNaziv}"/>
+			<Label Content="Dobavljanje nudjenja" HorizontalAlignment="Left" Height="32" Margin="440,8,0,0" VerticalAlignment="Top" Width="145" FontSize="16"/>
+			<Button Content="Dobavi" Command="{Binding DobaviCommand}" HorizontalAlignment="Left" Height="30" Margin="440,109,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="441,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="440,78,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="551,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding GetIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding GetIDRestoran}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="551,47,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding GetNaziv}" ItemsSource="{Binding sviProizvodi}" SelectedValue="{Binding GetNaziv}"/>
+			<Button Content="Dobavi sve" Command="{Binding DobaviSveCommand}" HorizontalAlignment="Left" Height="30" Margin="539,109,0,0" VerticalAlignment="Top" Width="94"/>
 		</Grid>
 	</Canvas>
 </UserControl>

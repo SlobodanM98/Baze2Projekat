@@ -31,24 +31,29 @@
 			<Label Content="Redni broj" HorizontalAlignment="Left" Height="26" Margin="240,47,0,0" VerticalAlignment="Top" Width="72"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="317,47,0,0" Text="{Binding DeleteRedniBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="275,203,0,0" VerticalAlignment="Top" Width="94"/>
-			<Label Content="Azuriranje musterije" HorizontalAlignment="Left" Height="32" Margin="429,10,0,0" VerticalAlignment="Top" Width="167" FontSize="16"/>
-			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="471,203,0,0" VerticalAlignment="Top" Width="95"/>
-			<Label Content="Redni broj" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,47,0,0" Text="{Binding UpdateRedniBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Azuriranje musterije" HorizontalAlignment="Left" Height="32" Margin="411,10,0,0" VerticalAlignment="Top" Width="167" FontSize="16"/>
+			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="453,203,0,0" VerticalAlignment="Top" Width="95"/>
+			<Label Content="Redni broj" HorizontalAlignment="Left" Height="26" Margin="415,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="507,47,0,0" Text="{Binding UpdateRedniBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Prezime" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="86"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="139,78,0,0" Text="{Binding AddPrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Label Content="Prezime" HorizontalAlignment="Left" Height="26" Margin="433,109,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,109,0,0" Text="{Binding UpdatePrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="433,78,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,78,0,0" Text="{Binding UpdateIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Prezime" HorizontalAlignment="Left" Height="26" Margin="415,109,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="507,109,0,0" Text="{Binding UpdatePrezime}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Ime" HorizontalAlignment="Left" Height="26" Margin="415,78,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="507,78,0,0" Text="{Binding UpdateIme}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Broj stola" HorizontalAlignment="Left" Height="26" Margin="10,140,0,0" VerticalAlignment="Top" Width="86"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,140,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddBrojStola}" ItemsSource="{Binding sviBrojeviStolova}" SelectedValue="{Binding AddBrojStola}"/>
-			<Label Content="Broj stola" HorizontalAlignment="Left" Height="26" Margin="434,172,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,171,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateBrojStola}" ItemsSource="{Binding sviBrojeviStolova}" SelectedValue="{Binding UpdateBrojStola}"/>
+			<Label Content="Broj stola" HorizontalAlignment="Left" Height="26" Margin="416,172,0,0" VerticalAlignment="Top" Width="86"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="507,171,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateBrojStola}" ItemsSource="{Binding sviBrojeviStolova}" SelectedValue="{Binding UpdateBrojStola}"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,109,0,0" VerticalAlignment="Top" Width="86"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,109,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviBrojeviRestorana}" SelectedValue="{Binding AddIDRestoran}"/>
-			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="434,140,0,0" VerticalAlignment="Top" Width="86"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,140,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateIDRestoran}" ItemsSource="{Binding sviBrojeviRestorana}" SelectedValue="{Binding UpdateIDRestoran}"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="416,140,0,0" VerticalAlignment="Top" Width="86"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="507,140,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateIDRestoran}" ItemsSource="{Binding sviBrojeviRestorana}" SelectedValue="{Binding UpdateIDRestoran}"/>
+			<Label Content="Dobavljanje musterije" HorizontalAlignment="Left" Height="32" Margin="612,10,0,0" VerticalAlignment="Top" Width="168" FontSize="16"/>
+			<Label Content="Redni broj" HorizontalAlignment="Left" Height="26" Margin="612,47,0,0" VerticalAlignment="Top" Width="72"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="689,47,0,0" Text="{Binding GetRedniBroj}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Dobavi" Command="{Binding DobaviCommand}" HorizontalAlignment="Left" Height="30" Margin="600,203,0,0" VerticalAlignment="Top" Width="94"/>
+			<Button Content="Dobavi sve" Command="{Binding DobaviSveCommand}" HorizontalAlignment="Left" Height="30" Margin="699,203,0,0" VerticalAlignment="Top" Width="94"/>
 		</Grid>
 	</Canvas>
 </UserControl>

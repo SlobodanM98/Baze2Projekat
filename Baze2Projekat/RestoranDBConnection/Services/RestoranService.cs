@@ -38,6 +38,23 @@ namespace RestoranDB.Services
 			return true;
 		}
 
+		public Restoran Dobavi(int IDRestorana)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Restorani.Find(IDRestorana);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Restoran> DobaviSve()
 		{
 			List<Restoran> izlaz = new List<Restoran>();

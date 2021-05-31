@@ -9,6 +9,7 @@ namespace RestoranDB.Interfaces
 	public interface INudiService
 	{
 		bool Dodaj(int IDRestoran, string naziv);
+		Nudi Dobavi(int IDRestoran, string naziv);
 		List<Nudi> DobaviSve();
 		bool Izbrisi(int IDRestoran, string naziv);
 	}

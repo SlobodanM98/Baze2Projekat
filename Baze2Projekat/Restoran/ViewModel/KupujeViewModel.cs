@@ -12,6 +12,8 @@ namespace Restoran.ViewModel
 	{
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public KupujeService Service;
 		public RestoranService ServiceRestoran;
 		public MusterijaService ServiceMusterija;
@@ -31,6 +33,10 @@ namespace Restoran.ViewModel
 		private string deleteIDRestoran;
 		private string deleteRedniBroj;
 		private string deleteNaziv;
+		private string getJMBG;
+		private string getIDRestoran;
+		private string getRedniBroj;
+		private string getNaziv;
 		#endregion
 
 		#region public
@@ -185,12 +191,90 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetJMBG
+		{
+			get
+			{
+				return getJMBG;
+			}
+			set
+			{
+				if (value != getJMBG)
+				{
+					getJMBG = value;
+					OnPropertyChanged("GetJMBG");
+				}
+			}
+		}
+
+		public string GetIDRestoran
+		{
+			get
+			{
+				return getIDRestoran;
+			}
+			set
+			{
+				if (value != getIDRestoran)
+				{
+					getIDRestoran = value;
+					if (getIDRestoran != "" && getIDRestoran != null)
+					{
+						DobaviSveProizvode(getIDRestoran);
+					}
+					OnPropertyChanged("GetIDRestoran");
+				}
+			}
+		}
+
+		public string GetRedniBroj
+		{
+			get
+			{
+				return getRedniBroj;
+			}
+			set
+			{
+				if (value != getRedniBroj)
+				{
+					getRedniBroj = value;
+					if (getRedniBroj != "" && getRedniBroj != null)
+					{
+						DobaviSveRestorane(getRedniBroj);
+					}
+					OnPropertyChanged("GetRedniBroj");
+				}
+			}
+		}
+
+		public string GetNaziv
+		{
+			get
+			{
+				return getNaziv;
+			}
+			set
+			{
+				if (value != getNaziv)
+				{
+					getNaziv = value;
+					if (getNaziv != "" && getNaziv != null)
+					{
+						DobaviSveKuvare(getNaziv, getIDRestoran);
+					}
+					OnPropertyChanged("GetNaziv");
+				}
+			}
+		}
 		#endregion
 
 		public KupujeViewModel()
 		{
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new KupujeService();
 			ServiceRestoran = new RestoranService();
@@ -208,6 +292,10 @@ namespace Restoran.ViewModel
 			deleteIDRestoran = "";
 			deleteRedniBroj = "";
 			deleteNaziv = "";
+			getJMBG = "";
+			getIDRestoran = "";
+			getRedniBroj = "";
+			getNaziv = "";
 		}
 
 		public void Dodaj()
@@ -233,6 +321,9 @@ namespace Restoran.ViewModel
 					sviRestorani = new ObservableCollection<int>();
 					sviProizvodi = new ObservableCollection<string>();
 					sviKuvari = new ObservableCollection<int>();
+					OnPropertyChanged("sviRestorani");
+					OnPropertyChanged("sviProizvodi");
+					OnPropertyChanged("sviKuvari");
 				}
 			}
 			else
@@ -257,6 +348,46 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih kupovina", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getRedniBroj != "" && getIDRestoran != "" && getNaziv != "" && getJMBG != "")
+			{
+				int jmbg = Int32.Parse(getJMBG);
+				int IDRestoran = Int32.Parse(getIDRestoran);
+				int redniBroj = Int32.Parse(getRedniBroj);
+
+				Kupuje kupuje = Service.Dobavi(redniBroj, jmbg, IDRestoran, getNaziv);
+
+				if (kupuje == null)
+				{
+					MessageBox.Show("Greska pri dobavljanu kupovine!", "Dobavljanje kupovine", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				else
+				{
+					sveKupovine = new ObservableCollection<Kupuje>();
+					sveKupovine.Add(kupuje);
+					OnPropertyChanged("sveKupovine");
+
+					GetJMBG = "";
+					GetIDRestoran = "";
+					GetRedniBroj = "";
+					GetNaziv = "";
+
+					sviRestorani = new ObservableCollection<int>();
+					sviProizvodi = new ObservableCollection<string>();
+					sviKuvari = new ObservableCollection<int>();
+
+					OnPropertyChanged("sviRestorani");
+					OnPropertyChanged("sviProizvodi");
+					OnPropertyChanged("sviKuvari");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polja Redni broj, IDRestoran, Naziv i JMBG ne smeju biti prazna!", "Dobavljanje kupovine", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -387,6 +518,10 @@ namespace Restoran.ViewModel
 					sviRestorani = new ObservableCollection<int>();
 					sviProizvodi = new ObservableCollection<string>();
 					sviKuvari = new ObservableCollection<int>();
+
+					OnPropertyChanged("sviRestorani");
+					OnPropertyChanged("sviProizvodi");
+					OnPropertyChanged("sviKuvari");
 				}
 			}
 			else

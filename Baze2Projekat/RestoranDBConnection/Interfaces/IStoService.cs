@@ -10,6 +10,7 @@ namespace RestoranDB.Interfaces
 	{
 		bool Dodaj(int brojStola, int brojMesta, string tip, int IDRestoran);
 		List<Sto> DobaviSve();
+		Sto Dobavi(int brojStola, int IDRestoran);
 		bool Izbrisi(int brojStola, int IDRestoran);
 		bool Azuriraj(int brojStola, int brojMesta, string tip, int IDRestoran);
 	}

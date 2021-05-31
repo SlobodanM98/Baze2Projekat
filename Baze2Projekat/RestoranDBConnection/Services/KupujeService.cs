@@ -9,6 +9,23 @@ namespace RestoranDB.Services
 {
 	public class KupujeService : IKupujeService
 	{
+		public Kupuje Dobavi(int redniBroj, int JMBG, int IDRestoran, string naziv)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Kupovine.Find(redniBroj, JMBG, IDRestoran, naziv);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Kupuje> DobaviSve()
 		{
 			List<Kupuje> izlaz = new List<Kupuje>();

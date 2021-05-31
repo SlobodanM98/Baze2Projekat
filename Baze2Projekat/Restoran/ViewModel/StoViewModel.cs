@@ -13,6 +13,8 @@ namespace Restoran.ViewModel
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
 		public MyICommand AzurirajCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public StoService Service;
 		public RestoranService ServiceRestoran;
 		public ObservableCollection<Sto> sviStolovi { get; set; }
@@ -28,6 +30,8 @@ namespace Restoran.ViewModel
 		private string updateBrojStola;
 		private string updateTip;
 		private string updateIDRestoran;
+		private string getBrojStola;
+		private string getIDRestoran;
 		#endregion
 
 		#region public
@@ -157,6 +161,38 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetBrojStola
+		{
+			get
+			{
+				return getBrojStola;
+			}
+			set
+			{
+				if (value != getBrojStola)
+				{
+					getBrojStola = value;
+					OnPropertyChanged("GetBrojStola");
+				}
+			}
+		}
+
+		public string GetIDRestoran
+		{
+			get
+			{
+				return getIDRestoran;
+			}
+			set
+			{
+				if (value != getIDRestoran)
+				{
+					getIDRestoran = value;
+					OnPropertyChanged("GetIDRestoran");
+				}
+			}
+		}
 		#endregion
 
 		public StoViewModel()
@@ -164,6 +200,8 @@ namespace Restoran.ViewModel
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
 			AzurirajCommand = new MyICommand(Azuriraj);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new StoService();
 			ServiceRestoran = new RestoranService();
@@ -179,6 +217,8 @@ namespace Restoran.ViewModel
 			updateBrojStola = "";
 			updateTip = "";
 			updateIDRestoran = "";
+			getBrojStola = "";
+			getIDRestoran = "";
 		}
 
 		public void Dodaj()
@@ -251,6 +291,47 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih stolova", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getBrojStola != "" && getIDRestoran != "")
+			{
+				try
+				{
+					int BrojStola = Int32.Parse(getBrojStola);
+					int IDRestoran = Int32.Parse(getIDRestoran);
+					if (BrojStola > 0)
+					{
+						Sto sto = Service.Dobavi(BrojStola, IDRestoran);
+
+						if (sto == null)
+						{
+							MessageBox.Show("Greska pri dobavljanju stola!", "Dobavljanje stola", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+						else
+						{
+							sviStolovi = new ObservableCollection<Sto>();
+							sviStolovi.Add(sto);
+
+							GetBrojStola = "";
+							GetIDRestoran = "";
+						}
+					}
+					else
+					{
+						MessageBox.Show("Polje Broj stola mora biti pozitivan broj!", "Dobavljanje stola", MessageBoxButton.OK, MessageBoxImage.Error);
+					}
+				}
+				catch
+				{
+					MessageBox.Show("Polje Broj stola mora biti broj!", "Dobavljanje stola", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polja Broj stola i IDrestoran ne smeju biti prazna!", "Dobavljanje stola", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

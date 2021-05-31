@@ -9,6 +9,23 @@ namespace RestoranDB.Services
 {
 	public class RadiService : IRadiService
 	{
+		public Radi Dobavi(int JMBG, int IDRestoran)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Radis.Find(IDRestoran, JMBG);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Radi> DobaviSve()
 		{
 			List<Radi> izlaz = new List<Radi>();

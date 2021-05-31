@@ -14,6 +14,8 @@ namespace Restoran.ViewModel
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
 		public MyICommand AzurirajCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public GradService Service;
 		public ObservableCollection<Grad> sviGradovi { get; set; }
 
@@ -23,6 +25,7 @@ namespace Restoran.ViewModel
 		private string deletePostanskiBroj;
 		private string updatePostanskiBroj;
 		private string updateNaziv;
+		private string getPostanskiBroj;
 		#endregion
 
 		#region public
@@ -105,6 +108,22 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetPostanskiBroj
+		{
+			get
+			{
+				return getPostanskiBroj;
+			}
+			set
+			{
+				if (value != getPostanskiBroj)
+				{
+					getPostanskiBroj = value;
+					OnPropertyChanged("GetPostanskiBroj");
+				}
+			}
+		}
 		#endregion
 
 		public GradViewModel()
@@ -112,6 +131,8 @@ namespace Restoran.ViewModel
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
 			AzurirajCommand = new MyICommand(Azuriraj);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new GradService();
 
@@ -125,6 +146,7 @@ namespace Restoran.ViewModel
 			deletePostanskiBroj = "";
 			updatePostanskiBroj = "";
 			updateNaziv = "";
+			getPostanskiBroj = "";
 		}
 
 		public void Dodaj()
@@ -179,6 +201,45 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih gradova", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getPostanskiBroj != "")
+			{
+				try
+				{
+					int postanskiBroj = Int32.Parse(getPostanskiBroj);
+					if (postanskiBroj > 0)
+					{
+						Grad grad = Service.Dobavi(postanskiBroj);
+
+						if (grad == null)
+						{
+							MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+						else
+						{
+							sviGradovi = new ObservableCollection<Grad>();
+							sviGradovi.Add(grad);
+							OnPropertyChanged("sviGradovi");
+							GetPostanskiBroj = "";
+						}
+					}
+					else
+					{
+						MessageBox.Show("Polje Postanski broj mora biti pozitivan broj!", "Dobavljanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+					}
+				}
+				catch
+				{
+					MessageBox.Show("Polje Postanski broj mora biti broj!", "Dobavljanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polje Postanski broj ne sme biti prazno!", "Dobavljanje grada", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

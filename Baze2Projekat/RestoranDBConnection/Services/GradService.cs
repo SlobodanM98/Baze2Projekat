@@ -38,6 +38,23 @@ namespace RestoranDB.Services
 			return true;
 		}
 
+		public Grad Dobavi(int postanskiBroj)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Gradovi.Find(postanskiBroj);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Grad> DobaviSve()
 		{
 			List<Grad> izlaz = new List<Grad>();

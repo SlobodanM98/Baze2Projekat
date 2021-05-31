@@ -12,6 +12,8 @@ namespace Restoran.ViewModel
 	{
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public NudiService Service;
 		public ProizvodService ServiceProizvod;
 		public RestoranService ServiceRestoran;
@@ -24,6 +26,8 @@ namespace Restoran.ViewModel
 		private string addIDRestoran;
 		private string deleteNaziv;
 		private string deleteIDRestoran;
+		private string getNaziv;
+		private string getIDRestoran;
 		#endregion
 
 		#region public
@@ -90,12 +94,46 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetNaziv
+		{
+			get
+			{
+				return getNaziv;
+			}
+			set
+			{
+				if (value != getNaziv)
+				{
+					getNaziv = value;
+					OnPropertyChanged("GetNaziv");
+				}
+			}
+		}
+
+		public string GetIDRestoran
+		{
+			get
+			{
+				return getIDRestoran;
+			}
+			set
+			{
+				if (value != getIDRestoran)
+				{
+					getIDRestoran = value;
+					OnPropertyChanged("GetIDRestoran");
+				}
+			}
+		}
 		#endregion
 
 		public NudiViewModel()
 		{
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new NudiService();
 			ServiceProizvod = new ProizvodService();
@@ -109,6 +147,8 @@ namespace Restoran.ViewModel
 			addIDRestoran = "";
 			deleteNaziv = "";
 			deleteIDRestoran = "";
+			getNaziv = "";
+			getIDRestoran = "";
 		}
 
 		public void Dodaj()
@@ -131,6 +171,34 @@ namespace Restoran.ViewModel
 			else
 			{
 				MessageBox.Show("Polja Naziv i IDRestoran ne smeju biti prazna!", "Dodavanje novog rada", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getNaziv != "" && getIDRestoran != "")
+			{
+				int IDRestoran = Int32.Parse(getIDRestoran);
+
+				Nudi nudi = Service.Dobavi(IDRestoran, getNaziv);
+
+				if (nudi == null)
+				{
+					MessageBox.Show("Greska pri dobavljanju nudjenja!", "Dobavljanje nudjenja", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				else
+				{
+					sviNudi = new ObservableCollection<Nudi>();
+					sviNudi.Add(nudi);
+					OnPropertyChanged("sviNudi");
+
+					GetNaziv = "";
+					GetIDRestoran = "";
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polja Naziv i IDRestoran ne smeju biti prazna!", "Dobavljanje rada", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

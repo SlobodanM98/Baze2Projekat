@@ -10,6 +10,7 @@ namespace RestoranDB.Interfaces
 	{
 		bool Dodaj(int postanskiBroj, string naziv);
 		List<Grad> DobaviSve();
+		Grad Dobavi(int postanskiBroj);
 		bool Izbrisi(int postanskiBroj);
 		bool Azuriraj(int postanskiBroj, string naziv);
 	}

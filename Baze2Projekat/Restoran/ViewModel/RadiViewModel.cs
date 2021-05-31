@@ -12,6 +12,8 @@ namespace Restoran.ViewModel
 	{
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public RadiService Service;
 		public ZaposleniService ServiceZaposleni;
 		public RestoranService ServiceRestoran;
@@ -24,6 +26,8 @@ namespace Restoran.ViewModel
 		private string addIDRestoran;
 		private string deleteJMBG;
 		private string deleteIDRestoran;
+		private string getJMBG;
+		private string getIDRestoran;
 		#endregion
 
 		#region public
@@ -90,12 +94,46 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetJMBG
+		{
+			get
+			{
+				return getJMBG;
+			}
+			set
+			{
+				if (value != getJMBG)
+				{
+					getJMBG = value;
+					OnPropertyChanged("GetJMBG");
+				}
+			}
+		}
+
+		public string GetIDRestoran
+		{
+			get
+			{
+				return getIDRestoran;
+			}
+			set
+			{
+				if (value != getIDRestoran)
+				{
+					getIDRestoran = value;
+					OnPropertyChanged("GetIDRestoran");
+				}
+			}
+		}
 		#endregion
 
 		public RadiViewModel()
 		{
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new RadiService();
 			ServiceZaposleni = new ZaposleniService();
@@ -109,6 +147,8 @@ namespace Restoran.ViewModel
 			addIDRestoran = "";
 			deleteJMBG = "";
 			deleteIDRestoran = "";
+			getJMBG = "";
+			getIDRestoran = "";
 		}
 
 		public void Dodaj()
@@ -151,6 +191,35 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih radova", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getJMBG != "" && getIDRestoran != "")
+			{
+				int jmbg = Int32.Parse(getJMBG);
+				int IDRestoran = Int32.Parse(getIDRestoran);
+
+				Radi radi = Service.Dobavi(jmbg, IDRestoran);
+
+				if (radi == null)
+				{
+					MessageBox.Show("Greska pri dobavljanju rada!", "Dobavljanje rada", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				else
+				{
+					sviRadovi = new ObservableCollection<Radi>();
+					sviRadovi.Add(radi);
+					OnPropertyChanged("sviRadovi");
+
+					GetJMBG = "";
+					GetIDRestoran = "";
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polja JMBG i IDRestoran ne smeju biti prazna!", "Dobavljanje rada", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

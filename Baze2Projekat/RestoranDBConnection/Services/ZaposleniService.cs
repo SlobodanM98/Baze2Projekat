@@ -91,6 +91,23 @@ namespace RestoranDB.Services
 			return true;
 		}
 
+		public Zaposleni Dobavi(int jmbg)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Zaposleni.Find(jmbg);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Zaposleni> DobaviSve()
 		{
 			List<Zaposleni> izlaz = new List<Zaposleni>();

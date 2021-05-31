@@ -37,6 +37,15 @@
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="134,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding AddIDRestoran}"/>
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="226,80,0,0" VerticalAlignment="Top" Width="103"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding DeleteIDRestoran}"/>
+			<Label Content="Dobavljanje spremanja" HorizontalAlignment="Left" Height="32" Margin="437,10,0,0" VerticalAlignment="Top" Width="183" FontSize="16"/>
+			<Button Content="Dobavi" Command="{Binding DobaviCommand}" HorizontalAlignment="Left" Height="30" Margin="437,149,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="JMBG kuvara" HorizontalAlignment="Left" Height="26" Margin="438,49,0,0" VerticalAlignment="Top" Width="86"/>
+			<Label Content="Naziv proizvoda" HorizontalAlignment="Left" Height="26" Margin="437,111,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="548,111,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding GetNaziv}" ItemsSource="{Binding sviProizvodi}" SelectedValue="{Binding GetNaziv}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="548,49,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding GetJMBG}" ItemsSource="{Binding sviKuvari}" SelectedValue="{Binding GetJMBG}"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="437,80,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="548,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding GetIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding GetIDRestoran}"/>
+			<Button Content="Dobavi sve" Command="{Binding DobaviSveCommand}" HorizontalAlignment="Left" Height="30" Margin="536,149,0,0" VerticalAlignment="Top" Width="94"/>
 		</Grid>
 	</Canvas>
 </UserControl>

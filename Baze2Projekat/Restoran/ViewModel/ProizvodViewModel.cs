@@ -13,6 +13,8 @@ namespace Restoran.ViewModel
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
 		public MyICommand AzurirajCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public ProizvodService Service;
 		public ObservableCollection<Proizvod> sviProizvodi { get; set; }
 
@@ -24,6 +26,7 @@ namespace Restoran.ViewModel
 		private string updateNaziv;
 		private string updateTip;
 		private string updateCena;
+		private string getNaziv;
 		#endregion
 
 		#region public
@@ -136,6 +139,22 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetNaziv
+		{
+			get
+			{
+				return getNaziv;
+			}
+			set
+			{
+				if (value != getNaziv)
+				{
+					getNaziv = value;
+					OnPropertyChanged("GetNaziv");
+				}
+			}
+		}
 		#endregion
 
 		public ProizvodViewModel()
@@ -143,6 +162,8 @@ namespace Restoran.ViewModel
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
 			AzurirajCommand = new MyICommand(Azuriraj);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new ProizvodService();
 
@@ -158,6 +179,7 @@ namespace Restoran.ViewModel
 			updateNaziv = "";
 			updateTip = "";
 			updateCena = "";
+			getNaziv = "";
 		}
 
 		public void Dodaj()
@@ -221,6 +243,31 @@ namespace Restoran.ViewModel
 			catch
 			{
 				MessageBox.Show("Greska pri dobavljanju!", "Dobavljanje svih proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getNaziv != "")
+			{
+				Proizvod proizvod = Service.Dobavi(getNaziv);
+
+				if (proizvod == null)
+				{
+					MessageBox.Show("Greski pri dobavljanju proizvoda!", "Dobavljanje proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				else
+				{
+					sviProizvodi = new ObservableCollection<Proizvod>();
+					sviProizvodi.Add(proizvod);
+					OnPropertyChanged("sviProizvodi");
+
+					GetNaziv = "";
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polje Naziv ne sme biti prazno!", "Dobavljanje proizvoda", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

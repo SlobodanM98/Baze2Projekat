@@ -28,10 +28,17 @@
 			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="103"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="113,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding AddIDRestoran}"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="113,47,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddJMBG}" ItemsSource="{Binding sviZaposleni}" SelectedValue="{Binding AddJMBG}"/>
-			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="227,49,0,0" VerticalAlignment="Top" Width="86"/>
-			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="226,80,0,0" VerticalAlignment="Top" Width="103"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,80,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding DeleteIDRestoran}"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,49,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteJMBG}" ItemsSource="{Binding sviZaposleni}" SelectedValue="{Binding DeleteJMBG}"/>
+			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="227,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="226,78,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding DeleteIDRestoran}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="337,47,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding DeleteJMBG}" ItemsSource="{Binding sviZaposleni}" SelectedValue="{Binding DeleteJMBG}"/>
+			<Label Content="Dobavljanje rada" HorizontalAlignment="Left" Height="32" Margin="432,8,0,0" VerticalAlignment="Top" Width="145" FontSize="16"/>
+			<Button Content="Dobavi" Command="{Binding DobaviCommand}" HorizontalAlignment="Left" Height="30" Margin="432,107,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="JMBG" HorizontalAlignment="Left" Height="26" Margin="432,45,0,0" VerticalAlignment="Top" Width="86"/>
+			<Label Content="IDRestoran" HorizontalAlignment="Left" Height="26" Margin="431,76,0,0" VerticalAlignment="Top" Width="103"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="542,76,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding GetIDRestoran}" ItemsSource="{Binding sviRestorani}" SelectedValue="{Binding GetIDRestoran}"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="542,45,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding GetJMBG}" ItemsSource="{Binding sviZaposleni}" SelectedValue="{Binding GetJMBG}"/>
+			<Button Content="Dobavi sve" Command="{Binding DobaviSveCommand}" HorizontalAlignment="Left" Height="30" Margin="530,107,0,0" VerticalAlignment="Top" Width="94"/>
 		</Grid>
 	</Canvas>
 </UserControl>

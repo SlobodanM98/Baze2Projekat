@@ -13,6 +13,8 @@ namespace Restoran.ViewModel
 		public MyICommand DodajCommand { get; set; }
 		public MyICommand IzbrisiCommand { get; set; }
 		public MyICommand AzurirajCommand { get; set; }
+		public MyICommand DobaviCommand { get; set; }
+		public MyICommand DobaviSveCommand { get; set; }
 		public MusterijaService Service;
 		public StoService ServiceSto;
 		public RestoranService ServiceRestoran;
@@ -31,6 +33,7 @@ namespace Restoran.ViewModel
 		private string updatePrezime;
 		private string updateBrojStola;
 		private string updateIDRestoran;
+		private string getRedniBroj;
 		#endregion
 
 		#region public
@@ -201,6 +204,22 @@ namespace Restoran.ViewModel
 				}
 			}
 		}
+
+		public string GetRedniBroj
+		{
+			get
+			{
+				return getRedniBroj;
+			}
+			set
+			{
+				if (value != getRedniBroj)
+				{
+					getRedniBroj = value;
+					OnPropertyChanged("GetRedniBroj");
+				}
+			}
+		}
 		#endregion
 
 		public MusterijaViewModel()
@@ -208,6 +227,8 @@ namespace Restoran.ViewModel
 			DodajCommand = new MyICommand(Dodaj);
 			IzbrisiCommand = new MyICommand(Izbrisi);
 			AzurirajCommand = new MyICommand(Azuriraj);
+			DobaviCommand = new MyICommand(Dobavi);
+			DobaviSveCommand = new MyICommand(DobaviSve);
 
 			Service = new MusterijaService();
 			ServiceSto = new StoService();
@@ -226,6 +247,7 @@ namespace Restoran.ViewModel
 			updatePrezime = "";
 			updateBrojStola = "";
 			updateIDRestoran = "";
+			getRedniBroj = "";
 		}
 
 		public void Dodaj()
@@ -256,6 +278,46 @@ namespace Restoran.ViewModel
 			else
 			{
 				MessageBox.Show("Polja Ime i Prezime ne smeju biti prazna!", "Dodavanje nove musterije", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void Dobavi()
+		{
+			if (getRedniBroj != "")
+			{
+				try
+				{
+					int redniBroj = Int32.Parse(getRedniBroj);
+
+					if (redniBroj > 0)
+					{
+						Musterija musterija = Service.Dobavi(redniBroj);
+						if (musterija == null)
+						{
+							MessageBox.Show("Greska pri dobavljanju musterije!", "Dobavljanje musterije", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
+						else
+						{
+							sveMusterije = new ObservableCollection<Musterija>();
+							sveMusterije.Add(musterija);
+							OnPropertyChanged("sveMusterije");
+
+							GetRedniBroj = "";
+						}
+					}
+					else
+					{
+						MessageBox.Show("Polje Redni broj mora biti pozitivan broj!", "Dobavljanje musterije", MessageBoxButton.OK, MessageBoxImage.Error);
+					}
+				}
+				catch
+				{
+					MessageBox.Show("Polje Redni broj mora biti broj!", "Dobavljanje musterije", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Polje Redni broj ne sme biti prazno!", "Dobavljanje musterije", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 

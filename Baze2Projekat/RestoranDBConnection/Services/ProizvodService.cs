@@ -79,6 +79,23 @@ namespace RestoranDB.Services
 			return true;
 		}
 
+		public Proizvod Dobavi(string naziv)
+		{
+			using (var dataBase = new ModelFirstDBContainer())
+			{
+				try
+				{
+					return dataBase.Proizvodi.Find(naziv);
+				}
+				catch
+				{
+
+				}
+			}
+
+			return null;
+		}
+
 		public List<Proizvod> DobaviSve()
 		{
 			List<Proizvod> izlaz = new List<Proizvod>();

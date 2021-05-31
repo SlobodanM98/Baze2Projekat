@@ -27,15 +27,15 @@
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="139,47,0,0" Text="{Binding AddNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Tip" HorizontalAlignment="Left" Height="26" Margin="10,78,0,0" VerticalAlignment="Top" Width="86"/>
 			<Button Content="Dodaj" Command="{Binding DodajCommand}" HorizontalAlignment="Left" Height="30" Margin="68,143,0,0" VerticalAlignment="Top" Width="95"/>
-			<Label Content="Brisanje proizvoda" HorizontalAlignment="Left" Height="32" Margin="240,10,0,0" VerticalAlignment="Top" Width="142" FontSize="16"/>
-			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="240,47,0,0" VerticalAlignment="Top" Width="72"/>
-			<TextBox HorizontalAlignment="Left" Height="26" Margin="317,47,0,0" Text="{Binding DeleteNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="276,143,0,0" VerticalAlignment="Top" Width="94"/>
-			<Label Content="Azuriranje proizvoda" HorizontalAlignment="Left" Height="32" Margin="429,10,0,0" VerticalAlignment="Top" Width="167" FontSize="16"/>
-			<Label Content="Tip" HorizontalAlignment="Left" Height="26" Margin="433,78,0,0" VerticalAlignment="Top" Width="86"/>
-			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="472,143,0,0" VerticalAlignment="Top" Width="95"/>
-			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="433,47,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,47,0,0" Text="{Binding UpdateNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Label Content="Brisanje proizvoda" HorizontalAlignment="Left" Height="32" Margin="231,10,0,0" VerticalAlignment="Top" Width="142" FontSize="16"/>
+			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="231,47,0,0" VerticalAlignment="Top" Width="72"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="308,47,0,0" Text="{Binding DeleteNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Izbrisi" Command="{Binding IzbrisiCommand}" HorizontalAlignment="Left" Height="30" Margin="267,143,0,0" VerticalAlignment="Top" Width="94"/>
+			<Label Content="Azuriranje proizvoda" HorizontalAlignment="Left" Height="32" Margin="401,10,0,0" VerticalAlignment="Top" Width="167" FontSize="16"/>
+			<Label Content="Tip" HorizontalAlignment="Left" Height="26" Margin="405,78,0,0" VerticalAlignment="Top" Width="86"/>
+			<Button Content="Azuriraj" Command="{Binding AzurirajCommand}" HorizontalAlignment="Left" Height="30" Margin="444,143,0,0" VerticalAlignment="Top" Width="95"/>
+			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="405,47,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="497,47,0,0" Text="{Binding UpdateNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<Label Content="Cena" HorizontalAlignment="Left" Height="26" Margin="10,109,0,0" VerticalAlignment="Top" Width="86"/>
 			<TextBox HorizontalAlignment="Left" Height="26" Margin="139,109,0,0" Text="{Binding AddCena}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
 			<ComboBox HorizontalAlignment="Left" Height="26" Margin="139,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding AddTip}" SelectedValue="{Binding AddTip}">
@@ -44,14 +44,19 @@
 				<ComboBoxItem Name="Salata">Salata</ComboBoxItem>
 				<ComboBoxItem Name="Dezert">Dezert</ComboBoxItem>
 			</ComboBox>
-			<Label Content="Cena" HorizontalAlignment="Left" Height="26" Margin="433,109,0,0" VerticalAlignment="Top" Width="86"/>
-			<TextBox HorizontalAlignment="Left" Height="26" Margin="525,109,0,0" Text="{Binding UpdateCena}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
-			<ComboBox HorizontalAlignment="Left" Height="26" Margin="525,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateTip}" SelectedValue="{Binding UpdateTip}">
+			<Label Content="Cena" HorizontalAlignment="Left" Height="26" Margin="405,109,0,0" VerticalAlignment="Top" Width="86"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="497,109,0,0" Text="{Binding UpdateCena}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<ComboBox HorizontalAlignment="Left" Height="26" Margin="497,78,0,0" VerticalAlignment="Top" Width="82" SelectedItem="{Binding UpdateTip}" SelectedValue="{Binding UpdateTip}">
 				<ComboBoxItem x:Name="Corba1" Content="Corba"/>
 				<ComboBoxItem x:Name="GlavnoJelo1" Content="Glavno Jelo"/>
 				<ComboBoxItem x:Name="Salata1" Content="Salata"/>
 				<ComboBoxItem x:Name="Dezert1" Content="Dezert"/>
 			</ComboBox>
+			<Label Content="Dobavljanje proizvoda" HorizontalAlignment="Left" Height="32" Margin="592,10,0,0" VerticalAlignment="Top" Width="183" FontSize="16"/>
+			<Label Content="Naziv" HorizontalAlignment="Left" Height="26" Margin="592,47,0,0" VerticalAlignment="Top" Width="72"/>
+			<TextBox HorizontalAlignment="Left" Height="26" Margin="669,47,0,0" Text="{Binding GetNaziv}" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"/>
+			<Button Content="Dobavi" Command="{Binding DobaviCommand}" HorizontalAlignment="Left" Height="30" Margin="592,143,0,0" VerticalAlignment="Top" Width="94"/>
+			<Button Content="Dobavi sve" Command="{Binding DobaviSveCommand}" HorizontalAlignment="Left" Height="30" Margin="691,143,0,0" VerticalAlignment="Top" Width="94"/>
 		</Grid>
 	</Canvas>
 </UserControl>
