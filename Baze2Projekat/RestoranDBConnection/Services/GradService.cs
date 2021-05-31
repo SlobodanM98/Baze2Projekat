@@ -110,6 +110,73 @@ namespace RestoranDB.Services
 					}
 					else
 					{
+						List<Restoran> restorani = dataBase.Restorani.ToList();
+						List<Nudi> nudis = dataBase.Nudis.ToList();
+						List<Sprema> spremas = dataBase.Spremas.ToList();
+						List<Kupuje> kupovine = dataBase.Kupovine.ToList();
+						List<Radi> radis = dataBase.Radis.ToList();
+						List<Sto> stolovi = dataBase.Stolovi.ToList();
+						List<Musterija> musterije = dataBase.Musterije.ToList();
+
+						int IDRestorana = -1;
+
+						foreach(Restoran restoran in restorani)
+						{
+							if(restoran.GradPostanskiBroj == postanskiBroj)
+							{
+								dataBase.Restorani.Remove(restoran);
+								IDRestorana = restoran.IDRestorana;
+							}
+						}
+						foreach (Nudi nudi in nudis)
+						{
+							if (nudi.RestoranIDRestorana == IDRestorana)
+							{
+								dataBase.Nudis.Remove(nudi);
+							}
+						}
+						foreach (Sprema sprema in spremas)
+						{
+							if (sprema.NudiRestoranIDRestorana == IDRestorana)
+							{
+								dataBase.Spremas.Remove(sprema);
+							}
+						}
+						foreach (Kupuje kupuje in kupovine)
+						{
+							if (kupuje.SpremaNudiRestoranIDRestorana == IDRestorana)
+							{
+								dataBase.Kupovine.Remove(kupuje);
+							}
+						}
+						foreach (Radi radi in radis)
+						{
+							if (radi.RestoranIDRestorana == IDRestorana)
+							{
+								dataBase.Radis.Remove(radi);
+							}
+						}
+						foreach (Sto sto in stolovi)
+						{
+							if (sto.RestoranIDRestorana == IDRestorana)
+							{
+								dataBase.Stolovi.Remove(sto);
+							}
+						}
+						foreach (Musterija musterija in musterije)
+						{
+							if (musterija.StoRestoranIDRestorana == IDRestorana)
+							{
+								Musterija novi = new Musterija();
+								novi.Ime = musterija.Ime;
+								novi.Prezime = musterija.Prezime;
+								novi.RedniBroj = musterija.RedniBroj;
+								novi.StoBrojStola = null;
+								novi.StoRestoranIDRestorana = null;
+								dataBase.Entry(novi).State = EntityState.Modified;
+							}
+						}
+
 						dataBase.Gradovi.Remove(zaBrisanje);
 						dataBase.SaveChanges();
 					}

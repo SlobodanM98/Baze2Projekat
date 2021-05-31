@@ -147,6 +147,16 @@ namespace RestoranDB.Services
 					}
 					else
 					{
+						List<Musterija> musterije = dataBase.Musterije.ToList();
+
+						foreach(Musterija musterija in musterije)
+						{
+							if(musterija.StoRestoranIDRestorana == IDRestoran && musterija.StoBrojStola == brojStola)
+							{
+								dataBase.Musterije.Remove(musterija);
+							}
+						}
+
 						dataBase.Stolovi.Remove(zaBrisanje);
 						dataBase.SaveChanges();
 					}

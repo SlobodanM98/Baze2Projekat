@@ -180,12 +180,28 @@ namespace RestoranDB.Services
 					else
 					{
 						List<Radi> radovi = dataBase.Radis.ToList();
+						List<Sprema> spremas = dataBase.Spremas.ToList();
+						List<Kupuje> kupovine = dataBase.Kupovine.ToList();
 
 						foreach(Radi radi in radovi)
 						{
 							if(radi.ZaposleniJMBG == jmbg)
 							{
 								dataBase.Radis.Remove(radi);
+							}
+						}
+						foreach(Sprema sprema in spremas)
+						{
+							if(sprema.KuvarJMBG == jmbg)
+							{
+								dataBase.Spremas.Remove(sprema);
+							}
+						}
+						foreach(Kupuje kupuje in kupovine)
+						{
+							if(kupuje.SpremaKuvarJMBG == jmbg)
+							{
+								dataBase.Kupovine.Remove(kupuje);
 							}
 						}
 

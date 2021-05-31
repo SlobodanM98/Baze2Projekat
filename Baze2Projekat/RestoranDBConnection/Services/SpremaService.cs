@@ -82,6 +82,16 @@ namespace RestoranDB.Services
 					}
 					else
 					{
+						List<Kupuje> kupovine = dataBase.Kupovine.ToList();
+
+						foreach (Kupuje kupuje in kupovine)
+						{
+							if (kupuje.SpremaKuvarJMBG == JMBG && kupuje.SpremaNudiRestoranIDRestorana == IDRestoran && kupuje.SpremaNudiProizvodNaziv == naziv)
+							{
+								dataBase.Kupovine.Remove(kupuje);
+							}
+						}
+
 						dataBase.Spremas.Remove(zaBrisanje);
 						dataBase.SaveChanges();
 					}

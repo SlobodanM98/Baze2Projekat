@@ -168,6 +168,32 @@ namespace RestoranDB.Services
 					}
 					else
 					{
+						List<Nudi> nudis = dataBase.Nudis.ToList();
+						List<Sprema> spremas = dataBase.Spremas.ToList();
+						List<Kupuje> kupovine = dataBase.Kupovine.ToList();
+
+						foreach (Nudi nudi in nudis)
+						{
+							if(nudi.ProizvodNaziv == naziv)
+							{
+								dataBase.Nudis.Remove(nudi);
+							}
+						}
+						foreach(Sprema sprema in spremas)
+						{
+							if(sprema.NudiProizvodNaziv == naziv)
+							{
+								dataBase.Spremas.Remove(sprema);
+							}
+						}
+						foreach(Kupuje kupuje in kupovine)
+						{
+							if(kupuje.SpremaNudiProizvodNaziv == naziv)
+							{
+								dataBase.Kupovine.Remove(kupuje);
+							}
+						}
+
 						dataBase.Proizvodi.Remove(zaBrisanje);
 						dataBase.SaveChanges();
 					}
