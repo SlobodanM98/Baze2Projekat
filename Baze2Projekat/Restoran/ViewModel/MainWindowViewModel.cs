@@ -15,6 +15,7 @@ namespace Restoran.ViewModel
         private SpremaViewModel spremaViewModel = new SpremaViewModel();
         private RadiViewModel radiViewModel = new RadiViewModel();
         private NudiViewModel nudiViewModel = new NudiViewModel();
+        private KupujeViewModel kupujeViewModel = new KupujeViewModel();
 
 		private BindableBase trenutniViewModel;
 
@@ -103,6 +104,13 @@ namespace Restoran.ViewModel
                         break;
                     }
                     TrenutniViewModel = nudiViewModel;
+                    break;
+                case "Kupuje":
+                    if (TrenutniViewModel == kupujeViewModel)
+                    {
+                        break;
+                    }
+                    TrenutniViewModel = kupujeViewModel;
                     break;
             }
         }

@@ -180,6 +180,9 @@ namespace Restoran.ViewModel
 					AddJMBG = "";
 					AddNaziv = "";
 					AddIDRestoran = "";
+
+					sviRestorani = new ObservableCollection<int>();
+					sviProizvodi = new ObservableCollection<string>();
 				}
 			}
 			else
@@ -292,6 +295,9 @@ namespace Restoran.ViewModel
 					DeleteJMBG = "";
 					DeleteNaziv = "";
 					DeleteIDRestoran = "";
+
+					sviRestorani = new ObservableCollection<int>();
+					sviProizvodi = new ObservableCollection<string>();
 				}
 			}
 			else

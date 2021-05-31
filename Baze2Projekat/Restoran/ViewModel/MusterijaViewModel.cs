@@ -244,6 +244,8 @@ namespace Restoran.ViewModel
 						AddIme = "";
 						AddPrezime = "";
 						AddBrojStola = "";
+
+						sviBrojeviStolova = new ObservableCollection<int>();
 					}
 				}
 				else
@@ -374,6 +376,8 @@ namespace Restoran.ViewModel
 							UpdateRedniBroj = "";
 							UpdateIme = "";
 							UpdatePrezime = "";
+
+							sviBrojeviStolova = new ObservableCollection<int>();
 						}
 					}
 					else

@@ -39,6 +39,9 @@
 		<DataTemplate DataType="{x:Type viewModel:NudiViewModel}">
 			<views:NudiView/>
 		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModel:KupujeViewModel}">
+			<views:KupujeView/>
+		</DataTemplate>
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
@@ -47,24 +50,26 @@
 		</Grid.RowDefinitions>
 		<DockPanel Grid.Row="0" Margin="2">
 			<Menu DockPanel.Dock="Top" Height="20">
-				<MenuItem Header="Grad" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Grad" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Grad"/>
-				<MenuItem Header="Proizvod" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Proizvod" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Proizvod"/>
-				<MenuItem Header="Zaposleni" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Zaposleni" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Zaposleni"/>
-				<MenuItem Header="Restoran" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Restoran" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Restoran"/>
-				<MenuItem Header="Sto" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Sto" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Sto"/>
-				<MenuItem Header="Musterija" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Musterija" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Musterija"/>
-				<MenuItem Header="Sprema" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Sprema" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Sprema"/>
-				<MenuItem Header="Radi" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Radi" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Radi"/>
-				<MenuItem Header="Nudi" Width="80" FontSize="14" Command="{Binding KarticeCommand}"
+				<MenuItem Header="Nudi" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Nudi"/>
+				<MenuItem Header="Kupuje" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Kupuje"/>
 			</Menu>
 		</DockPanel>
 		<Grid Grid.Row="1" Height="Auto">
