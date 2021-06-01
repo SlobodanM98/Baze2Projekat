@@ -32,7 +32,7 @@ namespace RestoranDB.Services
 						{
 							zaAzuriranje.Prezime = prezime;
 						}
-						if (brojStola != "" && IDRestoran != "")
+						if (brojStola != "" && IDRestoran != "" && brojStola != null && IDRestoran != null)
 						{
 							zaAzuriranje.StoBrojStola = Int32.Parse(brojStola);
 							zaAzuriranje.StoRestoranIDRestorana = Int32.Parse(IDRestoran);
@@ -97,7 +97,7 @@ namespace RestoranDB.Services
 					musterija.Ime = ime;
 					musterija.Prezime = prezime;
 
-					if (brojStola != "" && IDRestoran != "")
+					if (brojStola != "" && IDRestoran != "" && brojStola != null && IDRestoran != null)
 					{
 						musterija.StoBrojStola = Int32.Parse(brojStola);
 						musterija.StoRestoranIDRestorana = Int32.Parse(IDRestoran);

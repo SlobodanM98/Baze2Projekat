@@ -159,12 +159,13 @@ namespace Restoran.ViewModel
 
 			DobaviSve();
 
-			addIDRestoran = "";
-			addNaziv = "";
-			deleteIDRestoran = "";
-			updateIDRestoran = "";
-			updateNaziv = "";
-			getIDRestoran = "";
+			AddIDRestoran = "";
+			AddNaziv = "";
+			AddPostanskiBroj = "";
+			DeleteIDRestoran = "";
+			UpdateIDRestoran = "";
+			UpdateNaziv = "";
+			GetIDRestoran = "";
 		}
 
 		public void Dodaj()
@@ -186,6 +187,7 @@ namespace Restoran.ViewModel
 							DobaviSve();
 							AddIDRestoran = "";
 							AddNaziv = "";
+							AddPostanskiBroj = "";
 						}
 					}
 					else

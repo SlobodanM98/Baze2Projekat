@@ -36,7 +36,7 @@ namespace RestoranDB.Services
 								case "Corba":
 									zaAzuriranje = new Corba();
 									break;
-								case "GlavnoJelo":
+								case "Glavno Jelo":
 									zaAzuriranje = new GlavnoJelo();
 									break;
 								case "Salata":
@@ -128,7 +128,7 @@ namespace RestoranDB.Services
 						case "Corba":
 							proizvod = new Corba();
 							break;
-						case "GlavnoJelo":
+						case "Glavno Jelo":
 							proizvod = new GlavnoJelo();
 							break;
 						case "Salata":

@@ -220,15 +220,15 @@ namespace Restoran.ViewModel
 			DobaviSveKuvare();
 			DobaviSve();
 
-			addJMBG = "";
-			addNaziv = "";
-			addIDRestoran = "";
-			deleteJMBG = "";
-			deleteNaziv = "";
-			deleteIDRestoran = "";
-			getJMBG = "";
-			getNaziv = "";
-			getIDRestoran = "";
+			AddJMBG = "";
+			AddNaziv = "";
+			AddIDRestoran = "";
+			DeleteJMBG = "";
+			DeleteNaziv = "";
+			DeleteIDRestoran = "";
+			GetJMBG = "";
+			GetNaziv = "";
+			GetIDRestoran = "";
 		}
 
 		public void Dodaj()

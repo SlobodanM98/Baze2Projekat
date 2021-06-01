@@ -141,12 +141,12 @@ namespace Restoran.ViewModel
 				DobaviSve();
 			}
 
-			addPostanskiBroj = "";
-			addNaziv = "";
-			deletePostanskiBroj = "";
-			updatePostanskiBroj = "";
-			updateNaziv = "";
-			getPostanskiBroj = "";
+			AddPostanskiBroj = "";
+			AddNaziv = "";
+			DeletePostanskiBroj = "";
+			UpdatePostanskiBroj = "";
+			UpdateNaziv = "";
+			GetPostanskiBroj = "";
 		}
 
 		public void Dodaj()

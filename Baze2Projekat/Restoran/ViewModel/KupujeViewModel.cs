@@ -284,18 +284,18 @@ namespace Restoran.ViewModel
 			DobaviSveMusterije();
 			DobaviSve();
 
-			addJMBG = "";
-			addIDRestoran = "";
-			addRedniBroj = "";
-			addNaziv = "";
-			deleteJMBG = "";
-			deleteIDRestoran = "";
-			deleteRedniBroj = "";
-			deleteNaziv = "";
-			getJMBG = "";
-			getIDRestoran = "";
-			getRedniBroj = "";
-			getNaziv = "";
+			AddJMBG = "";
+			AddIDRestoran = "";
+			AddRedniBroj = "";
+			AddNaziv = "";
+			DeleteJMBG = "";
+			DeleteIDRestoran = "";
+			DeleteRedniBroj = "";
+			DeleteNaziv = "";
+			GetJMBG = "";
+			GetIDRestoran = "";
+			GetRedniBroj = "";
+			GetNaziv = "";
 		}
 
 		public void Dodaj()

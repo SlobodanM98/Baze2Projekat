@@ -237,17 +237,17 @@ namespace Restoran.ViewModel
 			DobaviSveRestorane();
 			DobaviSve();
 
-			addIme = "";
-			addPrezime = "";
-			addBrojStola = "";
-			addIDRestoran = "";
-			deleteRedniBroj = "";
-			updateRedniBroj = "";
-			updateIme = "";
-			updatePrezime = "";
-			updateBrojStola = "";
-			updateIDRestoran = "";
-			getRedniBroj = "";
+			AddIme = "";
+			AddPrezime = "";
+			AddBrojStola = "";
+			AddIDRestoran = "";
+			DeleteRedniBroj = "";
+			UpdateRedniBroj = "";
+			UpdateIme = "";
+			UpdatePrezime = "";
+			UpdateBrojStola = "";
+			UpdateIDRestoran = "";
+			GetRedniBroj = "";
 		}
 
 		public void Dodaj()
@@ -266,8 +266,10 @@ namespace Restoran.ViewModel
 						AddIme = "";
 						AddPrezime = "";
 						AddBrojStola = "";
+						AddIDRestoran = "";
 
 						sviBrojeviStolova = new ObservableCollection<int>();
+						OnPropertyChanged("sviBrojeviStolova");
 					}
 				}
 				else

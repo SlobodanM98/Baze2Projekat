@@ -172,14 +172,14 @@ namespace Restoran.ViewModel
 				DobaviSve();
 			}
 
-			addNaziv = "";
-			addTip = "";
-			addCena = "";
-			deleteNaziv = "";
-			updateNaziv = "";
-			updateTip = "";
-			updateCena = "";
-			getNaziv = "";
+			AddNaziv = "";
+			AddTip = "";
+			AddCena = "";
+			DeleteNaziv = "";
+			UpdateNaziv = "";
+			UpdateTip = "";
+			UpdateCena = "";
+			GetNaziv = "";
 		}
 
 		public void Dodaj()
@@ -323,12 +323,16 @@ namespace Restoran.ViewModel
 
 				if (ispravnaCena)
 				{
-					string[] tekst = updateTip.Split(' ');
-					string tip = tekst[1];
-
-					for (int i = 2; i < tekst.Length; i++)
+					string tip = "";
+					if(addTip != "")
 					{
-						tip += " " + tekst[i];
+						string[] tekst = updateTip.Split(' ');
+						tip = tekst[1];
+
+						for (int i = 2; i < tekst.Length; i++)
+						{
+							tip += " " + tekst[i];
+						}
 					}
 
 					if (!Service.Azuriraj(updateNaziv, tip, cena))

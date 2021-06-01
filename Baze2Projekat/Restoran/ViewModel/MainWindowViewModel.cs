@@ -16,6 +16,7 @@ namespace Restoran.ViewModel
         private RadiViewModel radiViewModel = new RadiViewModel();
         private NudiViewModel nudiViewModel = new NudiViewModel();
         private KupujeViewModel kupujeViewModel = new KupujeViewModel();
+        private ProcIFunViewModel procIFunViewModel = new ProcIFunViewModel();
 
 		private BindableBase trenutniViewModel;
 
@@ -111,6 +112,13 @@ namespace Restoran.ViewModel
                         break;
                     }
                     TrenutniViewModel = kupujeViewModel;
+                    break;
+                case "Proc":
+                    if (TrenutniViewModel == procIFunViewModel)
+                    {
+                        break;
+                    }
+                    TrenutniViewModel = procIFunViewModel;
                     break;
             }
         }

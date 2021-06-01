@@ -143,12 +143,12 @@ namespace Restoran.ViewModel
 			DobaviSveProizvode();
 			DobaviSve();
 
-			addNaziv = "";
-			addIDRestoran = "";
-			deleteNaziv = "";
-			deleteIDRestoran = "";
-			getNaziv = "";
-			getIDRestoran = "";
+			AddNaziv = "";
+			AddIDRestoran = "";
+			DeleteNaziv = "";
+			DeleteIDRestoran = "";
+			GetNaziv = "";
+			GetIDRestoran = "";
 		}
 
 		public void Dodaj()

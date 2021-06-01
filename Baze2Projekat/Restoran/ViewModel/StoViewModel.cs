@@ -209,16 +209,16 @@ namespace Restoran.ViewModel
 			DobaviSveRestorane();
 			DobaviSve();
 
-			addBrojStola = "";
-			addTip = "";
-			addIDRestoran = "";
-			deleteBrojStola = "";
-			deleteIDRestoran = "";
-			updateBrojStola = "";
-			updateTip = "";
-			updateIDRestoran = "";
-			getBrojStola = "";
-			getIDRestoran = "";
+			AddBrojStola = "";
+			AddTip = "";
+			AddIDRestoran = "";
+			DeleteBrojStola = "";
+			DeleteIDRestoran = "";
+			UpdateBrojStola = "";
+			UpdateTip = "";
+			UpdateIDRestoran = "";
+			GetBrojStola = "";
+			GetIDRestoran = "";
 		}
 
 		public void Dodaj()

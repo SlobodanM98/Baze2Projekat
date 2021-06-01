@@ -66,6 +66,7 @@
     <Compile Include="Interfaces\IKupujeService.cs" />
     <Compile Include="Interfaces\IMusterijaService.cs" />
     <Compile Include="Interfaces\INudiService.cs" />
+    <Compile Include="Interfaces\IProcIFunService.cs" />
     <Compile Include="Interfaces\IProizvodService.cs" />
     <Compile Include="Interfaces\IRadiService.cs" />
     <Compile Include="Interfaces\IRestoranService.cs" />
@@ -102,6 +103,8 @@
     <Compile Include="Nudi.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="PomocneKlase\KuvarPodaci.cs" />
+    <Compile Include="PomocneKlase\RestoranPodaci.cs" />
     <Compile Include="Proizvod.cs">
       <DependentUpon>ModelFirstDB.tt</DependentUpon>
     </Compile>
@@ -122,6 +125,7 @@
     <Compile Include="Services\KupujeService.cs" />
     <Compile Include="Services\MusterijaService.cs" />
     <Compile Include="Services\NudiService.cs" />
+    <Compile Include="Services\ProcIFunService.cs" />
     <Compile Include="Services\ProizvodService.cs" />
     <Compile Include="Services\RadiService.cs" />
     <Compile Include="Services\RestoranService.cs" />

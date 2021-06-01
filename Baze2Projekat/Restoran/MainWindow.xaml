@@ -42,34 +42,39 @@
 		<DataTemplate DataType="{x:Type viewModel:KupujeViewModel}">
 			<views:KupujeView/>
 		</DataTemplate>
+		<DataTemplate DataType="{x:Type viewModel:ProcIFunViewModel}">
+			<views:ProcIFunView/>
+		</DataTemplate>
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<DockPanel Grid.Row="0" Margin="2">
 			<Menu DockPanel.Dock="Top" Height="20">
 				<MenuItem Header="Grad" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Grad"/>
-				<MenuItem Header="Proizvod" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
-                          CommandParameter="Proizvod"/>
-				<MenuItem Header="Zaposleni" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
-                          CommandParameter="Zaposleni"/>
 				<MenuItem Header="Restoran" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Restoran"/>
+				<MenuItem Header="Zaposleni" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Zaposleni"/>
+				<MenuItem Header="Radi" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Radi"/>
+				<MenuItem Header="Proizvod" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Proizvod"/>
+				<MenuItem Header="Nudi" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Nudi"/>
+				<MenuItem Header="Sprema" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Sprema"/>
 				<MenuItem Header="Sto" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Sto"/>
 				<MenuItem Header="Musterija" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Musterija"/>
-				<MenuItem Header="Sprema" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
-                          CommandParameter="Sprema"/>
-				<MenuItem Header="Radi" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
-                          CommandParameter="Radi"/>
-				<MenuItem Header="Nudi" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
-                          CommandParameter="Nudi"/>
 				<MenuItem Header="Kupuje" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
                           CommandParameter="Kupuje"/>
+				<MenuItem Header="Proc i fun" Width="70" FontSize="14" Command="{Binding KarticeCommand}"
+                          CommandParameter="Proc"/>
 			</Menu>
 		</DockPanel>
 		<Grid Grid.Row="1" Height="Auto">

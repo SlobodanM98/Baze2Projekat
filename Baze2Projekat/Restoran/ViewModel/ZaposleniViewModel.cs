@@ -226,17 +226,17 @@ namespace Restoran.ViewModel
 			DobaviSveRestorane();
 			DobaviSve();
 
-			addJMBG = "";
-			addTip = "";
-			addIme = "";
-			addPrezime = "";
-			addIDRestoran = "";
-			deleteJMBG = "";
-			updateJMBG = "";
-			updateTip = "";
-			updateIme = "";
-			updatePrezime = "";
-			getJMBG = "";
+			AddJMBG = "";
+			AddTip = "";
+			AddIme = "";
+			AddPrezime = "";
+			AddIDRestoran = "";
+			DeleteJMBG = "";
+			UpdateJMBG = "";
+			UpdateTip = "";
+			UpdateIme = "";
+			UpdatePrezime = "";
+			GetJMBG = "";
 		}
 
 		public void Dodaj()
