@@ -1,0 +1,45 @@
+USE [Baze2DB]
+GO
+/****** Object:  Trigger [dbo].[TRNudi]    Script Date: 02-Jun-21 4:39:52 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER trigger [dbo].[TRNudi]
+on [Baze2DB].[dbo].[Nudis]
+instead of insert
+as
+begin
+	declare @idRestoran int;
+	declare @naziv varchar(20);
+	select @idRestoran = i.RestoranIDRestorana from inserted i;
+	select @naziv = i.ProizvodNaziv from inserted i;
+	insert into [Baze2DB].[dbo].[Nudis]
+	(RestoranIDRestorana, ProizvodNaziv)
+	values(@idRestoran, @naziv);
+	print 'Triger nudi je pozvan.'
+end
+
+
+
+USE [Baze2DB]
+GO
+/****** Object:  Trigger [dbo].[TRGrad]    Script Date: 02-Jun-21 4:40:14 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER trigger [dbo].[TRGrad]
+on [Baze2DB].[dbo].[Gradovi]
+instead of insert
+as
+begin
+	declare @postanskiBroj int;
+	declare @naziv varchar(20);
+	select @postanskiBroj = i.PostanskiBroj from inserted i;
+	select @naziv = i.Naziv from inserted i;
+	insert into [Baze2DB].[dbo].[Gradovi]
+	(PostanskiBroj, Naziv)
+	values(@postanskiBroj, @naziv);
+	print 'Triger grada je pozvan.'
+end

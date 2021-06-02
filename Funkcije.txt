@@ -1,0 +1,45 @@
+USE [Baze2DB]
+GO
+/****** Object:  UserDefinedFunction [dbo].[FUNBrojLjudiZaStolovima]    Script Date: 02-Jun-21 4:39:22 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER function [dbo].[FUNBrojLjudiZaStolovima]
+(@IDRestoran int)
+returns int
+as
+begin
+	declare @brojIzlaz int;
+	select @brojIzlaz = count(*) from [Baze2DB].[dbo].[Restorani]
+	inner join [Baze2DB].[dbo].[Stolovi]
+	on [Baze2DB].[dbo].[Restorani].IDRestorana = [Baze2DB].[dbo].[Stolovi].RestoranIDRestorana
+	inner join [Baze2DB].[dbo].[Musterije] 
+	on [Baze2DB].[dbo].[Stolovi].BrojStola = [Baze2DB].[dbo].[Musterije].StoBrojStola
+	where [Baze2DB].[dbo].[Restorani].IDRestorana = @IDRestoran;
+	return @brojIzlaz;
+end
+
+
+
+USE [Baze2DB]
+GO
+/****** Object:  UserDefinedFunction [dbo].[FUNUkupnaCenaMusterije]    Script Date: 02-Jun-21 4:39:38 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER function [dbo].[FUNUkupnaCenaMusterije]
+(@RedniBrojMusterije int)
+returns int
+as
+begin
+	declare @ukupnoIzlaz as int;
+	select @ukupnoIzlaz = SUM([Baze2DB].[dbo].[Proizvodi].Cena) from [Baze2DB].[dbo].[Musterije]
+	inner join [Baze2DB].[dbo].[Kupovine]
+	on [Baze2DB].[dbo].[Musterije].RedniBroj = [Baze2DB].[dbo].[Kupovine].MusterijaRedniBroj
+	inner join [Baze2DB].[dbo].[Proizvodi]
+	on [Baze2DB].[dbo].[Kupovine].SpremaNudiProizvodNaziv = [Baze2DB].[dbo].[Proizvodi].Naziv
+	where [Baze2DB].[dbo].[Musterije].RedniBroj = @RedniBrojMusterije;
+	return @ukupnoIzlaz;
+end

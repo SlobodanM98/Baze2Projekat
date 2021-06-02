@@ -1,0 +1,70 @@
+USE [Baze2DB]
+GO
+/****** Object:  StoredProcedure [dbo].[PROCSviKuvariMusterije]    Script Date: 02-Jun-21 4:38:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[PROCSviKuvariMusterije]
+@RedniBrojMusterije int
+as
+select [Baze2DB].[dbo].[Zaposleni].Ime, [Baze2DB].[dbo].[Zaposleni].Prezime from [Baze2DB].[dbo].[Musterije]
+inner join [Baze2DB].[dbo].[Kupovine]
+on [Baze2DB].[dbo].[Musterije].RedniBroj = [Baze2DB].[dbo].[Kupovine].MusterijaRedniBroj
+inner join [Baze2DB].[dbo].[Zaposleni] 
+on [Baze2DB].[dbo].[Kupovine].SpremaKuvarJMBG = [Baze2DB].[dbo].[Zaposleni].JMBG
+where [Baze2DB].[dbo].[Musterije].RedniBroj = @RedniBrojMusterije
+
+
+
+USE [Baze2DB]
+GO
+/****** Object:  StoredProcedure [dbo].[PROCSviRestoraniMusterije]    Script Date: 02-Jun-21 4:38:47 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[PROCSviRestoraniMusterije]
+@RedniBrojMusterije int
+as
+select [Baze2DB].[dbo].[Restorani].Naziv from [Baze2DB].[dbo].[Musterije]
+inner join [Baze2DB].[dbo].[Kupovine]
+on [Baze2DB].[dbo].[Musterije].RedniBroj = [Baze2DB].[dbo].[Kupovine].MusterijaRedniBroj
+inner join [Baze2DB].[dbo].[Restorani]
+on [Baze2DB].[dbo].[Kupovine].SpremaNudiRestoranIDRestorana = [Baze2DB].[dbo].[Restorani].IDRestorana
+where [Baze2DB].[dbo].[Musterije].RedniBroj = @RedniBrojMusterije
+
+
+
+USE [Baze2DB]
+GO
+/****** Object:  StoredProcedure [dbo].[PROCSviRestoraniMusterijeCursor]    Script Date: 02-Jun-21 4:38:57 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[PROCSviRestoraniMusterijeCursor]
+@RedniBrojMusterije int
+as
+declare procCursor cursor
+for
+select [Baze2DB].[dbo].[Restorani].Naziv from [Baze2DB].[dbo].[Musterije]
+inner join [Baze2DB].[dbo].[Kupovine]
+on [Baze2DB].[dbo].[Musterije].RedniBroj = [Baze2DB].[dbo].[Kupovine].MusterijaRedniBroj
+inner join [Baze2DB].[dbo].[Restorani]
+on [Baze2DB].[dbo].[Kupovine].SpremaNudiRestoranIDRestorana = [Baze2DB].[dbo].[Restorani].IDRestorana
+where [Baze2DB].[dbo].[Musterije].RedniBroj = @RedniBrojMusterije;
+
+declare @naziv varchar(30);
+
+begin
+	open procCursor;
+	fetch next from procCursor into @naziv;
+	while @@FETCH_STATUS = 0
+		begin
+			print @naziv;
+			fetch next from procCursor into @naziv;
+		end
+		close procCursor;
+		deallocate procCursor;
+end
