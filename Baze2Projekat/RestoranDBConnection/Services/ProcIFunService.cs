@@ -47,6 +47,7 @@ namespace RestoranDB.Services
 		{
 			using (var dataBase = new ModelFirstDBContainer())
 			{
+				dataBase.Database.SqlQuery<RestoranPodaci>("PROCSviRestoraniMusterijeCursor @redniBroj", new SqlParameter { ParameterName = "redniBroj", Value = redniBroj });
 				return dataBase.Database.SqlQuery<RestoranPodaci>("PROCSviRestoraniMusterije @redniBroj", new SqlParameter { ParameterName = "redniBroj", Value = redniBroj }).ToList();
 			}
 		}
